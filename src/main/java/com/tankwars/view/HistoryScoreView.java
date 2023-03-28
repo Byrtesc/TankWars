@@ -27,6 +27,7 @@ public class HistoryScoreView extends JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         historyScoreViewPanel = new HistoryScoreViewPanel();
 
+
         add(historyScoreViewPanel);
         setVisible(false);
     }
