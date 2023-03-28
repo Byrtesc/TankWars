@@ -1,0 +1,166 @@
+package com.tankwars.view;
+
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * @Author yangmingquan
+ * @Date 2023/3/25 21:37
+ * @PackageName:com.tankwars.view
+ * @ClassName: MainViewGameViewInfoPanel
+ * @Description: TODO
+ * @Version 1.0
+ */
+public class MainGameViewInfoPanel extends JPanel {
+    public JPanel topPanel;
+    public JPanel middlePanel;
+    public JPanel bottomPanel;
+
+    public JLabel labelWhiteTank;
+    public JLabel labelYellowTank;
+    public JLabel labelGreenTank;
+    public JLabel labelBlueTank;
+    public JLabel labelRedTank;
+    public JLabel labelPlayerNameValues;
+    public JLabel labelThisLevelDestroyTankValues;
+    public JLabel labelThisLevelGetScoreValues;
+    public JLabel labelAllDestroyTankValues;
+    public JLabel labelAllGetScoreValues;
+
+    public MainGameViewInfoPanel() {
+        setPreferredSize(new Dimension(230, 600));
+        topPanel = new JPanel();
+        middlePanel = new JPanel();
+        bottomPanel = new JPanel();
+        setLayout(new GridLayout(3, 1));
+
+        //上容器
+        topPanel.setBackground(new Color(255, 255, 0));
+        topPanel.setSize(200, 200);
+        topPanel.setLayout(null);
+        //label设置文字
+        JLabel labelTips = new JLabel("敌方坦克还有:");
+        labelWhiteTank = new JLabel("x 0");
+        labelYellowTank = new JLabel("x 0");
+        labelGreenTank = new JLabel("x 0");
+        labelBlueTank = new JLabel("x 0");
+        labelRedTank = new JLabel("x 0");
+        //label设置图片
+        labelWhiteTank.setIcon(new ImageIcon("images/whiteTank.png"));
+        labelYellowTank.setIcon(new ImageIcon("images/yellowTank.png"));
+        labelGreenTank.setIcon(new ImageIcon("images/greenTank.png"));
+        labelBlueTank.setIcon(new ImageIcon("images/blueTank.png"));
+        labelRedTank.setIcon(new ImageIcon("images/redTank.png"));
+        //label设置字体
+        labelTips.setFont(new Font(Font.DIALOG, 1, 15));
+        labelWhiteTank.setFont(new Font(Font.DIALOG, 1, 20));
+        labelYellowTank.setFont(new Font(Font.DIALOG, 1, 20));
+        labelGreenTank.setFont(new Font(Font.DIALOG, 1, 20));
+        labelBlueTank.setFont(new Font(Font.DIALOG, 1, 20));
+        labelRedTank.setFont(new Font(Font.DIALOG, 1, 20));
+        //label设置坐标
+        labelTips.setBounds(10, 10, 100, 15);
+        labelWhiteTank.setBounds(64, 20, 100, 35);
+        labelYellowTank.setBounds(65, 50, 100, 35);
+        labelGreenTank.setBounds(65, 80, 100, 35);
+        labelBlueTank.setBounds(65, 110, 90, 35);
+        labelRedTank.setBounds(65, 140, 100, 35);
+        //上容器添加组件
+        topPanel.add(labelTips);
+        topPanel.add(labelWhiteTank);
+        topPanel.add(labelYellowTank);
+        topPanel.add(labelGreenTank);
+        topPanel.add(labelBlueTank);
+        topPanel.add(labelRedTank);
+
+        //中容器
+        middlePanel.setBackground(new Color(232, 139, 139));
+        middlePanel.setSize(200, 200);
+        middlePanel.setLayout(null);
+        JLabel labelOperationHelp = new JLabel("<html>\n" +
+                "  <h3>游戏玩法:<br></h1>\n" +
+                "  <div style=\"font-size:10px;\">\n" +
+                "    &emsp&emsp向上：W&emsp;&emsp;向下：S<br>\n" +
+                "    <br>\n" +
+                "    &emsp&emsp射击：J<br>\n" +
+                "    <br>\n" +
+                "    &emsp&emsp暂停：P&emsp;&emsp;继续：C\n" +
+                "  </div>\n" +
+                "</html>\n");
+        labelOperationHelp.setHorizontalTextPosition(JLabel.CENTER);
+        labelOperationHelp.setVerticalAlignment(JLabel.TOP);
+        labelOperationHelp.setBounds(0, 0, 200, 200);
+        middlePanel.add(labelOperationHelp);
+
+
+        //下容器
+        bottomPanel.setBackground(new Color(24, 210, 12, 255));
+        GridBagLayout gridBagLayout = new GridBagLayout();
+        bottomPanel.setLayout(gridBagLayout);
+
+        JLabel labelPlayerName = new JLabel("玩家: ");
+        JLabel labelThisLevelDestroyTank = new JLabel("该关击毁坦克数量: ");
+        JLabel labelThisLevelGetScore = new JLabel("该关得分: ");
+        JLabel labelAllDestroyTank = new JLabel("总共击毁坦克数量: ");
+        JLabel labelAllGetScore = new JLabel("总共得分: ");
+
+        labelPlayerNameValues = new JLabel("null");
+        labelThisLevelDestroyTankValues = new JLabel("0");
+        labelThisLevelGetScoreValues = new JLabel("0");
+        labelAllDestroyTankValues = new JLabel("0");
+        labelAllGetScoreValues = new JLabel("0");
+
+        labelPlayerName.setFont(new Font(Font.DIALOG, 1, 15));
+        labelPlayerNameValues.setFont(new Font(Font.DIALOG, 1, 15));
+        labelThisLevelDestroyTank.setFont(new Font(Font.DIALOG, 1, 15));
+        labelThisLevelDestroyTankValues.setFont(new Font(Font.DIALOG, 1, 15));
+        labelThisLevelGetScore.setFont(new Font(Font.DIALOG, 1, 15));
+        labelThisLevelGetScoreValues.setFont(new Font(Font.DIALOG, 1, 15));
+        labelAllDestroyTank.setFont(new Font(Font.DIALOG, 1, 15));
+        labelAllDestroyTankValues.setFont(new Font(Font.DIALOG, 1, 15));
+        labelAllGetScore.setFont(new Font(Font.DIALOG, 1, 15));
+        labelAllGetScoreValues.setFont(new Font(Font.DIALOG, 1, 15));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 0;
+        gbc.weighty = 0;
+
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(labelPlayerName, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(labelPlayerNameValues, gbc);
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(labelThisLevelDestroyTank, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(labelThisLevelDestroyTankValues, gbc);
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(labelThisLevelGetScore, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(labelThisLevelGetScoreValues, gbc);
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(labelAllDestroyTank, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(labelAllDestroyTankValues, gbc);
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(labelAllGetScore, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(labelAllGetScoreValues, gbc);
+
+        bottomPanel.add(labelPlayerName);
+        bottomPanel.add(labelPlayerNameValues);
+        bottomPanel.add(labelThisLevelDestroyTank);
+        bottomPanel.add(labelThisLevelDestroyTankValues);
+        bottomPanel.add(labelThisLevelGetScore);
+        bottomPanel.add(labelThisLevelGetScoreValues);
+        bottomPanel.add(labelAllDestroyTank);
+        bottomPanel.add(labelAllDestroyTankValues);
+        bottomPanel.add(labelAllGetScore);
+        bottomPanel.add(labelAllGetScoreValues);
+
+        //添加组件
+        add(topPanel);
+        add(middlePanel);
+        add(bottomPanel);
+    }
+}
