@@ -1,6 +1,7 @@
 package com.tankwars.controller.timers;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.model.buildings.BirthPoint;
 import com.tankwars.model.buildings.Building;
 import com.tankwars.model.tanks.Tank;
 import com.tankwars.view.UI;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -28,32 +30,48 @@ public class RefreshPanelTimer {
     Controller controller;
 
 
-    public RefreshPanelTimer(Controller controller, List<Tank> enemyTanks,List<Tank> playerTanks) {
+    public RefreshPanelTimer(Controller controller, List<Tank> enemyTanks, List<Tank> playerTanks) {
         this.controller = controller;
-        this.enemyTanks=enemyTanks;
-        this.playerTanks=playerTanks;
+        this.enemyTanks = enemyTanks;
+        this.playerTanks = playerTanks;
         timer = new Timer(30, actionListener);
     }
 
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (Tank playerTank:playerTanks) {
-                if (!playerTank.checkCollisionWall(controller.maps.walls)&&!playerTank.checkCollisionTank(controller.enemyTanks)&&!playerTank.checkCollisionTank(controller.playerTanks)){
+
+            if (enemyTanks.size() < 10) {
+                if (controller.generateTime!=0){
+                    int i = new Random().nextInt(2);
+                    if (controller.birthPoints.get(i).checkEmpty(enemyTanks)) {
+                        System.out.println(controller.birthPoints.get(i).checkEmpty(enemyTanks));
+                        enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1));
+                    }
+                    controller.generateTime=controller.generateTime-50;
+                }else {
+                    controller.generateTime=3000;
+                }
+            }
+
+
+
+            for (Tank playerTank : playerTanks) {
+                if (!playerTank.checkCollisionWall(controller.maps.walls) && !playerTank.checkCollisionTank(controller.enemyTanks) && !playerTank.checkCollisionTank(controller.playerTanks)) {
                     playerTank.move();
                 }
 
             }
-            if (controller.runTime!=0){
-                controller.runTime=controller.runTime-50;
-            }else {
-                for (Tank enemyTank:enemyTanks) {
+            if (controller.runTime != 0) {
+                controller.runTime = controller.runTime - 50;
+            } else {
+                for (Tank enemyTank : enemyTanks) {
                     enemyTank.ranDirection();
                 }
-                controller.runTime=3000;
+                controller.runTime = 3000;
             }
-            for (Tank enemyTank:enemyTanks) {
-                if (!enemyTank.checkCollisionWall(controller.maps.walls)&&!enemyTank.checkCollisionTank(controller.playerTanks)&&!enemyTank.checkCollisionTank(controller.enemyTanks)){
+            for (Tank enemyTank : enemyTanks) {
+                if (!enemyTank.checkCollisionWall(controller.maps.walls) && !enemyTank.checkCollisionTank(controller.playerTanks) && !enemyTank.checkCollisionTank(controller.enemyTanks)) {
                     enemyTank.move();
                 }
             }

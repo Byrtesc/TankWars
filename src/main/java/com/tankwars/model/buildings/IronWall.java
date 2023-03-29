@@ -19,7 +19,6 @@ public class IronWall extends Building {
     Image img = new ImageIcon("images/ironWall.png").getImage();
 
     public IronWall(int x, int y) {
-        super(x,y);
         this.x = x;
         this.y = y;
     }

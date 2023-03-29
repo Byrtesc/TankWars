@@ -2,6 +2,7 @@ package com.tankwars.controller;
 
 import com.tankwars.controller.timers.RefreshPanelTimer;
 import com.tankwars.model.Maps;
+import com.tankwars.model.buildings.BirthPoint;
 import com.tankwars.model.tanks.Tank;
 import com.tankwars.utils.DBHelper;
 
@@ -24,20 +25,24 @@ public class Controller {
     DBHelper dbHelper;
     public RefreshPanelTimer refreshPanelTimer;
     public Maps maps;
-    public Tank tank;
+
+    public List<BirthPoint> birthPoints;
     public List<Tank> enemyTanks;
     public List<Tank> playerTanks;
     public int runTime=6000;
+    public int generateTime=3000;
 
     public Controller() {
         enemyTanks=new ArrayList<>();
         playerTanks=new ArrayList<>();
+        birthPoints=new ArrayList<>();
+
+        birthPoints.add(new BirthPoint(90,10));
+        birthPoints.add(new BirthPoint(450,10));
 
         //出生点90，10  90，475
         playerTanks.add(new Tank(90, 475, 1, 3));
-        enemyTanks.add(new Tank(90, 10, 2, 3));
-        enemyTanks.add(new Tank(300, 10, 2, 3));
-        enemyTanks.add(new Tank(405, 475, 2, 3));
+
 
         maps = new Maps();
         refreshPanelTimer = new RefreshPanelTimer(this, enemyTanks,playerTanks);

@@ -21,7 +21,6 @@ public class River extends Building {
     Image img = new ImageIcon("images/river.png").getImage();
 
     public River(int x, int y) {
-        super(x,y);
         this.x = x;
         this.y = y;
     }

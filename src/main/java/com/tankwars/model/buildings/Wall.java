@@ -21,7 +21,6 @@ public class Wall extends Building {
     Image img = new ImageIcon("images/wall.png").getImage();
 
     public Wall(int x, int y) {
-        super(x,y);
         this.x = x;
         this.y = y;
     }

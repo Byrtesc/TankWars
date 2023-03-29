@@ -1,7 +1,6 @@
 package com.tankwars.model.tanks;
 
 import com.tankwars.model.buildings.Building;
-import com.tankwars.model.buildings.Wall;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +19,8 @@ public class Tank extends BaseTank {
     public int x;
     public int y;
     public int oldX, oldY;
-    public final int height = 50;
-    public final int width = 50;
+    public final int height = 40;
+    public final int width = 40;
     public int speed = 1;
     public int hp;
     public int blood;

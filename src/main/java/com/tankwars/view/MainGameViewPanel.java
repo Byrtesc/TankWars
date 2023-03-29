@@ -2,6 +2,7 @@ package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;
+import com.tankwars.model.buildings.BirthPoint;
 import com.tankwars.model.tanks.Tank;
 
 import javax.swing.*;
@@ -30,10 +31,12 @@ public class MainGameViewPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Tank playerTank:controller.playerTanks) {
+
+        for (Tank playerTank : controller.playerTanks) {
             playerTank.drawing(g);
         }
-        for (Tank enemyTank:controller.enemyTanks) {
+
+        for (Tank enemyTank : controller.enemyTanks) {
             enemyTank.drawing(g);
         }
 

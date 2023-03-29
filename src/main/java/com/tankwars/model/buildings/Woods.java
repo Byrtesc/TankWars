@@ -21,7 +21,6 @@ public class Woods extends Building {
     Image img = new ImageIcon("images/woods.png").getImage();
 
     public Woods(int x, int y) {
-        super(x,y);
         this.x = x;
         this.y = y;
     }

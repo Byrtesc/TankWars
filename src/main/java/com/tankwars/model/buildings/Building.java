@@ -19,9 +19,6 @@ public class Building {
     public String name = "1";
     Image img = new ImageIcon("images/home.png").getImage();
 
-    public Building(int x,int y){
-
-    }
 
     public void drawing(Graphics g) {
         g.drawImage(this.img, x, y, width, height, null);
