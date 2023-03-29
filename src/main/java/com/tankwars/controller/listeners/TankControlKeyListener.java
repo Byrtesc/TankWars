@@ -23,23 +23,47 @@ public class TankControlKeyListener extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
+        System.out.println(e.getKeyCode());
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            playerTank.direction = 8;
+            System.out.println("上"+e.getKeyCode());
+            playerTank.direction=8;
+            playerTank.upDateDirectionState();
+            playerTank.upMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            playerTank.direction = 2;
+            System.out.println("下"+e.getKeyCode());
+            playerTank.direction=2;
+            playerTank.upDateDirectionState();
+            playerTank.downMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            playerTank.direction = 4;
+            System.out.println("左"+e.getKeyCode());
+            playerTank.direction=4;
+            playerTank.upDateDirectionState();
+            playerTank.leftMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            playerTank.direction = 6;
+            System.out.println("右"+e.getKeyCode());
+            playerTank.direction=6;
+            playerTank.upDateDirectionState();
+            playerTank.rightMove=true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         super.keyReleased(e);
-        playerTank.direction = 0;
+        if (e.getKeyCode() == KeyEvent.VK_W) {
+            playerTank.upMove=false;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+            playerTank.downMove=false;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_A) {
+            playerTank.leftMove=false;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_D) {
+            playerTank.rightMove=false;
+        }
     }
 }

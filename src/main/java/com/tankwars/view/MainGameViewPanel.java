@@ -30,7 +30,7 @@ public class MainGameViewPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         controller.playerTank.drawing(g);
-        controller.gameMap.drawMap(g);
+        controller.maps.drawMap(g);
     }
 
 }

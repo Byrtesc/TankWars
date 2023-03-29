@@ -1,7 +1,7 @@
 package com.tankwars.controller;
 
 import com.tankwars.controller.timers.RefreshPanelTimer;
-import com.tankwars.model.GameMap;
+import com.tankwars.model.Maps;
 import com.tankwars.model.tanks.PlayerTank;
 import com.tankwars.utils.DBHelper;
 
@@ -23,12 +23,12 @@ import java.util.Map;
 public class Controller {
     DBHelper dbHelper;
     public RefreshPanelTimer refreshPanelTimer;
-    public GameMap gameMap;
+    public Maps maps;
     public PlayerTank playerTank;
 
     public Controller() {
         playerTank = new PlayerTank(90, 475, 1, 3);
-        gameMap = new GameMap();
+        maps = new Maps();
         refreshPanelTimer = new RefreshPanelTimer(this, playerTank);
         dbHelper = new DBHelper();
     }

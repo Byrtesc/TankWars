@@ -6,7 +6,6 @@ import com.tankwars.model.tanks.PlayerTank;
 import com.tankwars.view.UI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,12 +32,12 @@ public class RefreshPanelTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (Building wall : controller.gameMap.walls) {
+            for (Building wall : controller.maps.walls) {
                 if (wall.getRectangle().intersects(playerTank.getRectangle())){
                     if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
                         System.out.println("发生碰撞");
                         playerTank.upDateDirectionState();
-                        playerTank.direction = 0;
+                        playerTank.moveStop();
                     }
                 }
             }

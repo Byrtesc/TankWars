@@ -15,11 +15,11 @@ import java.util.List;
  * @Description: TODO
  * @Version 1.0
  */
-public class GameMap {
+public class Maps {
     int map[][];
     public List<Building> walls = new ArrayList<>();
 
-    public GameMap() {
+    public Maps() {
         /*map = new int[][]{//22*210初始地图,
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -92,7 +92,5 @@ public class GameMap {
             Building wall = walls.get(i);
             wall.drawing(g);
         }
-
-
     }
 }
