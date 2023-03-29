@@ -39,11 +39,11 @@ public class RefreshPanelTimer {
         @Override
         public void actionPerformed(ActionEvent e) {
             for (Tank playerTank:playerTanks) {
-                if (!playerTank.checkCollision(controller.maps.walls)){
+                if (!playerTank.checkCollisionWall(controller.maps.walls)&&!playerTank.checkCollisionTank(controller.enemyTanks)&&!playerTank.checkCollisionTank(controller.playerTanks)){
                     playerTank.move();
                 }
-            }
 
+            }
             if (controller.runTime!=0){
                 controller.runTime=controller.runTime-50;
             }else {
@@ -53,7 +53,7 @@ public class RefreshPanelTimer {
                 controller.runTime=3000;
             }
             for (Tank enemyTank:enemyTanks) {
-                if (!enemyTank.checkCollision(controller.maps.walls)){
+                if (!enemyTank.checkCollisionWall(controller.maps.walls)&&!enemyTank.checkCollisionTank(controller.playerTanks)&&!enemyTank.checkCollisionTank(controller.enemyTanks)){
                     enemyTank.move();
                 }
             }

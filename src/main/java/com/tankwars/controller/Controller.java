@@ -34,8 +34,9 @@ public class Controller {
         playerTanks=new ArrayList<>();
 
         playerTanks.add(new Tank(90, 475, 1, 3));
-        enemyTanks.add(new Tank(90, 10, 1, 3));
-        enemyTanks.add(new Tank(405, 475, 1, 3));
+        enemyTanks.add(new Tank(90, 10, 2, 3));
+        enemyTanks.add(new Tank(300, 10, 2, 3));
+        enemyTanks.add(new Tank(405, 475, 2, 3));
 
         maps = new Maps();
         refreshPanelTimer = new RefreshPanelTimer(this, enemyTanks,playerTanks);

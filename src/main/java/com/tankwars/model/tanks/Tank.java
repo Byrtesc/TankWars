@@ -107,11 +107,24 @@ public class Tank extends BaseTank {
         this.rightMove = false;
     }
 
-    //检测碰撞
-    public boolean checkCollision(List<Building> walls) {
+    //检测与墙碰撞
+    public boolean checkCollisionWall(List<Building> walls) {
         for (Building wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
                 if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
+                    System.out.println("发生碰撞");
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //检测坦克碰撞
+    public boolean checkCollisionTank(List<Tank> tanks) {
+        for (Tank tank : tanks) {
+            if (this!=tank){
+                if (tank.getRectangle().intersects(this.getRectangle())) {
                     System.out.println("发生碰撞");
                     return true;
                 }
