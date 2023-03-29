@@ -4,6 +4,7 @@ import com.tankwars.model.tanks.Tank;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 /**
  * @Author yangmingquan
@@ -14,9 +15,9 @@ import java.awt.event.KeyEvent;
  * @Version 1.0
  */
 public class TankControlKeyListener extends KeyAdapter {
-    Tank tank;
+    List<Tank> tank;
 
-    public TankControlKeyListener(Tank tank) {
+    public TankControlKeyListener(List<Tank> tank) {
         this.tank = tank;
     }
 
@@ -26,27 +27,27 @@ public class TankControlKeyListener extends KeyAdapter {
         System.out.println(e.getKeyCode());
         if (e.getKeyCode() == KeyEvent.VK_W) {
             System.out.println("上"+e.getKeyCode());
-            tank.direction=8;
-            tank.upDateDirectionState();
-            tank.upMove=true;
+            tank.get(0).direction=8;
+            tank.get(0).upDateDirectionState();
+            tank.get(0).upMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
             System.out.println("下"+e.getKeyCode());
-            tank.direction=2;
-            tank.upDateDirectionState();
-            tank.downMove=true;
+            tank.get(0).direction=2;
+            tank.get(0).upDateDirectionState();
+            tank.get(0).downMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
             System.out.println("左"+e.getKeyCode());
-            tank.direction=4;
-            tank.upDateDirectionState();
-            tank.leftMove=true;
+            tank.get(0).direction=4;
+            tank.get(0).upDateDirectionState();
+            tank.get(0).leftMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
             System.out.println("右"+e.getKeyCode());
-            tank.direction=6;
-            tank.upDateDirectionState();
-            tank.rightMove=true;
+            tank.get(0).direction=6;
+            tank.get(0).upDateDirectionState();
+            tank.get(0).rightMove=true;
         }
     }
 
@@ -54,16 +55,16 @@ public class TankControlKeyListener extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         super.keyReleased(e);
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            tank.upMove=false;
+            tank.get(0).upMove=false;
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            tank.downMove=false;
+            tank.get(0).downMove=false;
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            tank.leftMove=false;
+            tank.get(0).leftMove=false;
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            tank.rightMove=false;
+            tank.get(0).rightMove=false;
         }
     }
 }

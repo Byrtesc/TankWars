@@ -26,7 +26,7 @@ public class Tank extends BaseTank {
     public int hp;
     public int blood;
     public int type;
-    public int direction = 0;//8上 2下 4左 6右
+    public int direction ;//8上 2下 4左 6右
 
     public Boolean upMove = false;
     public Boolean downMove = false;
@@ -56,6 +56,7 @@ public class Tank extends BaseTank {
     }
 
     public void move() {
+        upDateDirectionState();
         this.oldX = this.x;
         this.oldY = this.y;
         if (upMove) this.y = this.y - this.speed;
@@ -77,28 +78,24 @@ public class Tank extends BaseTank {
                 this.downMove = false;
                 this.leftMove = false;
                 this.rightMove = false;
-                this.upDateDirectionState();
                 break;
             case 1:
                 this.upMove = false;
                 this.downMove = true;
                 this.leftMove = false;
                 this.rightMove = false;
-                this.upDateDirectionState();
                 break;
             case 2:
                 this.upMove = false;
                 this.downMove = false;
                 this.leftMove = true;
                 this.rightMove = false;
-                this.upDateDirectionState();
                 break;
             case 3:
                 this.rightMove = true;
                 this.upMove = false;
                 this.downMove = false;
                 this.leftMove = false;
-                this.upDateDirectionState();
                 break;
         }
     }

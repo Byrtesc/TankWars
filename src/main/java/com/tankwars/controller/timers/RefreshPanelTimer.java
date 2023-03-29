@@ -22,33 +22,39 @@ import java.util.List;
 public class RefreshPanelTimer {
     public Timer timer;
     Tank tank;
-    List<Tank> enemyTank;
+    List<Tank> enemyTanks;
+    List<Tank> playerTanks;
 
     Controller controller;
 
 
-    public RefreshPanelTimer(Controller controller, List<Tank> enemyTank) {
+    public RefreshPanelTimer(Controller controller, List<Tank> enemyTanks,List<Tank> playerTanks) {
         this.controller = controller;
-        this.enemyTank=enemyTank;
+        this.enemyTanks=enemyTanks;
+        this.playerTanks=playerTanks;
         timer = new Timer(30, actionListener);
     }
 
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(controller.runTime);
+            for (Tank playerTank:playerTanks) {
+                if (!playerTank.checkCollision(controller.maps.walls)){
+                    playerTank.move();
+                }
+            }
 
             if (controller.runTime!=0){
                 controller.runTime=controller.runTime-50;
             }else {
-                for (Tank tank1:enemyTank) {
-                    tank1.ranDirection();
+                for (Tank enemyTank:enemyTanks) {
+                    enemyTank.ranDirection();
                 }
                 controller.runTime=3000;
             }
-            for (Tank tank1:enemyTank) {
-                if (!tank1.checkCollision(controller.maps.walls)){
-                    tank1.move();
+            for (Tank enemyTank:enemyTanks) {
+                if (!enemyTank.checkCollision(controller.maps.walls)){
+                    enemyTank.move();
                 }
             }
 

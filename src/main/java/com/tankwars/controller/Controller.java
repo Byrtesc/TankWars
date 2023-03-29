@@ -25,17 +25,20 @@ public class Controller {
     public RefreshPanelTimer refreshPanelTimer;
     public Maps maps;
     public Tank tank;
-    public List<Tank> enemyTank;
+    public List<Tank> enemyTanks;
+    public List<Tank> playerTanks;
     public int runTime=6000;
 
     public Controller() {
-        enemyTank=new ArrayList<>();
-        tank = new Tank(90, 475, 1, 3);
-        enemyTank.add(new Tank(90, 10, 1, 3));
-        enemyTank.add(new Tank(405, 475, 1, 3));
+        enemyTanks=new ArrayList<>();
+        playerTanks=new ArrayList<>();
+
+        playerTanks.add(new Tank(90, 475, 1, 3));
+        enemyTanks.add(new Tank(90, 10, 1, 3));
+        enemyTanks.add(new Tank(405, 475, 1, 3));
 
         maps = new Maps();
-        refreshPanelTimer = new RefreshPanelTimer(this, enemyTank);
+        refreshPanelTimer = new RefreshPanelTimer(this, enemyTanks,playerTanks);
         dbHelper = new DBHelper();
 
     }
