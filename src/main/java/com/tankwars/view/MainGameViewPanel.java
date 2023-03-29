@@ -2,6 +2,7 @@ package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;
+import com.tankwars.model.tanks.Tank;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,13 +24,17 @@ public class MainGameViewPanel extends JPanel {
         setPreferredSize(new Dimension(555, 530));
         setBackground(Color.black);
         this.setFocusable(true);
-        this.addKeyListener(new TankControlKeyListener(controller.playerTank));
+        this.addKeyListener(new TankControlKeyListener(controller.tank));
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        controller.playerTank.drawing(g);
+        controller.tank.drawing(g);
+        for (Tank tank1:controller.enemyTank) {
+            tank1.drawing(g);
+        }
+
         controller.maps.drawMap(g);
     }
 

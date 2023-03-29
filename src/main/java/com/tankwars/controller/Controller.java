@@ -2,7 +2,7 @@ package com.tankwars.controller;
 
 import com.tankwars.controller.timers.RefreshPanelTimer;
 import com.tankwars.model.Maps;
-import com.tankwars.model.tanks.PlayerTank;
+import com.tankwars.model.tanks.Tank;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -24,13 +24,20 @@ public class Controller {
     DBHelper dbHelper;
     public RefreshPanelTimer refreshPanelTimer;
     public Maps maps;
-    public PlayerTank playerTank;
+    public Tank tank;
+    public List<Tank> enemyTank;
+    public int runTime=6000;
 
     public Controller() {
-        playerTank = new PlayerTank(90, 475, 1, 3);
+        enemyTank=new ArrayList<>();
+        tank = new Tank(90, 475, 1, 3);
+        enemyTank.add(new Tank(90, 10, 1, 3));
+        enemyTank.add(new Tank(405, 475, 1, 3));
+
         maps = new Maps();
-        refreshPanelTimer = new RefreshPanelTimer(this, playerTank);
+        refreshPanelTimer = new RefreshPanelTimer(this, enemyTank);
         dbHelper = new DBHelper();
+
     }
 
     public List<Map> getRankInfo() {

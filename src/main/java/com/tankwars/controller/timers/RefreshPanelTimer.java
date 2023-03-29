@@ -2,12 +2,13 @@ package com.tankwars.controller.timers;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.model.buildings.Building;
-import com.tankwars.model.tanks.PlayerTank;
+import com.tankwars.model.tanks.Tank;
 import com.tankwars.view.UI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 
 /**
@@ -20,28 +21,37 @@ import java.awt.event.ActionListener;
  */
 public class RefreshPanelTimer {
     public Timer timer;
-    PlayerTank playerTank;
+    Tank tank;
+    List<Tank> enemyTank;
+
     Controller controller;
 
-    public RefreshPanelTimer(Controller controller, PlayerTank playerTank) {
+
+    public RefreshPanelTimer(Controller controller, List<Tank> enemyTank) {
         this.controller = controller;
-        this.playerTank = playerTank;
+        this.enemyTank=enemyTank;
         timer = new Timer(30, actionListener);
     }
 
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            for (Building wall : controller.maps.walls) {
-                if (wall.getRectangle().intersects(playerTank.getRectangle())){
-                    if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
-                        System.out.println("发生碰撞");
-                        playerTank.upDateDirectionState();
-                        playerTank.moveStop();
-                    }
+            System.out.println(controller.runTime);
+
+            if (controller.runTime!=0){
+                controller.runTime=controller.runTime-50;
+            }else {
+                for (Tank tank1:enemyTank) {
+                    tank1.ranDirection();
+                }
+                controller.runTime=3000;
+            }
+            for (Tank tank1:enemyTank) {
+                if (!tank1.checkCollision(controller.maps.walls)){
+                    tank1.move();
                 }
             }
-            playerTank.move();
+
             UI.mainGameView.mainGameViewPanel.repaint();
         }
     };
