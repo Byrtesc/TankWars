@@ -33,6 +33,7 @@ public class Controller {
         enemyTanks=new ArrayList<>();
         playerTanks=new ArrayList<>();
 
+        //出生点90，10  90，475
         playerTanks.add(new Tank(90, 475, 1, 3));
         enemyTanks.add(new Tank(90, 10, 2, 3));
         enemyTanks.add(new Tank(300, 10, 2, 3));
