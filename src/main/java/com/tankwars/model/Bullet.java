@@ -5,6 +5,7 @@ import com.tankwars.model.buildings.Building;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,19 +43,19 @@ public class Bullet {
     }
 
     public void hitBuilding(List<Building> buildings){
+        List<Building> buildingTemp=new ArrayList<>();
         for (Building building:buildings) {
             if (this.getRectangle().intersects(building.getRectangle())){
-                System.out.println(building.getClass().getName());
                 if (building.getClass().getName().equals("com.tankwars.model.buildings.IronWall")){
                     controller.removeBullets.add(this);
                 }
                 if (building.getClass().getName().equals("com.tankwars.model.buildings.Wall")){
                     controller.removeBullets.add(this);
-                    controller.walls.remove(building);
+                    buildingTemp.add(building);
                 }
-                break;
             }
         }
+        controller.walls.removeAll(buildingTemp);
     }
 
     public void hitPlayer(){

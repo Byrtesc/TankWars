@@ -28,6 +28,7 @@ public class Controller {
     public Maps maps;
     public List<Building> walls;
 
+    public ArrayList<Tank> tankArrayList=new ArrayList<>();
     public List<BirthPoint> birthPoints;
     public List<Tank> enemyTanks;
     public List<Tank> playerTanks;
@@ -45,6 +46,8 @@ public class Controller {
         birthPoints = new ArrayList<>();
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
+
+
 
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));

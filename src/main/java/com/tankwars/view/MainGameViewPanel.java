@@ -40,11 +40,10 @@ public class MainGameViewPanel extends JPanel {
             enemyTank.drawing(g);
         }
 
+        controller.maps.drawMap(g);
         for (Bullet bullet : controller.bullets) {
             bullet.drawing(g);
         }
-
-        controller.maps.drawMap(g);
     }
 
 }

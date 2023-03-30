@@ -26,22 +26,18 @@ public class TankControlKeyListener extends KeyAdapter {
         super.keyPressed(e);
         System.out.println(e.getKeyCode());
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            tank.get(0).direction=8;
             tank.get(0).upDateDirectionState();
             tank.get(0).upMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            tank.get(0).direction=2;
             tank.get(0).upDateDirectionState();
             tank.get(0).downMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            tank.get(0).direction=4;
             tank.get(0).upDateDirectionState();
             tank.get(0).leftMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            tank.get(0).direction=6;
             tank.get(0).upDateDirectionState();
             tank.get(0).rightMove=true;
         }

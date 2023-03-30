@@ -22,7 +22,6 @@ import java.util.Random;
  */
 public class RefreshPanelTimer {
     public Timer timer;
-
     Controller controller;
 
 
@@ -39,6 +38,7 @@ public class RefreshPanelTimer {
                 if (controller.generateTime != 0) {
                     int i = new Random().nextInt(2);
                     if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks)) {
+                        System.out.println();
                         System.out.println(controller.birthPoints.get(i).checkEmpty(controller.enemyTanks));
                         controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1,controller));
                     }

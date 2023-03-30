@@ -50,8 +50,7 @@ public class Tank {
     }
 
     public void attack() {
-        Bullet bullet=new Bullet(getTankHead().x,getTankHead().y,this.direction,controller);
-        controller.bullets.add(bullet);
+        controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller));
     }
 
     public Point getTankHead() {//获得炮台位置
@@ -69,10 +68,22 @@ public class Tank {
     }
 
     public void upDateDirectionState() {//更新状态
-        if (upMove) tankImg = new ImageIcon(upImgUrl).getImage();
-        if (downMove) tankImg = new ImageIcon(downImgUrl).getImage();
-        if (leftMove) tankImg = new ImageIcon(leftImgUrl).getImage();
-        if (rightMove) tankImg = new ImageIcon(rightImgUrl).getImage();
+        if (upMove) {
+            tankImg = new ImageIcon(upImgUrl).getImage();
+            direction=8;
+        }
+        else if (downMove) {
+            tankImg = new ImageIcon(downImgUrl).getImage();
+            direction=2;
+        }
+        else if (leftMove) {
+            tankImg = new ImageIcon(leftImgUrl).getImage();
+            direction=4;
+        }
+        else if (rightMove) {
+            tankImg = new ImageIcon(rightImgUrl).getImage();
+            direction=6;
+        }
     }
 
     public void move() {//移动
@@ -118,13 +129,6 @@ public class Tank {
                 this.leftMove = false;
                 break;
         }
-    }
-
-    public void moveStop() {//坦克停止
-        this.upMove = false;
-        this.downMove = false;
-        this.leftMove = false;
-        this.rightMove = false;
     }
 
     //检测与墙碰撞
