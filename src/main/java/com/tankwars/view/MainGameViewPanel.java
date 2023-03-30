@@ -2,8 +2,8 @@ package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;
-import com.tankwars.model.buildings.BirthPoint;
-import com.tankwars.model.tanks.Tank;
+import com.tankwars.model.Bullet;
+import com.tankwars.model.Tank;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,6 +38,10 @@ public class MainGameViewPanel extends JPanel {
 
         for (Tank enemyTank : controller.enemyTanks) {
             enemyTank.drawing(g);
+        }
+
+        for (Bullet bullet : controller.bullets) {
+            bullet.drawing(g);
         }
 
         controller.maps.drawMap(g);

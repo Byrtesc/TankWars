@@ -1,9 +1,10 @@
 package com.tankwars.controller;
 
-import com.tankwars.controller.timers.RefreshPanelTimer;
+import com.tankwars.model.Bullet;
 import com.tankwars.model.Maps;
 import com.tankwars.model.buildings.BirthPoint;
-import com.tankwars.model.tanks.Tank;
+import com.tankwars.model.Tank;
+import com.tankwars.model.buildings.Building;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -25,27 +26,33 @@ public class Controller {
     DBHelper dbHelper;
     public RefreshPanelTimer refreshPanelTimer;
     public Maps maps;
+    public List<Building> walls;
 
     public List<BirthPoint> birthPoints;
     public List<Tank> enemyTanks;
     public List<Tank> playerTanks;
-    public int runTime=6000;
-    public int generateTime=3000;
+    public List<Bullet> bullets;
+    public List<Bullet> removeBullets;
+    public int runTime = 6000;
+    public int generateTime = 3000;
 
     public Controller() {
-        enemyTanks=new ArrayList<>();
-        playerTanks=new ArrayList<>();
-        birthPoints=new ArrayList<>();
+        walls=new ArrayList<>();
+        maps = new Maps(this);
 
-        birthPoints.add(new BirthPoint(90,10));
-        birthPoints.add(new BirthPoint(450,10));
+        enemyTanks = new ArrayList<>();
+        playerTanks = new ArrayList<>();
+        birthPoints = new ArrayList<>();
+        bullets = new ArrayList<>();
+        removeBullets = new ArrayList<>();
+
+        birthPoints.add(new BirthPoint(90, 10));
+        birthPoints.add(new BirthPoint(450, 10));
 
         //出生点90，10  90，475
-        playerTanks.add(new Tank(90, 475, 1, 3));
+        playerTanks.add(new Tank(90, 475, 1, 3,this));
 
-
-        maps = new Maps();
-        refreshPanelTimer = new RefreshPanelTimer(this, enemyTanks,playerTanks);
+        refreshPanelTimer = new RefreshPanelTimer(this);
         dbHelper = new DBHelper();
 
     }

@@ -1,6 +1,6 @@
 package com.tankwars.model.buildings;
 
-import com.tankwars.model.tanks.Tank;
+import com.tankwars.model.Tank;
 
 import java.awt.*;
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.tankwars.main;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.controller.timers.RefreshPanelTimer;
 import com.tankwars.view.UI;
 
 /**

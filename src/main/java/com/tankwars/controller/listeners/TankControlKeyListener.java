@@ -1,6 +1,6 @@
 package com.tankwars.controller.listeners;
 
-import com.tankwars.model.tanks.Tank;
+import com.tankwars.model.Tank;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -26,28 +26,27 @@ public class TankControlKeyListener extends KeyAdapter {
         super.keyPressed(e);
         System.out.println(e.getKeyCode());
         if (e.getKeyCode() == KeyEvent.VK_W) {
-            System.out.println("上"+e.getKeyCode());
             tank.get(0).direction=8;
             tank.get(0).upDateDirectionState();
             tank.get(0).upMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_S) {
-            System.out.println("下"+e.getKeyCode());
             tank.get(0).direction=2;
             tank.get(0).upDateDirectionState();
             tank.get(0).downMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_A) {
-            System.out.println("左"+e.getKeyCode());
             tank.get(0).direction=4;
             tank.get(0).upDateDirectionState();
             tank.get(0).leftMove=true;
         }
         if (e.getKeyCode() == KeyEvent.VK_D) {
-            System.out.println("右"+e.getKeyCode());
             tank.get(0).direction=6;
             tank.get(0).upDateDirectionState();
             tank.get(0).rightMove=true;
+        }
+        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            tank.get(0).attack();
         }
     }
 
@@ -66,5 +65,6 @@ public class TankControlKeyListener extends KeyAdapter {
         if (e.getKeyCode() == KeyEvent.VK_D) {
             tank.get(0).rightMove=false;
         }
+
     }
 }

@@ -1,9 +1,11 @@
-package com.tankwars.model.tanks;
+package com.tankwars.model;
 
+import com.tankwars.controller.Controller;
 import com.tankwars.model.buildings.Building;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -15,7 +17,7 @@ import java.util.Random;
  * @Description: TODO
  * @Version 1.0
  */
-public class Tank extends BaseTank {
+public class Tank {
     public int x;
     public int y;
     public int oldX, oldY;
@@ -24,8 +26,8 @@ public class Tank extends BaseTank {
     public int speed = 1;
     public int hp;
     public int blood;
-    public int type;
-    public int direction ;//8上 2下 4左 6右
+    public int type;//1为玩家
+    public int direction=2;//8上 2下 4左 6右
 
     public Boolean upMove = false;
     public Boolean downMove = false;
@@ -37,15 +39,34 @@ public class Tank extends BaseTank {
     public String leftImgUrl = "images/tankLeft.png";
     public String rightImgUrl = "images/tankRight.png";
     public Image tankImg = new ImageIcon(upImgUrl).getImage();
+    Controller controller;
 
-
-    public Tank(int x, int y, int type, int hp) {
+    public Tank(int x, int y, int type, int hp,Controller controller) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.hp = hp;
+        this.controller=controller;
     }
 
+    public void attack() {
+        Bullet bullet=new Bullet(getTankHead().x,getTankHead().y,this.direction,controller);
+        controller.bullets.add(bullet);
+    }
+
+    public Point getTankHead() {//获得炮台位置
+        switch (direction) {
+            case 8:
+                return new Point(this.x + (this.width / 2)-5, this.y);
+            case 2:
+                return new Point((this.x + this.width / 2)-3, this.y + height);
+            case 4:
+                return new Point(this.x, (this.y + height / 2)-3);
+            case 6:
+                return new Point(this.x + this.width, (this.y + height / 2)-3);
+        }
+        return null;
+    }
 
     public void upDateDirectionState() {//更新状态
         if (upMove) tankImg = new ImageIcon(upImgUrl).getImage();
@@ -54,7 +75,7 @@ public class Tank extends BaseTank {
         if (rightMove) tankImg = new ImageIcon(rightImgUrl).getImage();
     }
 
-    public void move() {
+    public void move() {//移动
         upDateDirectionState();
         this.oldX = this.x;
         this.oldY = this.y;
@@ -68,7 +89,7 @@ public class Tank extends BaseTank {
         if (this.x > 500) this.x = 500;
     }
 
-    public void ranDirection() {
+    public void ranDirection() {//随机方向
         Random random = new Random();
         int i = random.nextInt(4);
         switch (i) {
@@ -111,7 +132,9 @@ public class Tank extends BaseTank {
         for (Building wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
                 if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
-                    System.out.println("发生碰撞");
+                    if (type!=1){//玩家坦克不触发随机方向
+                        ranDirection();
+                    }
                     return true;
                 }
             }
@@ -122,9 +145,8 @@ public class Tank extends BaseTank {
     //检测坦克碰撞
     public boolean checkCollisionTank(List<Tank> tanks) {
         for (Tank tank : tanks) {
-            if (this!=tank){
+            if (this != tank) {
                 if (tank.getRectangle().intersects(this.getRectangle())) {
-                    System.out.println("发生碰撞");
                     return true;
                 }
             }
@@ -151,18 +173,11 @@ public class Tank extends BaseTank {
             return new Rectangle(this.x + this.speed, this.y, this.width, this.height);
 
         return new Rectangle(this.x, this.y, this.width, this.height);
-//        switch (direction) {
-//            case 8:
-//                return new Rectangle(this.x, this.y - this.speed, this.width, this.height);
-//            case 2:
-//                return new Rectangle(this.x, this.y + this.speed, this.width, this.height);
-//            case 4:
-//                return new Rectangle(this.x - this.speed, this.y, this.width, this.height);
-//            case 6:
-//                return new Rectangle(this.x + this.speed, this.y, this.width, this.height);
-//            default:
-//                return new Rectangle(this.x, this.y, this.width, this.height);
-//        }
     }
+
+    public Rectangle getNormalRectangle() {
+        return new Rectangle(this.x, this.y, this.width, this.height);
+    }
+
 }
 
