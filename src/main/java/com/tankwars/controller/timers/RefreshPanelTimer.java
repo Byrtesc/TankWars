@@ -59,6 +59,7 @@ public class RefreshPanelTimer {
             for (Tank playerTank : playerTanks) {
                 if (!playerTank.checkCollisionWall(controller.maps.walls) && !playerTank.checkCollisionTank(controller.enemyTanks) && !playerTank.checkCollisionTank(controller.playerTanks)) {
                     playerTank.move();
+                    System.out.println("坐标"+playerTank.x+" "+playerTank.y);
                 }
 
             }
