@@ -27,7 +27,7 @@ public class Tank {
     public int hp;
     public int blood;
     public int type;//1为玩家
-    public int direction=2;//8上 2下 4左 6右
+    public int direction=8;//8上 2下 4左 6右
 
     public Boolean upMove = false;
     public Boolean downMove = false;
@@ -50,7 +50,16 @@ public class Tank {
     }
 
     public void attack() {
-        controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller));
+        controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));
+    }
+
+    public void ranAttack(){
+        switch (new Random().nextInt(4)){
+            case 0:controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));break;
+            case 1:break;
+            case 2:break;
+            case 3:break;
+        }
     }
 
     public Point getTankHead() {//获得炮台位置
@@ -130,6 +139,8 @@ public class Tank {
                 break;
         }
     }
+
+
 
     //检测与墙碰撞
     public boolean checkCollisionWall(List<Building> walls) {

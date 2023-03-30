@@ -8,6 +8,8 @@ import com.tankwars.view.UI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +25,7 @@ import java.util.Random;
 public class RefreshPanelTimer {
     public Timer timer;
     Controller controller;
+    int attackTime=100;
 
 
     public RefreshPanelTimer(Controller controller) {
@@ -72,8 +75,21 @@ public class RefreshPanelTimer {
             controller.bullets.removeAll(controller.removeBullets);
             controller.removeBullets.clear();
 
+            //随机攻击
+
+            if (attackTime!=0){
+                attackTime--;
+            }else {
+                for (Tank enemyTank : controller.enemyTanks) {
+                    enemyTank.ranAttack();
+                }
+                attackTime=100;
+            }
+
+
             for (Bullet bullet : controller.bullets) {
                 bullet.hitTank(controller.enemyTanks);
+                bullet.hitTank(controller.playerTanks);
                 bullet.hitBuilding(controller.walls);
             }
             for (Bullet bullet : controller.bullets) {

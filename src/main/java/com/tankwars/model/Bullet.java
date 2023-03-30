@@ -19,24 +19,29 @@ import java.util.List;
 public class Bullet {
     public int x;
     public int y;
+    public int tankType;
     public int direction;//8上 2下 4左 6右
     public Image bullet = new ImageIcon("images/bullet.png").getImage();
     public Controller controller;
 
-    public Bullet(int x, int y, int direction, Controller controller){
+    public Bullet(int x, int y, int direction, Controller controller,int type){
         this.x=x;
         this.y=y;
         this.direction=direction;
         this.controller=controller;
+        this.tankType=type;
     }
 
     public void hitTank(List<Tank> tanks){
         for (Tank tank:tanks) {
             if (this.getRectangle().intersects(tank.getNormalRectangle())){
-                System.out.println("子弹碰撞坦克");
-                controller.removeBullets.add(this);
-                controller.enemyTanks.remove(tank);
-                System.out.println("删除");
+                if (this.tankType!=tank.type) {
+                    System.out.println("子弹碰撞坦克");
+                    controller.removeBullets.add(this);
+                    controller.enemyTanks.remove(tank);
+//                    controller.playerTanks.remove(tank);//不可以在这里删除，打中添加到数组到外面删除
+                    System.out.println("删除");
+                }
                 break;
             }
         }
