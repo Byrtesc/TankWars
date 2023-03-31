@@ -58,7 +58,7 @@ public class Tank {
             case 0:controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));break;
             case 1:break;
             case 2:break;
-            case 3:break;
+            case 3:controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));break;
         }
     }
 
@@ -148,7 +148,7 @@ public class Tank {
             if (wall.getRectangle().intersects(this.getRectangle())) {
                 if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
                     if (type!=1){//玩家坦克不触发随机方向
-                        ranDirection();
+                        ranDirection();//调整方向
                     }
                     return true;
                 }
@@ -162,6 +162,9 @@ public class Tank {
         for (Tank tank : tanks) {
             if (this != tank) {
                 if (tank.getRectangle().intersects(this.getRectangle())) {
+                    if (type!=1){//玩家坦克不触发随机方向
+                        ranDirection();
+                    }
                     return true;
                 }
             }

@@ -39,7 +39,8 @@ public class Bullet {
                     System.out.println("子弹碰撞坦克");
                     controller.removeBullets.add(this);
                     controller.enemyTanks.remove(tank);
-//                    controller.playerTanks.remove(tank);//不可以在这里删除，打中添加到数组到外面删除
+                    //不可以在这里删除，打中添加到数组到外面删除
+                    controller.playerTanks.remove(tank);
                     System.out.println("删除");
                 }
                 break;

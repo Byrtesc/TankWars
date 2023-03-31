@@ -1,6 +1,5 @@
 package com.tankwars.controller;
 
-import com.tankwars.controller.Controller;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Tank;
 import com.tankwars.view.UI;
@@ -8,9 +7,6 @@ import com.tankwars.view.UI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 
@@ -25,7 +21,7 @@ import java.util.Random;
 public class RefreshPanelTimer {
     public Timer timer;
     Controller controller;
-    int attackTime=100;
+    int attackTime=50;
 
 
     public RefreshPanelTimer(Controller controller) {
@@ -50,13 +46,10 @@ public class RefreshPanelTimer {
                     controller.generateTime = 3000;
                 }
             }
-
-
             for (Tank playerTank : controller.playerTanks) {
                 if (!playerTank.checkCollisionWall(controller.walls) && !playerTank.checkCollisionTank(controller.enemyTanks) && !playerTank.checkCollisionTank(controller.playerTanks)) {
                     playerTank.move();
                 }
-
             }
             if (controller.runTime != 0) {
                 controller.runTime = controller.runTime - 50;
@@ -72,11 +65,11 @@ public class RefreshPanelTimer {
                 }
             }
 
+            //清空子弹
             controller.bullets.removeAll(controller.removeBullets);
             controller.removeBullets.clear();
 
             //随机攻击
-
             if (attackTime!=0){
                 attackTime--;
             }else {
@@ -85,8 +78,7 @@ public class RefreshPanelTimer {
                 }
                 attackTime=100;
             }
-
-
+            //刷新页面子弹数量
             for (Bullet bullet : controller.bullets) {
                 bullet.hitTank(controller.enemyTanks);
                 bullet.hitTank(controller.playerTanks);
@@ -96,6 +88,7 @@ public class RefreshPanelTimer {
                 bullet.move();
             }
 
+            //刷新界面
             UI.mainGameView.mainGameViewPanel.repaint();
         }
     };
