@@ -1,10 +1,10 @@
 package com.tankwars.controller;
 
 import com.tankwars.model.Bullet;
-import com.tankwars.model.Maps;
-import com.tankwars.model.buildings.BirthPoint;
+import com.tankwars.model.Scence;
+import com.tankwars.main.buildings.BirthPoint;
 import com.tankwars.model.Tank;
-import com.tankwars.model.buildings.Building;
+import com.tankwars.main.buildings.BaseObstacle;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -25,39 +25,48 @@ import java.util.Map;
 public class Controller {
     DBHelper dbHelper;
     public RefreshPanelTimer refreshPanelTimer;
-    public Maps maps;
-    public List<Building> walls;
 
-    public ArrayList<Tank> tankArrayList=new ArrayList<>();
+    public Scence scence;
+    //障碍物
+    public List<BaseObstacle> walls;
+    //出生点
     public List<BirthPoint> birthPoints;
+    //敌方坦克组
     public List<Tank> enemyTanks;
+    //我方坦克组
     public List<Tank> playerTanks;
+    //子弹组
     public List<Bullet> bullets;
+    //子弹壳组
     public List<Bullet> removeBullets;
+
     public int runTime = 6000;
-    public int generateTime = 3000;
+    //敌方坦克生成时间 180*30=5.4秒
+    public int generateTime = 180;
+    //敌方坦克攻击时间 50*30=1.5秒
+    public int attackTime = 50;
 
     public Controller() {
+        dbHelper = new DBHelper();
+        scence = new Scence(this);
         walls=new ArrayList<>();
-        maps = new Maps(this);
-
         enemyTanks = new ArrayList<>();
         playerTanks = new ArrayList<>();
         birthPoints = new ArrayList<>();
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
 
+        walls=scence.obstacleList.get(0);
 
-
+        //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
 
-        //出生点90，10  90，475
+        //我方坦克1
         playerTanks.add(new Tank(90, 475, 1, 3,this));
 
+        //初始化定时器
         refreshPanelTimer = new RefreshPanelTimer(this);
-        dbHelper = new DBHelper();
-
     }
 
     public List<Map> getRankInfo() {

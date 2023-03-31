@@ -1,24 +1,29 @@
-package com.tankwars.model.buildings;
+package com.tankwars.main.buildings;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @Author yangmingquan
- * @Date 2023/3/27 14:52
+ * @Date 2023/3/27 10:43
  * @PackageName:com.tankwars.model
- * @ClassName: Building
+ * @ClassName: River
  * @Description: TODO
  * @Version 1.0
  */
-public class Building {
-    public int width = 50;
-    public int height = 50;
+public class River extends BaseObstacle {
+    public final int width = 25;
+    public final int height = 25;
     public int x;
     public int y;
-    public String name = "1";
-    Image img = new ImageIcon("images/home.png").getImage();
 
+
+    Image img = new ImageIcon("images/river.png").getImage();
+
+    public River(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public void drawing(Graphics g) {
         g.drawImage(this.img, x, y, width, height, null);

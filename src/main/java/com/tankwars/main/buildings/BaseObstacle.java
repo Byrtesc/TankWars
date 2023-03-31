@@ -1,27 +1,24 @@
-package com.tankwars.model.buildings;
+package com.tankwars.main.buildings;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @Author yangmingquan
- * @Date 2023/3/27 10:43
+ * @Date 2023/3/27 14:52
  * @PackageName:com.tankwars.model
- * @ClassName: IronWall
+ * @ClassName: Building
  * @Description: TODO
  * @Version 1.0
  */
-public class IronWall extends Building {
-    public final int width = 25;
-    public final int height = 25;
+public class BaseObstacle {
+    public int width = 50;
+    public int height = 50;
     public int x;
     public int y;
-    Image img = new ImageIcon("images/ironWall.png").getImage();
+    public String name = "1";
+    Image img = new ImageIcon("images/home.png").getImage();
 
-    public IronWall(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     public void drawing(Graphics g) {
         g.drawImage(this.img, x, y, width, height, null);
@@ -30,4 +27,5 @@ public class IronWall extends Building {
     public Rectangle getRectangle() {
         return new Rectangle(x, y, width, height);
     }
+
 }

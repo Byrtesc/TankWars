@@ -1,4 +1,4 @@
-package com.tankwars.model.buildings;
+package com.tankwars.main.buildings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.awt.*;
  * @Description: TODO
  * @Version 1.0
  */
-public class Wall extends Building {
+public class Wall extends BaseObstacle {
     //1
     public final int width = 25;
     public final int height = 25;

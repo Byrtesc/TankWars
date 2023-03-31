@@ -1,7 +1,7 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.model.buildings.Building;
+import com.tankwars.main.buildings.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -48,20 +48,20 @@ public class Bullet {
         }
     }
 
-    public void hitBuilding(List<Building> buildings){
-        List<Building> buildingTemp=new ArrayList<>();
-        for (Building building:buildings) {
-            if (this.getRectangle().intersects(building.getRectangle())){
-                if (building.getClass().getName().equals("com.tankwars.model.buildings.IronWall")){
+    public void hitBuilding(List<BaseObstacle> baseObstacles){
+        List<BaseObstacle> baseObstacleTemp =new ArrayList<>();
+        for (BaseObstacle baseObstacle : baseObstacles) {
+            if (this.getRectangle().intersects(baseObstacle.getRectangle())){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.main.buildings.IronWall")){
                     controller.removeBullets.add(this);
                 }
-                if (building.getClass().getName().equals("com.tankwars.model.buildings.Wall")){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.main.buildings.Wall")){
                     controller.removeBullets.add(this);
-                    buildingTemp.add(building);
+                    baseObstacleTemp.add(baseObstacle);
                 }
             }
         }
-        controller.walls.removeAll(buildingTemp);
+        controller.walls.removeAll(baseObstacleTemp);
     }
 
     public void hitPlayer(){

@@ -1,11 +1,10 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.model.buildings.Building;
+import com.tankwars.main.buildings.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -143,10 +142,10 @@ public class Tank {
 
 
     //检测与墙碰撞
-    public boolean checkCollisionWall(List<Building> walls) {
-        for (Building wall : walls) {
+    public boolean checkCollisionWall(List<BaseObstacle> walls) {
+        for (BaseObstacle wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
-                if (!wall.getClass().getName().equals("com.tankwars.model.buildings.Woods")) {
+                if (!wall.getClass().getName().equals("com.tankwars.main.buildings.Woods")) {
                     if (type!=1){//玩家坦克不触发随机方向
                         ranDirection();//调整方向
                     }

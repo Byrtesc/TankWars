@@ -1,4 +1,4 @@
-package com.tankwars.model.buildings;
+package com.tankwars.main.buildings;
 
 import com.tankwars.model.Tank;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @Description: TODO
  * @Version 1.0
  */
-public class BirthPoint extends Building {
+public class BirthPoint extends BaseObstacle {
     public final int width = 50;
     public final int height = 50;
     public int x;

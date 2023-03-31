@@ -21,8 +21,6 @@ import java.util.Random;
 public class RefreshPanelTimer {
     public Timer timer;
     Controller controller;
-    int attackTime=50;
-
 
     public RefreshPanelTimer(Controller controller) {
         this.controller = controller;
@@ -33,24 +31,27 @@ public class RefreshPanelTimer {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+            //检查出生点是否为空
             if (controller.enemyTanks.size() < 10) {
                 if (controller.generateTime != 0) {
                     int i = new Random().nextInt(2);
                     if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks)) {
-                        System.out.println();
-                        System.out.println(controller.birthPoints.get(i).checkEmpty(controller.enemyTanks));
                         controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1,controller));
                     }
-                    controller.generateTime = controller.generateTime - 50;
+                    controller.generateTime = controller.generateTime - 1;
                 } else {
-                    controller.generateTime = 3000;
+                    controller.generateTime = 180;
                 }
             }
+
+            //检测玩家碰撞，无碰撞就移动
             for (Tank playerTank : controller.playerTanks) {
                 if (!playerTank.checkCollisionWall(controller.walls) && !playerTank.checkCollisionTank(controller.enemyTanks) && !playerTank.checkCollisionTank(controller.playerTanks)) {
                     playerTank.move();
                 }
             }
+
+            //倒计时随机方向
             if (controller.runTime != 0) {
                 controller.runTime = controller.runTime - 50;
             } else {
@@ -59,25 +60,29 @@ public class RefreshPanelTimer {
                 }
                 controller.runTime = 3000;
             }
+
+            //检测敌方坦克碰撞，无碰撞就移动
             for (Tank enemyTank : controller.enemyTanks) {
                 if (!enemyTank.checkCollisionWall(controller.walls) && !enemyTank.checkCollisionTank(controller.playerTanks) && !enemyTank.checkCollisionTank(controller.enemyTanks)) {
                     enemyTank.move();
                 }
             }
 
-            //清空子弹
+            //清空打出了的、有了结果的子弹，也就是清空子弹壳
             controller.bullets.removeAll(controller.removeBullets);
+            //清空子弹壳
             controller.removeBullets.clear();
 
-            //随机攻击
-            if (attackTime!=0){
-                attackTime--;
+            //随机时间攻击
+            if (controller.attackTime!=0){
+                controller.attackTime--;
             }else {
                 for (Tank enemyTank : controller.enemyTanks) {
                     enemyTank.ranAttack();
                 }
-                attackTime=100;
+                controller.attackTime=100;
             }
+
             //刷新页面子弹数量
             for (Bullet bullet : controller.bullets) {
                 bullet.hitTank(controller.enemyTanks);
