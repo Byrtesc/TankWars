@@ -13,7 +13,7 @@ import javax.swing.*;
  * @Version 1.0
  */
 public class CustomSettingView extends JFrame {
-    CustomSettingViewPanel customSettingViewPanel;
+    public CustomSettingViewPanel customSettingViewPanel;
     public CustomSettingView(Controller controller){
         customSettingViewPanel=new CustomSettingViewPanel(controller);
         setTitle(UI.GAME_AUTHOR_NAME);

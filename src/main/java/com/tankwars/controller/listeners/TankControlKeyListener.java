@@ -1,5 +1,6 @@
 package com.tankwars.controller.listeners;
 
+import com.tankwars.controller.Controller;
 import com.tankwars.model.Tank;
 
 import java.awt.event.KeyAdapter;
@@ -16,13 +17,17 @@ import java.util.List;
  */
 public class TankControlKeyListener extends KeyAdapter {
     List<Tank> tanks;
+    Controller controller;
     Tank playerTank1;
     Tank playerTank2;
 
-    public TankControlKeyListener(List<Tank> tanks) {
+    public TankControlKeyListener(List<Tank> tanks,Controller controller) {
+        this.controller=controller;
         this.tanks = tanks;
         playerTank1 = tanks.get(0);
-        playerTank2 = tanks.get(1);
+        if (controller.playerNum==2){
+            playerTank2 = tanks.get(1);
+        }
     }
 
     @Override

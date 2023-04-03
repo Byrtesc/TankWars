@@ -26,7 +26,7 @@ public class MainGameViewPanel extends JPanel {
         setPreferredSize(new Dimension(555, 530));
         setBackground(Color.black);
         this.setFocusable(true);
-        this.addKeyListener(new TankControlKeyListener(controller.playerTanks));
+        this.addKeyListener(new TankControlKeyListener(controller.playerTanks,controller));
     }
 
     @Override

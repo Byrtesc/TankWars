@@ -49,6 +49,7 @@ public class Controller {
     //敌方坦克攻击时间 50*30=1.5秒
     public int attackTime = 50;
     public int selectedMap = 7;
+    public int playerNum = 1;
 
 
 
@@ -69,11 +70,13 @@ public class Controller {
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
 
-        Tank tank1=new Tank(90, 475, 1, 3,3,"",this);
-        Tank tank2=new Tank(450, 475, 1, 3,3,"",this);
+        Tank playerTank1=new Tank(90, 475, 1, 3,3,"",this);
+        Tank playerTank2=new Tank(450, 475, 1, 3,3,"",this);
         //我方坦克1
-        playerTanks.add(tank1);
-        playerTanks.add(tank2);
+        playerTanks.add(playerTank1);
+        if (playerNum==2){
+            playerTanks.add(playerTank2);
+        }
 
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
