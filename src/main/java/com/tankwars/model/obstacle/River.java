@@ -1,26 +1,26 @@
-package com.tankwars.main.buildings;
+package com.tankwars.model.obstacle;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @Author yangmingquan
- * @Date 2023/3/27 10:42
+ * @Date 2023/3/27 10:43
  * @PackageName:com.tankwars.model
- * @ClassName: Wall
+ * @ClassName: River
  * @Description: TODO
  * @Version 1.0
  */
-public class Wall extends BaseObstacle {
-    //1
+public class River extends BaseObstacle {
     public final int width = 25;
     public final int height = 25;
     public int x;
     public int y;
 
-    Image img = new ImageIcon("images/wall.png").getImage();
 
-    public Wall(int x, int y) {
+    Image img = new ImageIcon("images/river.png").getImage();
+
+    public River(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -32,4 +32,5 @@ public class Wall extends BaseObstacle {
     public Rectangle getRectangle() {
         return new Rectangle(x, y, width, height);
     }
+
 }

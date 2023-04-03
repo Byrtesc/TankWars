@@ -1,7 +1,7 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.main.buildings.BaseObstacle;
+import com.tankwars.model.obstacle.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,6 +37,7 @@ public class Bullet {
             if (this.getRectangle().intersects(tank.getNormalRectangle())){
                 if (this.tankType!=tank.type) {
                     System.out.println("子弹碰撞坦克");
+                    controller.boomList.add(new Boom(tank.x,tank.y));
                     controller.removeBullets.add(this);
                     controller.enemyTanks.remove(tank);
                     //不可以在这里删除，打中添加到数组到外面删除
@@ -52,10 +53,10 @@ public class Bullet {
         List<BaseObstacle> baseObstacleTemp =new ArrayList<>();
         for (BaseObstacle baseObstacle : baseObstacles) {
             if (this.getRectangle().intersects(baseObstacle.getRectangle())){
-                if (baseObstacle.getClass().getName().equals("com.tankwars.main.buildings.IronWall")){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacle.IronWall")){
                     controller.removeBullets.add(this);
                 }
-                if (baseObstacle.getClass().getName().equals("com.tankwars.main.buildings.Wall")){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacle.Wall")){
                     controller.removeBullets.add(this);
                     baseObstacleTemp.add(baseObstacle);
                 }

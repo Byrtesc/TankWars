@@ -1,7 +1,7 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.main.buildings.BaseObstacle;
+import com.tankwars.model.obstacle.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -145,7 +145,7 @@ public class Tank {
     public boolean checkCollisionWall(List<BaseObstacle> walls) {
         for (BaseObstacle wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
-                if (!wall.getClass().getName().equals("com.tankwars.main.buildings.Woods")) {
+                if (!wall.getClass().getName().equals("com.tankwars.model.obstacle.Woods")) {
                     if (type!=1){//玩家坦克不触发随机方向
                         ranDirection();//调整方向
                     }

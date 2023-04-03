@@ -1,4 +1,4 @@
-package com.tankwars.main.buildings;
+package com.tankwars.model.obstacle;
 
 import javax.swing.*;
 import java.awt.*;

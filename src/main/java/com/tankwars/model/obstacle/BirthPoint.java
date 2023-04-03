@@ -1,4 +1,4 @@
-package com.tankwars.main.buildings;
+package com.tankwars.model.obstacle;
 
 import com.tankwars.model.Tank;
 

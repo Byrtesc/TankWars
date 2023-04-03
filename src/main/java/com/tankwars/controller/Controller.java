@@ -1,10 +1,11 @@
 package com.tankwars.controller;
 
+import com.tankwars.model.Boom;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Scence;
-import com.tankwars.main.buildings.BirthPoint;
+import com.tankwars.model.obstacle.BirthPoint;
 import com.tankwars.model.Tank;
-import com.tankwars.main.buildings.BaseObstacle;
+import com.tankwars.model.obstacle.BaseObstacle;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -39,6 +40,8 @@ public class Controller {
     public List<Bullet> bullets;
     //子弹壳组
     public List<Bullet> removeBullets;
+    //爆炸效果
+    public List<Boom> boomList;
 
     public int runTime = 6000;
     //敌方坦克生成时间 180*30=5.4秒
@@ -49,13 +52,13 @@ public class Controller {
     public Controller() {
         dbHelper = new DBHelper();
         scence = new Scence(this);
-        walls=new ArrayList<>();
+//        walls=new ArrayList<>();
         enemyTanks = new ArrayList<>();
         playerTanks = new ArrayList<>();
         birthPoints = new ArrayList<>();
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
-
+        boomList=new ArrayList<>();
         walls=scence.obstacleList.get(0);
 
         //设置出生点
@@ -64,6 +67,7 @@ public class Controller {
 
         //我方坦克1
         playerTanks.add(new Tank(90, 475, 1, 3,this));
+        playerTanks.add(new Tank(450, 475, 1, 3,this));
 
         //初始化定时器
         refreshPanelTimer = new RefreshPanelTimer(this);

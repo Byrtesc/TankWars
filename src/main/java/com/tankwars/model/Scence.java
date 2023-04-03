@@ -1,7 +1,7 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.main.buildings.*;
+import com.tankwars.model.obstacle.*;
 
 import javax.swing.*;
 import java.awt.*;

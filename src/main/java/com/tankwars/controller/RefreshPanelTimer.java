@@ -22,6 +22,8 @@ public class RefreshPanelTimer {
     public Timer timer;
     Controller controller;
 
+    int boomFreshTime=10;
+
     public RefreshPanelTimer(Controller controller) {
         this.controller = controller;
         timer = new Timer(30, actionListener);
@@ -73,6 +75,15 @@ public class RefreshPanelTimer {
             //清空子弹壳
             controller.removeBullets.clear();
 
+
+            if (boomFreshTime==0){
+                //清空爆炸效果
+                controller.boomList.clear();
+                boomFreshTime=10;
+            }else {
+                boomFreshTime--;
+            }
+
             //随机时间攻击
             if (controller.attackTime!=0){
                 controller.attackTime--;
@@ -89,6 +100,7 @@ public class RefreshPanelTimer {
                 bullet.hitTank(controller.playerTanks);
                 bullet.hitBuilding(controller.walls);
             }
+            //子弹移动
             for (Bullet bullet : controller.bullets) {
                 bullet.move();
             }

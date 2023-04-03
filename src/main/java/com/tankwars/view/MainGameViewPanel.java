@@ -2,6 +2,7 @@ package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;
+import com.tankwars.model.Boom;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Tank;
 
@@ -44,6 +45,10 @@ public class MainGameViewPanel extends JPanel {
 
         for (Bullet bullet : controller.bullets) {
             bullet.drawing(g);
+        }
+
+        for (Boom boom: controller.boomList){
+            boom.drawImages(g);
         }
     }
 
