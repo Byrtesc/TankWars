@@ -24,6 +24,6 @@ public class HelpTipsView extends JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
         helpTipsViewPanel = new HelpTipsViewPanel();
         add(helpTipsViewPanel);
-        setVisible(true);
+        setVisible(false);
     }
 }

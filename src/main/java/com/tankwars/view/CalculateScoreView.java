@@ -22,6 +22,6 @@ public class CalculateScoreView extends JFrame {
         calculateScoreViewPanel=new CalculateScoreViewPanel();
 
         add(calculateScoreViewPanel);
-        setVisible(true);
+        setVisible(false);
     }
 }

@@ -21,24 +21,22 @@ import java.util.Random;
 public class RefreshPanelTimer {
     public Timer timer;
     Controller controller;
-
-    int boomFreshTime=10;
+    int boomFreshTime=30;
 
     public RefreshPanelTimer(Controller controller) {
         this.controller = controller;
-        timer = new Timer(30, actionListener);
+        timer = new Timer(10, actionListener);
     }
 
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
             //检查出生点是否为空
             if (controller.enemyTanks.size() < 10) {
                 if (controller.generateTime != 0) {
                     int i = new Random().nextInt(2);
-                    if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks)) {
-                        controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1,controller));
+                    if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks)&&controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
+                        controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1,1,"yellow",controller));
                     }
                     controller.generateTime = controller.generateTime - 1;
                 } else {

@@ -17,6 +17,7 @@ public class Boom {
     Image image[] = {
             new ImageIcon("images/boom.png").getImage(),
             new ImageIcon("images/boom2.png").getImage(),
+            new ImageIcon("images/boom3.png").getImage(),
     };
 
     public Boom(int x, int y) {

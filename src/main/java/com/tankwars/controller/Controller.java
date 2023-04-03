@@ -65,9 +65,11 @@ public class Controller {
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
 
+        Tank tank1=new Tank(90, 475, 1, 3,3,"",this);
+        Tank tank2=new Tank(450, 475, 1, 3,3,"",this);
         //我方坦克1
-        playerTanks.add(new Tank(90, 475, 1, 3,this));
-        playerTanks.add(new Tank(450, 475, 1, 3,this));
+        playerTanks.add(tank1);
+        playerTanks.add(tank2);
 
         //初始化定时器
         refreshPanelTimer = new RefreshPanelTimer(this);

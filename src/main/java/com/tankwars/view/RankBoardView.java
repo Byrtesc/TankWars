@@ -29,6 +29,6 @@ public class RankBoardView extends JFrame {
 
         add(rankBoardViewPanel);
 
-        setVisible(true);
+        setVisible(false);
     }
 }

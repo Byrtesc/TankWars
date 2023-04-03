@@ -22,11 +22,11 @@ public class Tank {
     public int oldX, oldY;
     public final int height = 40;
     public final int width = 40;
-    public int speed = 1;
+    public int speed = 3;
     public int hp;
     public int blood;
     public int type;//1为玩家
-    public int direction=8;//8上 2下 4左 6右
+    public int direction = 8;//8上 2下 4左 6右
 
     public Boolean upMove = false;
     public Boolean downMove = false;
@@ -40,37 +40,77 @@ public class Tank {
     public Image tankImg = new ImageIcon(upImgUrl).getImage();
     Controller controller;
 
-    public Tank(int x, int y, int type, int hp,Controller controller) {
+    public Tank(int x, int y, int type, int hp, int speed, String color, Controller controller) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.hp = hp;
-        this.controller=controller;
+        this.speed = speed;
+        this.controller = controller;
+        switch (color) {
+            case "blue":
+                upImgUrl = "images/blue/bu.png";
+                downImgUrl = "images/blue/bd.png";
+                leftImgUrl = "images/blue/bl.png";
+                rightImgUrl = "images/blue/br.png";
+                break;
+            case "gray":
+                upImgUrl =    "images/gray/gu.png";
+                downImgUrl =  "images/gray/gd.png";
+                leftImgUrl =  "images/gray/gl.png";
+                rightImgUrl = "images/gray/gr.png";
+                break;
+            case "green":
+                upImgUrl = "images/green/gu.png";
+                downImgUrl = "images/green/gd.png";
+                leftImgUrl = "images/green/gl.png";
+                rightImgUrl = "images/green/gr.png";
+                break;
+            case "red":
+                upImgUrl = "images/red/ru.png";
+                downImgUrl = "images/red/rd.png";
+                leftImgUrl = "images/red/rl.png";
+                rightImgUrl = "images/red/rr.png";
+                break;
+            case "yellow":
+                upImgUrl = "images/yellow/yu.png";
+                downImgUrl = "images/yellow/yd.png";
+                leftImgUrl = "images/yellow/yl.png";
+                rightImgUrl = "images/yellow/yr.png";
+                break;
+            default:break;
+        }
     }
 
     public void attack() {
-        controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));
+        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
     }
 
-    public void ranAttack(){
-        switch (new Random().nextInt(4)){
-            case 0:controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));break;
-            case 1:break;
-            case 2:break;
-            case 3:controller.bullets.add(new Bullet(getTankHead().x,getTankHead().y,this.direction,controller,this.type));break;
+    public void ranAttack() {
+        switch (new Random().nextInt(4)) {
+            case 0:
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
+                break;
         }
     }
 
     public Point getTankHead() {//获得炮台位置
         switch (direction) {
             case 8:
-                return new Point(this.x + (this.width / 2)-5, this.y);
+                return new Point(this.x + (this.width / 2) - 5, this.y);
             case 2:
-                return new Point((this.x + this.width / 2)-3, this.y + height);
+                return new Point((this.x + this.width / 2) - 3, this.y + height);
             case 4:
-                return new Point(this.x, (this.y + height / 2)-3);
+                return new Point(this.x, (this.y + height / 2) - 3);
             case 6:
-                return new Point(this.x + this.width, (this.y + height / 2)-3);
+                return new Point(this.x + this.width, (this.y + height / 2) - 3);
         }
         return null;
     }
@@ -78,19 +118,16 @@ public class Tank {
     public void upDateDirectionState() {//更新状态
         if (upMove) {
             tankImg = new ImageIcon(upImgUrl).getImage();
-            direction=8;
-        }
-        else if (downMove) {
+            direction = 8;
+        } else if (downMove) {
             tankImg = new ImageIcon(downImgUrl).getImage();
-            direction=2;
-        }
-        else if (leftMove) {
+            direction = 2;
+        } else if (leftMove) {
             tankImg = new ImageIcon(leftImgUrl).getImage();
-            direction=4;
-        }
-        else if (rightMove) {
+            direction = 4;
+        } else if (rightMove) {
             tankImg = new ImageIcon(rightImgUrl).getImage();
-            direction=6;
+            direction = 6;
         }
     }
 
@@ -140,13 +177,12 @@ public class Tank {
     }
 
 
-
     //检测与墙碰撞
     public boolean checkCollisionWall(List<BaseObstacle> walls) {
         for (BaseObstacle wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
                 if (!wall.getClass().getName().equals("com.tankwars.model.obstacle.Woods")) {
-                    if (type!=1){//玩家坦克不触发随机方向
+                    if (type != 1) {//玩家坦克不触发随机方向
                         ranDirection();//调整方向
                     }
                     return true;
@@ -161,7 +197,7 @@ public class Tank {
         for (Tank tank : tanks) {
             if (this != tank) {
                 if (tank.getRectangle().intersects(this.getRectangle())) {
-                    if (type!=1){//玩家坦克不触发随机方向
+                    if (type != 1) {//玩家坦克不触发随机方向
                         ranDirection();
                     }
                     return true;

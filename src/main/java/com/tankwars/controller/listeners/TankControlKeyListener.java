@@ -49,7 +49,6 @@ public class TankControlKeyListener extends KeyAdapter {
             playerTank1.attack();
         }
 
-
         //玩家而
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             playerTank2.upDateDirectionState();

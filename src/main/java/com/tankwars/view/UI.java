@@ -17,15 +17,15 @@ public class UI {
     public static CalculateScoreView calculateScoreView;
     public static RankBoardView rankBoardView;
     public static HelpTipsView helpTipsView;
+    public static CustomSettingView customSettingView;
     public static final String GAME_AUTHOR_NAME = "坦克大战       姓名:杨铭泉       班级:JX2302       学号:JX230219";
-
     public UI(Controller controller) {
-//        welcomeView =new WelcomeView(controller);
+        welcomeView =new WelcomeView(controller);
         mainGameView = new MainGameView(controller);
-//        historyScoreView=new HistoryScoreView();
-//        calculateScoreView=new CalculateScoreView();
-//        rankBoardView=new RankBoardView(controller);
-//        helpTipsView=new HelpTipsView();
-        controller.refreshPanelTimer.timer.start();
+        historyScoreView=new HistoryScoreView();
+        calculateScoreView=new CalculateScoreView();
+        rankBoardView=new RankBoardView(controller);
+        helpTipsView=new HelpTipsView();
+        customSettingView=new CustomSettingView(controller);
     }
 }

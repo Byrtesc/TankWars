@@ -1,6 +1,7 @@
 package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.controller.listeners.MenuBarListener;
 import com.tankwars.controller.listeners.WindowsListener;
 
 import javax.swing.*;
@@ -38,6 +39,9 @@ public class MainGameView extends JFrame {
         //添加游戏菜单及子项
         JMenu menuGame = new JMenu("游戏");
         JMenuItem menuItemStartGame = new JMenuItem("开始游戏");
+        menuItemStartGame.addActionListener(new MenuBarListener(controller));
+        menuItemStartGame.setActionCommand("startGame");
+
         JMenuItem menuItemRestartGame = new JMenuItem("重新开始");
         JMenuItem menuItemRank = new JMenuItem("排行榜");
         JMenuItem menuItemCustom = new JMenuItem("自定义");
@@ -64,6 +68,6 @@ public class MainGameView extends JFrame {
         setJMenuBar(menuBar);
         add(mainGameViewPanel, BorderLayout.CENTER);
         add(mainGameViewInfoPanel, BorderLayout.EAST);
-        setVisible(true);
+        setVisible(false);
     }
 }
