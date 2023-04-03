@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public class Controller {
     DBHelper dbHelper;
-    public RefreshPanelTimer refreshPanelTimer;
+    public RefreshTimer refreshTimer;
 
     public Scence scence;
     //障碍物
@@ -48,6 +48,9 @@ public class Controller {
     public int generateTime = 180;
     //敌方坦克攻击时间 50*30=1.5秒
     public int attackTime = 50;
+    public int selectedMap = 7;
+
+
 
     public Controller() {
         dbHelper = new DBHelper();
@@ -59,7 +62,8 @@ public class Controller {
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
         boomList=new ArrayList<>();
-        walls=scence.obstacleList.get(0);
+
+        walls=scence.obstacleList.get(selectedMap);
 
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
@@ -72,7 +76,7 @@ public class Controller {
         playerTanks.add(tank2);
 
         //初始化定时器
-        refreshPanelTimer = new RefreshPanelTimer(this);
+        refreshTimer = new RefreshTimer(this);
     }
 
     public List<Map> getRankInfo() {

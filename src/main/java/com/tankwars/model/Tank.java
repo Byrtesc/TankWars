@@ -33,11 +33,11 @@ public class Tank {
     public Boolean leftMove = false;
     public Boolean rightMove = false;
 
-    public String upImgUrl = "images/tankUp.png";
-    public String downImgUrl = "images/tankDown.png";
-    public String leftImgUrl = "images/tankLeft.png";
-    public String rightImgUrl = "images/tankRight.png";
-    public Image tankImg = new ImageIcon(upImgUrl).getImage();
+    public String upImgUrl ;
+    public String downImgUrl ;
+    public String leftImgUrl ;
+    public String rightImgUrl;
+    public Image tankImg;
     Controller controller;
 
     public Tank(int x, int y, int type, int hp, int speed, String color, Controller controller) {
@@ -78,8 +78,14 @@ public class Tank {
                 leftImgUrl = "images/yellow/yl.png";
                 rightImgUrl = "images/yellow/yr.png";
                 break;
-            default:break;
+            default:
+                upImgUrl = "images/tankUp.png";
+                downImgUrl = "images/tankDown.png";
+                leftImgUrl = "images/tankLeft.png";
+                rightImgUrl ="images/tankRight.png";
+                break;
         }
+        upDateDirectionState();
     }
 
     public void attack() {
@@ -116,6 +122,16 @@ public class Tank {
     }
 
     public void upDateDirectionState() {//更新状态
+        if (direction == 8) {
+            tankImg = new ImageIcon(upImgUrl).getImage();
+        } else if (direction == 2) {
+            tankImg = new ImageIcon(downImgUrl).getImage();
+        } else if (direction == 4) {
+            tankImg = new ImageIcon(leftImgUrl).getImage();
+        } else if (direction == 6) {
+            tankImg = new ImageIcon(rightImgUrl).getImage();
+        }
+
         if (upMove) {
             tankImg = new ImageIcon(upImgUrl).getImage();
             direction = 8;

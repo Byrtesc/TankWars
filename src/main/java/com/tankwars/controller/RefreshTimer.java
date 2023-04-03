@@ -18,12 +18,12 @@ import java.util.Random;
  * @Description: TODO
  * @Version 1.0
  */
-public class RefreshPanelTimer {
+public class RefreshTimer {
     public Timer timer;
     Controller controller;
     int boomFreshTime=30;
 
-    public RefreshPanelTimer(Controller controller) {
+    public RefreshTimer(Controller controller) {
         this.controller = controller;
         timer = new Timer(10, actionListener);
     }
@@ -77,7 +77,7 @@ public class RefreshPanelTimer {
             if (boomFreshTime==0){
                 //清空爆炸效果
                 controller.boomList.clear();
-                boomFreshTime=10;
+                boomFreshTime=20;
             }else {
                 boomFreshTime--;
             }

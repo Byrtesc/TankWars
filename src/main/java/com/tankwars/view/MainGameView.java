@@ -68,6 +68,6 @@ public class MainGameView extends JFrame {
         setJMenuBar(menuBar);
         add(mainGameViewPanel, BorderLayout.CENTER);
         add(mainGameViewInfoPanel, BorderLayout.EAST);
-        setVisible(false);
+        setVisible(true);
     }
 }
