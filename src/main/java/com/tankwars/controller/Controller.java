@@ -48,15 +48,33 @@ public class Controller {
     public int generateTime = 180;
     //敌方坦克攻击时间 50*30=1.5秒
     public int attackTime = 50;
-    public int selectedMap = 0;
-    public int playerNum = 1;
-    public int needTankNum = 20;
-    public int nowTankNum = 0;
+    public int selectedMap = 0;//地图下标
+    public int playerNum = 1;//玩家数量
+    public int needEnemyTankNum = 20;//每关敌方上限数量
+    public int nowStageEnemyTankNum = 0;//当前坦克数量
+    public int nowEnemyspeed = 0;//自定义坦克速度
 
-    public boolean isStart=false;
+    public int nowScore = 0;//当前关卡分数
+    public int allScore = 0;//所有关卡分数
+    public int nowDesTankNum = 0;//当前击毁坦克数量
+    public int allDesTankNum = 0;//所有击毁坦克数量
+
+    public int whiteTankNum = 0;//白色坦克数量
+    public int yellowTankNum = 0;//黄色坦克数量
+    public int greenTankNum = 0;//绿色坦克数量
+    public int blueTankNum = 0;//蓝色坦克数量
+    public int redTankNum = 0;//红色坦克数量
+
+    public int nowWhiteTankNum = 0;//现在白色坦克数量
+    public int nowYellowTankNum = 0;//现在黄色坦克数量
+    public int nowGreenTankNum = 0;//现在绿色坦克数量
+    public int nowBlueTankNum = 0;//现在蓝色坦克数量
+    public int nowRedTankNum = 0;//现在红色坦克数量
+
+    public boolean isStart = false;
+    public boolean getTankDatas = false;
     public Tank playerTank1;
     public Tank playerTank2;
-
 
 
     public Controller() {
@@ -67,28 +85,52 @@ public class Controller {
         birthPoints = new ArrayList<>();
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
-        boomList=new ArrayList<>();
+        boomList = new ArrayList<>();
 
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
-        updateGameData();
+        updateGameNewData();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
     }
 
-    public void updateGameData(){
+    //更新关卡后更新游戏数据
+    public void updateGameNewData() {
+    //遍历
+        for (Integer i : scence.tankTypeList.get(selectedMap)) {
+            System.out.println(i);
+            switch (i.intValue()) {
+                case 1:
+                    nowWhiteTankNum++;
+                    break;
+                case 2:
+                    nowYellowTankNum++;
+                    break;
+                case 3:
+                    nowGreenTankNum++;
+                    break;
+                case 4:
+                    nowBlueTankNum++;
+                    break;
+                case 5:
+                    nowRedTankNum++;
+                    break;
+            }
+        }
+        scence.updateMapData();
         playerTanks.clear();
-        walls=scence.obstacleList.get(selectedMap);
-        playerTank1=new Tank(90, 475, 1, 3,3,"",this);
+        walls = scence.obstacleList.get(selectedMap);
+        playerTank1 = new Tank(90, 475, 1, 3, 3, "", this);
         //我方坦克1
         playerTanks.add(playerTank1);
-        if (playerNum==2){
-            playerTank2=new Tank(450, 475, 1, 3,3,"",this);
+        if (playerNum == 2) {
+            playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);
         }
+
         enemyTanks.clear();
-        nowTankNum=0;
+        nowStageEnemyTankNum = 0;
     }
 
     public List<Map> getRankInfo() {

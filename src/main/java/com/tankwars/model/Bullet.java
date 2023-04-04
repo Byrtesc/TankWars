@@ -2,6 +2,7 @@ package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.model.obstacle.BaseObstacle;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,6 +38,40 @@ public class Bullet {
             if (this.getRectangle().intersects(tank.getNormalRectangle())){
                 if (this.tankType!=tank.type) {
                     System.out.println("子弹碰撞坦克");
+                    switch (tank.color){
+                        case "white":
+                            controller.nowWhiteTankNum--;
+                            controller.whiteTankNum++;
+                            controller.nowScore+=100;
+                            controller.allScore+=100;
+                            break;
+                        case "yellow":
+                            controller.nowYellowTankNum--;
+                            controller.yellowTankNum++;
+                            controller.nowScore+=200;
+                            controller.allScore+=200;
+                            break;
+                        case "green":
+                            controller.nowGreenTankNum--;
+                            controller.greenTankNum++;
+                            controller.nowScore+=200;
+                            controller.allScore+=200;
+                            break;
+                        case "blue":
+                            controller.nowBlueTankNum--;
+                            controller.blueTankNum++;
+                            controller.nowScore+=300;
+                            controller.allScore+=300;
+                            break;
+                        case "red":
+                            controller.nowRedTankNum--;
+                            controller.redTankNum++;
+                            controller.nowScore+=500;
+                            controller.allScore+=500;
+                            break;
+                    }
+                    controller.nowDesTankNum++;
+                    controller.allDesTankNum++;
                     controller.boomList.add(new Boom(tank.x,tank.y));
                     controller.removeBullets.add(this);
                     controller.enemyTanks.remove(tank);

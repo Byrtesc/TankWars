@@ -1,5 +1,7 @@
 package com.tankwars.view;
 
+import com.tankwars.controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,7 +29,7 @@ public class MainGameViewInfoPanel extends JPanel {
     public JLabel labelAllDestroyTankValues;
     public JLabel labelAllGetScoreValues;
 
-    public MainGameViewInfoPanel() {
+    public MainGameViewInfoPanel(Controller controller) {
         setPreferredSize(new Dimension(230, 600));
         topPanel = new JPanel();
         middlePanel = new JPanel();
@@ -45,6 +47,9 @@ public class MainGameViewInfoPanel extends JPanel {
         labelGreenTank = new JLabel("x 0");
         labelBlueTank = new JLabel("x 0");
         labelRedTank = new JLabel("x 0");
+
+
+
         //label设置图片
         labelWhiteTank.setIcon(new ImageIcon("images/whiteTank.png"));
         labelYellowTank.setIcon(new ImageIcon("images/yellowTank.png"));

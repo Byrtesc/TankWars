@@ -6,6 +6,8 @@ import com.tankwars.controller.listeners.WindowsListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * @Author yangmingquan
@@ -20,9 +22,17 @@ public class MainGameView extends JFrame {
     public MainGameViewInfoPanel mainGameViewInfoPanel;
     public Controller controller;
 
+    public JMenuItem menuItemStartGame;
+    public JMenuItem menuItemRestartGame;
+    public JMenuItem menuItemRank;
+    public JMenuItem menuItemCustom;
+    public JMenuItem menuItemExit;
+    public JMenuItem menuItemAbout;
+    public JMenuItem menuItemDescription;
+
     public MainGameView(Controller controller) {
         mainGameViewPanel = new MainGameViewPanel(controller);
-        mainGameViewInfoPanel = new MainGameViewInfoPanel();
+        mainGameViewInfoPanel = new MainGameViewInfoPanel(controller);
         /*
          * 窗口要素
          */
@@ -34,23 +44,23 @@ public class MainGameView extends JFrame {
         addWindowListener(new WindowsListener());
         setLayout(new BorderLayout());
 
-        MenuBarListener menuBarListener=new MenuBarListener(controller);
+        MenuBarListener menuBarListener = new MenuBarListener(controller);
         //添加菜单栏
         JMenuBar menuBar = new JMenuBar();
         //添加游戏菜单及子项
         JMenu menuGame = new JMenu("游戏");
-        JMenuItem menuItemStartGame = new JMenuItem("开始游戏");
+        menuItemStartGame = new JMenuItem("开始游戏");
         menuItemStartGame.addActionListener(menuBarListener);
         menuItemStartGame.setActionCommand("startGame");
 
-        JMenuItem menuItemRestartGame = new JMenuItem("重新开始");
-        JMenuItem menuItemRank = new JMenuItem("排行榜");
-        JMenuItem menuItemCustom = new JMenuItem("自定义");
+        menuItemRestartGame = new JMenuItem("重新开始");
+        menuItemRank = new JMenuItem("排行榜");
+        menuItemCustom = new JMenuItem("自定义");
 
         menuItemCustom.addActionListener(menuBarListener);
         menuItemCustom.setActionCommand("custom");
 
-        JMenuItem menuItemExit = new JMenuItem("退出");
+        menuItemExit = new JMenuItem("退出");
         menuItemRestartGame.setEnabled(false);
 
         menuGame.add(menuItemStartGame);
@@ -61,8 +71,8 @@ public class MainGameView extends JFrame {
 
         //添加帮助菜单及子项
         JMenu menuHelp = new JMenu("帮助");
-        JMenuItem menuItemAbout = new JMenuItem("关于");
-        JMenuItem menuItemDescription = new JMenuItem("游戏说明");
+        menuItemAbout = new JMenuItem("关于");
+        menuItemDescription = new JMenuItem("游戏说明");
         menuHelp.add(menuItemAbout);
         menuHelp.add(menuItemDescription);
 
@@ -71,6 +81,7 @@ public class MainGameView extends JFrame {
         menuBar.add(menuHelp);
         //添加组件
         setJMenuBar(menuBar);
+        //添加按键监听器开始或暂停
         add(mainGameViewPanel, BorderLayout.CENTER);
         add(mainGameViewInfoPanel, BorderLayout.EAST);
         setVisible(true);

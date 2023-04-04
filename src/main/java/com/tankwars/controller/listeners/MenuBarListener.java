@@ -27,10 +27,17 @@ public class MenuBarListener implements ActionListener {
             case "startGame":
                 controller.isStart=true;
                 controller.refreshTimer.timer.start();
+                UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 break;
             case "stopGame":
                 controller.isStart=false;
                 controller.refreshTimer.timer.stop();
+                break;
+            case "restartGame":
+                controller.refreshTimer.timer.stop();
+                controller.isStart=true;
+                //重置数据
+
                 break;
             case "custom":
                 UI.customSettingView.setVisible(true);

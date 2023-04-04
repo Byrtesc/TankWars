@@ -32,17 +32,17 @@ public class CalculateScoreViewPanel extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         labelStage = new JLabel("关卡:0");
-        labelWhiteTank = new JLabel("  0");
-        labelYellowTank = new JLabel("  0");
-        labelGreenTank = new JLabel("  0");
-        labelBlueTank = new JLabel("  0");
-        labelRedTank = new JLabel("  0");
+        labelWhiteTank = new JLabel("  0 ");
+        labelYellowTank = new JLabel("  0 ");
+        labelGreenTank = new JLabel("  0 ");
+        labelBlueTank = new JLabel("  0 ");
+        labelRedTank = new JLabel("  0 ");
 
-        labelWhiteTankTotalValues = new JLabel("X  100  =  1400");
-        labelYellowTankTotalValues = new JLabel("X  200  =  0");
-        labelGreenTankTotalValues = new JLabel("X  200  =  0");
-        labelBlueTankTotalValues = new JLabel("X  300  =  0");
-        labelRedTankTotalValues = new JLabel("X  500  =  0");
+        labelWhiteTankTotalValues = new JLabel(" X  100  =  0");
+        labelYellowTankTotalValues = new JLabel(" X  200  =  0");
+        labelGreenTankTotalValues = new JLabel(" X  200  =  0");
+        labelBlueTankTotalValues = new JLabel(" X  300  =  0");
+        labelRedTankTotalValues = new JLabel(" X  500  =  0");
         labelTankTotalValues = new JLabel("坦克总数:0");
         labelScoreTotalValues = new JLabel("    总积分:0");
 
@@ -99,7 +99,9 @@ public class CalculateScoreViewPanel extends JPanel {
         gbc.gridwidth = 0;
         gridBagLayout.setConstraints(labelRedTankTotalValues, gbc);
 
-        gbc.gridwidth = 1;
+
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.gridwidth = 0;
         gridBagLayout.setConstraints(labelTankTotalValues, gbc);
         gbc.gridwidth = 0;
         gridBagLayout.setConstraints(labelScoreTotalValues, gbc);

@@ -28,9 +28,9 @@ public class CustomViewListener implements ActionListener {
             case "identify":
                 controller.playerNum=UI.customSettingView.customSettingViewPanel.onePlayerRadioButton.isSelected()?1:UI.customSettingView.customSettingViewPanel.twoPlayerRadioButton.isSelected()?2:0;
                 System.out.println(controller.playerNum);
-                controller.selectedMap= (int) UI.customSettingView.customSettingViewPanel.stepNumCombox.getSelectedItem()-1;
+                controller.selectedMap= (int) UI.customSettingView.customSettingViewPanel.stageNumCombox.getSelectedItem()-1;
                 //System.out.println(UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem());
-                controller.updateGameData();
+                controller.updateGameNewData();
                 break;
             case "cancel":
                 break;

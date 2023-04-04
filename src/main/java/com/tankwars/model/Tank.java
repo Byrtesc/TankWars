@@ -38,6 +38,8 @@ public class Tank {
     public String leftImgUrl ;
     public String rightImgUrl;
     public Image tankImg;
+
+    public String color;
     Controller controller;
 
     public Tank(int x, int y, int type, int hp, int speed, String color, Controller controller) {
@@ -47,6 +49,7 @@ public class Tank {
         this.hp = hp;
         this.speed = speed;
         this.controller = controller;
+        this.color=color;
         switch (color) {
             case "blue":
                 upImgUrl = "images/blue/bu.png";

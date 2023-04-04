@@ -23,7 +23,7 @@ public class UI {
 //        welcomeView =new WelcomeView(controller);
         mainGameView = new MainGameView(controller);
         historyScoreView=new HistoryScoreView();
-        calculateScoreView=new CalculateScoreView();
+        calculateScoreView=new CalculateScoreView(controller);
         rankBoardView=new RankBoardView(controller);
         helpTipsView=new HelpTipsView();
         customSettingView=new CustomSettingView(controller);

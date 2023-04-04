@@ -32,26 +32,40 @@ public class RefreshTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //检查出生点是否为空
-            if (controller.enemyTanks.size() < 10 && controller.nowTankNum < controller.needTankNum) {
+            //检查出生点是否为空，出生坦克
+            if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
                 if (controller.generateTime != 0) {
                     int i = new Random().nextInt(2);
                     if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks) && controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
-                        String color="";
-                        switch (controller.scence.tankTypeList.get(controller.selectedMap).get(controller.nowTankNum)){
-                            case 1:color="white";break;
-                            case 2:color="yellow";break;
-                            case 3:color="green";break;
-                            case 4:color="blue";break;
-                            case 5:color="red";break;
+                        String color = "";
+                        switch (controller.scence.tankTypeList.get(controller.selectedMap).get(controller.nowStageEnemyTankNum)) {
+                            case 1:
+                                color = "white";
+                                break;
+                            case 2:
+                                color = "yellow";
+                                break;
+                            case 3:
+                                color = "green";
+                                break;
+                            case 4:
+                                color = "blue";
+                                break;
+                            case 5:
+                                color = "red";
+                                break;
                         }
                         controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1, 1, color, controller));
-                        controller.nowTankNum++;
+                        controller.nowStageEnemyTankNum++;
                     }
                     controller.generateTime = controller.generateTime - 1;
                 } else {
                     controller.generateTime = 180;
                 }
+            }
+            //如果坦克都为空那就下一关
+            if (controller.nowBlueTankNum==0&&controller.nowYellowTankNum==0&&controller.nowGreenTankNum==0&&controller.nowWhiteTankNum==0&&controller.nowRedTankNum==0){
+                UI.calculateScoreView.setVisible(true);
             }
 
             //检测玩家碰撞，无碰撞就移动
@@ -104,20 +118,49 @@ public class RefreshTimer {
             }
 
             //刷新页面子弹数量
-            for (
-                    Bullet bullet : controller.bullets) {
+            for (Bullet bullet : controller.bullets) {
                 bullet.hitTank(controller.enemyTanks);
                 bullet.hitTank(controller.playerTanks);
                 bullet.hitBuilding(controller.walls);
             }
             //子弹移动
-            for (
-                    Bullet bullet : controller.bullets) {
+            for (Bullet bullet : controller.bullets) {
                 bullet.move();
             }
 
+
+            //更新页面数据信息
+
+            UI.mainGameView.mainGameViewInfoPanel.labelWhiteTank.setText("x " + controller.nowWhiteTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelYellowTank.setText("x " + controller.nowYellowTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelGreenTank.setText("x " + controller.nowGreenTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelBlueTank.setText("x " + controller.nowBlueTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelRedTank.setText("x " + controller.nowRedTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelThisLevelDestroyTankValues.setText("x " + controller.nowDesTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelThisLevelGetScoreValues.setText("x " + controller.nowScore);
+            UI.mainGameView.mainGameViewInfoPanel.labelAllDestroyTankValues.setText("x " + controller.allDesTankNum);
+            UI.mainGameView.mainGameViewInfoPanel.labelAllGetScoreValues.setText("x " + controller.allScore);
+
+
+            UI.calculateScoreView.calculateScoreViewPanel.labelWhiteTank.setText(" " + controller.whiteTankNum+" ");
+            UI.calculateScoreView.calculateScoreViewPanel.labelYellowTank.setText(" " + controller.yellowTankNum+" ");
+            UI.calculateScoreView.calculateScoreViewPanel.labelGreenTank.setText(" " + controller.greenTankNum+" ");
+            UI.calculateScoreView.calculateScoreViewPanel.labelBlueTank.setText(" " + controller.blueTankNum+" ");
+            UI.calculateScoreView.calculateScoreViewPanel.labelRedTank.setText(" " + controller.redTankNum+" ");
+
+            UI.calculateScoreView.calculateScoreViewPanel.labelStage.setText("关卡:" + (controller.selectedMap + 1));
+            UI.calculateScoreView.calculateScoreViewPanel.labelWhiteTankTotalValues.setText("X  100  =  " + (controller.whiteTankNum * 100));
+            UI.calculateScoreView.calculateScoreViewPanel.labelYellowTankTotalValues.setText("X  200  =  " + (controller.yellowTankNum * 200));
+            UI.calculateScoreView.calculateScoreViewPanel.labelGreenTankTotalValues.setText("X  200  =  " + (controller.greenTankNum * 200));
+            UI.calculateScoreView.calculateScoreViewPanel.labelBlueTankTotalValues.setText("X  300  =  " + (controller.blueTankNum * 300));
+            UI.calculateScoreView.calculateScoreViewPanel.labelRedTankTotalValues.setText("X  500  =  " + (controller.redTankNum * 500));
+            UI.calculateScoreView.calculateScoreViewPanel.labelTankTotalValues.setText("坦克总数:" + (controller.whiteTankNum + controller.yellowTankNum + controller.greenTankNum + controller.blueTankNum + controller.redTankNum));
+            UI.calculateScoreView.calculateScoreViewPanel.labelScoreTotalValues.setText("    总计积分:" + (controller.whiteTankNum * 100 + controller.yellowTankNum * 200 + controller.greenTankNum * 200 + controller.blueTankNum * 300 + controller.redTankNum * 500));
+
             //刷新界面
             UI.mainGameView.mainGameViewPanel.repaint();
+            UI.mainGameView.mainGameViewInfoPanel.repaint();
+            UI.calculateScoreView.calculateScoreViewPanel.repaint();
         }
     };
 }

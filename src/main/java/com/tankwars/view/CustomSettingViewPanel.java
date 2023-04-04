@@ -21,7 +21,7 @@ public class CustomSettingViewPanel extends JPanel {
     public JRadioButton twoPlayerRadioButton;
     public JRadioButton normalGameRadioButton;
     public JRadioButton customGameRadioButton;
-    public JComboBox<Integer> stepNumCombox;
+    public JComboBox<Integer> stageNumCombox;
     public JComboBox<Integer> tankSpeedCombox;
     public JButton identifyButton;
     public JButton cancelButton;
@@ -55,12 +55,12 @@ public class CustomSettingViewPanel extends JPanel {
         gridBagLayout.setConstraints(customGameRadioButton, gbc);
 
         gbc.gridwidth = 1;
-        JLabel selectStepLabel = new JLabel("请选择关卡数  ");
-        gridBagLayout.setConstraints(selectStepLabel, gbc);
+        JLabel selectStageLabel = new JLabel("请选择关卡数  ");
+        gridBagLayout.setConstraints(selectStageLabel, gbc);
 
         gbc.gridwidth = 0;
-        stepNumCombox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
-        gridBagLayout.setConstraints(stepNumCombox, gbc);
+        stageNumCombox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8});
+        gridBagLayout.setConstraints(stageNumCombox, gbc);
 
         gbc.insets = new Insets(10, 0, 0, 0);
 
@@ -100,8 +100,8 @@ public class CustomSettingViewPanel extends JPanel {
         add(twoPlayerRadioButton);
         add(normalGameRadioButton);
         add(customGameRadioButton);
-        add(selectStepLabel);
-        add(stepNumCombox);
+        add(selectStageLabel);
+        add(stageNumCombox);
         add(tankSpeedLabel);
         add(tankSpeedCombox);
         add(identifyButton);

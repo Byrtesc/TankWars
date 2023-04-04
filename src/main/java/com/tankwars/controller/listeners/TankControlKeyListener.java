@@ -24,7 +24,6 @@ public class TankControlKeyListener extends KeyAdapter {
     public TankControlKeyListener(List<Tank> tanks,Controller controller) {
         this.controller=controller;
         this.tanks = tanks;
-
     }
 
     public void updatePlayerTankControl(){
@@ -38,6 +37,19 @@ public class TankControlKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         updatePlayerTankControl();
+        //开始和暂停
+        if (e.getKeyCode() == KeyEvent.VK_P) {
+            controller.isStart=false;
+            controller.refreshTimer.timer.stop();
+            System.out.println("游戏暂停");
+        }
+
+        if (e.getKeyCode() == KeyEvent.VK_C) {
+            controller.isStart=true;
+            controller.refreshTimer.timer.start();
+            System.out.println("游戏继续");
+        }
+
         //玩家一
         if (e.getKeyCode() == KeyEvent.VK_W) {
             playerTank1.upDateDirectionState();
