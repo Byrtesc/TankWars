@@ -24,15 +24,20 @@ public class TankControlKeyListener extends KeyAdapter {
     public TankControlKeyListener(List<Tank> tanks,Controller controller) {
         this.controller=controller;
         this.tanks = tanks;
-        playerTank1 = tanks.get(0);
+
+    }
+
+    public void updatePlayerTankControl(){
+        this.playerTank1 = controller.playerTank1;
         if (controller.playerNum==2){
-            playerTank2 = tanks.get(1);
+            this.playerTank2 =controller.playerTank2;
         }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
+        updatePlayerTankControl();
         //玩家一
         if (e.getKeyCode() == KeyEvent.VK_W) {
             playerTank1.upDateDirectionState();

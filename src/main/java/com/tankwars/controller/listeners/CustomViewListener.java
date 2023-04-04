@@ -1,5 +1,6 @@
 package com.tankwars.controller.listeners;
 
+import com.tankwars.controller.Controller;
 import com.tankwars.view.UI;
 
 import java.awt.event.ActionEvent;
@@ -16,20 +17,22 @@ import java.awt.event.MouseEvent;
  * @Version 1.0
  */
 public class CustomViewListener implements ActionListener {
-    public CustomViewListener() {
+    Controller controller;
+    public CustomViewListener(Controller controller) {
+        this.controller=controller;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "identify":
-                int playerNum=UI.customSettingView.customSettingViewPanel.onePlayerRadioButton.isSelected()?1:UI.customSettingView.customSettingViewPanel.twoPlayerRadioButton.isSelected()?2:0;
-                System.out.println(playerNum);
-//                System.out.println(UI.customSettingView.customSettingViewPanel.stepNumCombox.getSelectedItem());
-//                System.out.println(UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem());
+                controller.playerNum=UI.customSettingView.customSettingViewPanel.onePlayerRadioButton.isSelected()?1:UI.customSettingView.customSettingViewPanel.twoPlayerRadioButton.isSelected()?2:0;
+                System.out.println(controller.playerNum);
+                controller.selectedMap= (int) UI.customSettingView.customSettingViewPanel.stepNumCombox.getSelectedItem()-1;
+                //System.out.println(UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem());
+                controller.updateGameData();
                 break;
             case "cancel":
-
                 break;
         }
     }

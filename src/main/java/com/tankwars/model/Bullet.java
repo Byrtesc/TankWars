@@ -77,7 +77,7 @@ public class Bullet {
         if (direction==2) this.y = this.y + 10;
         if (direction==4) this.x = this.x - 10;
         if (direction==6) this.x = this.x + 10;
-        if (this.y < 0||this.y > 510||this.x < 0||this.x > 510)  controller.removeBullets.add(this);
+        if (this.y < 0||this.y > 550||this.x < 0||this.x > 550)  controller.removeBullets.add(this);
     }
 
     public Rectangle getRectangle(){

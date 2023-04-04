@@ -54,7 +54,7 @@ public class Tank {
                 leftImgUrl = "images/blue/bl.png";
                 rightImgUrl = "images/blue/br.png";
                 break;
-            case "gray":
+            case "white":
                 upImgUrl =    "images/gray/gu.png";
                 downImgUrl =  "images/gray/gd.png";
                 leftImgUrl =  "images/gray/gl.png";
@@ -156,9 +156,9 @@ public class Tank {
         if (leftMove) this.x = this.x - this.speed;
         if (rightMove) this.x = this.x + this.speed;
         if (this.y < 0) this.y = 0;
-        if (this.y > 475) this.y = 475;
+        if (this.y > 490) this.y = 490;
         if (this.x < 0) this.x = 0;
-        if (this.x > 500) this.x = 500;
+        if (this.x > 510) this.x = 510;
     }
 
     public void ranDirection() {//随机方向

@@ -23,6 +23,6 @@ public class CustomSettingView extends JFrame {
         setDefaultCloseOperation(HIDE_ON_CLOSE);
 
         add(customSettingViewPanel);
-        setVisible(true);
+        setVisible(false);
     }
 }

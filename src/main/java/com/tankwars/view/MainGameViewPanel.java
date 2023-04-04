@@ -26,30 +26,32 @@ public class MainGameViewPanel extends JPanel {
         setPreferredSize(new Dimension(555, 530));
         setBackground(Color.black);
         this.setFocusable(true);
-        this.addKeyListener(new TankControlKeyListener(controller.playerTanks,controller));
+        this.addKeyListener(new TankControlKeyListener(controller.playerTanks, controller));
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for (Tank playerTank : controller.playerTanks) {
-            playerTank.drawing(g);
-        }
+        if (controller.isStart == true) {
+            for (Tank playerTank : controller.playerTanks) {
+                playerTank.drawing(g);
+            }
 
-        for (Tank enemyTank : controller.enemyTanks) {
-            enemyTank.drawing(g);
-        }
+            for (Tank enemyTank : controller.enemyTanks) {
+                enemyTank.drawing(g);
+            }
 
-        controller.scence.drawMap(g);
+            controller.scence.drawMap(g);
 
-        for (Bullet bullet : controller.bullets) {
-            bullet.drawing(g);
-        }
 
-        for (Boom boom: controller.boomList){
-            boom.drawImages(g);
+            for (Bullet bullet : controller.bullets) {
+                bullet.drawing(g);
+            }
+
+            for (Boom boom : controller.boomList) {
+                boom.drawImages(g);
+            }
         }
     }
-
 }

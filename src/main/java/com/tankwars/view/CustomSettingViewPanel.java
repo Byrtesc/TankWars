@@ -89,7 +89,7 @@ public class CustomSettingViewPanel extends JPanel {
         gameModelGroupRadioButton.add(normalGameRadioButton);
         gameModelGroupRadioButton.add(customGameRadioButton);
 
-        CustomViewListener customViewListener = new CustomViewListener();
+        CustomViewListener customViewListener = new CustomViewListener(controller);
         identifyButton.addActionListener(customViewListener);
         identifyButton.setActionCommand("identify");
         cancelButton.addActionListener(customViewListener);

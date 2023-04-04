@@ -34,17 +34,22 @@ public class MainGameView extends JFrame {
         addWindowListener(new WindowsListener());
         setLayout(new BorderLayout());
 
+        MenuBarListener menuBarListener=new MenuBarListener(controller);
         //添加菜单栏
         JMenuBar menuBar = new JMenuBar();
         //添加游戏菜单及子项
         JMenu menuGame = new JMenu("游戏");
         JMenuItem menuItemStartGame = new JMenuItem("开始游戏");
-        menuItemStartGame.addActionListener(new MenuBarListener(controller));
+        menuItemStartGame.addActionListener(menuBarListener);
         menuItemStartGame.setActionCommand("startGame");
 
         JMenuItem menuItemRestartGame = new JMenuItem("重新开始");
         JMenuItem menuItemRank = new JMenuItem("排行榜");
         JMenuItem menuItemCustom = new JMenuItem("自定义");
+
+        menuItemCustom.addActionListener(menuBarListener);
+        menuItemCustom.setActionCommand("custom");
+
         JMenuItem menuItemExit = new JMenuItem("退出");
         menuItemRestartGame.setEnabled(false);
 

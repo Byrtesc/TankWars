@@ -48,15 +48,20 @@ public class Controller {
     public int generateTime = 180;
     //敌方坦克攻击时间 50*30=1.5秒
     public int attackTime = 50;
-    public int selectedMap = 7;
+    public int selectedMap = 0;
     public int playerNum = 1;
+    public int needTankNum = 20;
+    public int nowTankNum = 0;
+
+    public boolean isStart=false;
+    public Tank playerTank1;
+    public Tank playerTank2;
 
 
 
     public Controller() {
         dbHelper = new DBHelper();
         scence = new Scence(this);
-//        walls=new ArrayList<>();
         enemyTanks = new ArrayList<>();
         playerTanks = new ArrayList<>();
         birthPoints = new ArrayList<>();
@@ -64,22 +69,26 @@ public class Controller {
         removeBullets = new ArrayList<>();
         boomList=new ArrayList<>();
 
-        walls=scence.obstacleList.get(selectedMap);
-
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
+        updateGameData();
+        //初始化定时器
+        refreshTimer = new RefreshTimer(this);
+    }
 
-        Tank playerTank1=new Tank(90, 475, 1, 3,3,"",this);
-        Tank playerTank2=new Tank(450, 475, 1, 3,3,"",this);
+    public void updateGameData(){
+        playerTanks.clear();
+        walls=scence.obstacleList.get(selectedMap);
+        playerTank1=new Tank(90, 475, 1, 3,3,"",this);
         //我方坦克1
         playerTanks.add(playerTank1);
         if (playerNum==2){
+            playerTank2=new Tank(450, 475, 1, 3,3,"",this);
             playerTanks.add(playerTank2);
         }
-
-        //初始化定时器
-        refreshTimer = new RefreshTimer(this);
+        enemyTanks.clear();
+        nowTankNum=0;
     }
 
     public List<Map> getRankInfo() {
