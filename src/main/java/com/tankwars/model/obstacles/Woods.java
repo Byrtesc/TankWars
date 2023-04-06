@@ -1,24 +1,30 @@
-package com.tankwars.model.obstacle;
+package com.tankwars.model.obstacles;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @Author yangmingquan
- * @Date 2023/3/27 14:52
+ * @Date 2023/3/27 10:44
  * @PackageName:com.tankwars.model
- * @ClassName: Building
+ * @ClassName: Woods
  * @Description: TODO
  * @Version 1.0
  */
-public class BaseObstacle {
-    public int width = 50;
-    public int height = 50;
+public class Woods extends BaseObstacle {
+    public final int width = 25;
+    public final int height = 25;
     public int x;
     public int y;
-    public String name = "1";
-    Image img = new ImageIcon("images/home.png").getImage();
 
+
+    Image img = new ImageIcon("images/woods.png").getImage();
+
+    public Woods(int x, int y) {
+        super(x,y);
+        this.x = x;
+        this.y = y;
+    }
 
     public void drawing(Graphics g) {
         g.drawImage(this.img, x, y, width, height, null);
@@ -27,5 +33,4 @@ public class BaseObstacle {
     public Rectangle getRectangle() {
         return new Rectangle(x, y, width, height);
     }
-
 }

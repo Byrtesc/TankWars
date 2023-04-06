@@ -1,8 +1,8 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.model.obstacle.BaseObstacle;
-import com.tankwars.view.UI;
+import com.tankwars.model.obstacles.BaseObstacle;
+import com.tankwars.model.obstacles.Road;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,16 +21,26 @@ public class Bullet {
     public int x;
     public int y;
     public int tankType;
+    public int power;//0为普通 1为穿甲
     public int direction;//8上 2下 4左 6右
     public Image bullet = new ImageIcon("images/bullet.png").getImage();
     public Controller controller;
 
-    public Bullet(int x, int y, int direction, Controller controller,int type){
+    public Bullet(int x, int y, int direction,int type, int power,Controller controller){
         this.x=x;
         this.y=y;
         this.direction=direction;
         this.controller=controller;
         this.tankType=type;
+        this.power=power;
+        switch (power){
+            case 0:
+                bullet = new ImageIcon("images/bullet.png").getImage();
+                break;
+            case 1:
+                bullet = new ImageIcon("images/piercingBullet.png").getImage();
+                break;
+        }
     }
 
     public void hitTank(List<Tank> tanks){
@@ -88,10 +98,12 @@ public class Bullet {
         List<BaseObstacle> baseObstacleTemp =new ArrayList<>();
         for (BaseObstacle baseObstacle : baseObstacles) {
             if (this.getRectangle().intersects(baseObstacle.getRectangle())){
-                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacle.IronWall")){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.IronWall")){
                     controller.removeBullets.add(this);
                 }
-                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacle.Wall")){
+                if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.Wall")){
+                    controller.boomList.add(new Boom(baseObstacle.x-10,baseObstacle.y-8));
+                    controller.roads.add(new Road(baseObstacle.x,baseObstacle.y));
                     controller.removeBullets.add(this);
                     baseObstacleTemp.add(baseObstacle);
                 }

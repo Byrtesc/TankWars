@@ -1,6 +1,7 @@
 package com.tankwars.controller;
 
 import com.tankwars.model.Bullet;
+import com.tankwars.model.Items;
 import com.tankwars.model.Tank;
 import com.tankwars.view.UI;
 
@@ -21,8 +22,7 @@ import java.util.Random;
 public class RefreshTimer {
     public Timer timer;
     Controller controller;
-    int boomFreshTime = 30;
-
+    int boomFreshTime = 10;
 
     public RefreshTimer(Controller controller) {
         this.controller = controller;
@@ -32,6 +32,7 @@ public class RefreshTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+
             //检查出生点是否为空，出生坦克
             if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
                 if (controller.generateTime != 0) {
@@ -128,6 +129,44 @@ public class RefreshTimer {
                 bullet.move();
             }
 
+            //倒计时消除buff
+            if (controller.playerTankPowerBuff){
+                if (controller.resetTankPowerBuffTime==0){
+                    for (Tank tank:controller.playerTanks) {
+                        tank.power=0;
+                    }
+                    controller.resetTankPowerBuffTime=3000;
+                    controller.playerTankPowerBuff=false;
+                }else {
+                    controller.resetTankPowerBuffTime--;
+                    System.out.println(controller.resetTankPowerBuffTime);
+                }
+            }
+            //随机生成道具
+
+            if (controller.ranItemsTime==0){
+                int ranRoad=new Random().nextInt(controller.roads.size());
+                int ranItem=new Random().nextInt(3);
+                controller.items.add(new Items(controller.roads.get(ranRoad).x,controller.roads.get(ranRoad).y,ranItem,controller));
+                controller.ranItemsTime=1000;
+            }else{
+                controller.ranItemsTime--;
+            }
+
+            if (controller.items.size()>0){
+                if (controller.itemDisappearTime==0){
+                    controller.removeItems.add(controller.items.get(0));
+                    controller.itemDisappearTime=500;
+                }else{
+                    controller.itemDisappearTime--;
+                }
+            }
+
+            controller.items.removeAll(controller.removeItems);
+
+            for (Items item: controller.items){
+                item.getBuff(controller.playerTanks);
+            }
 
             //更新页面数据信息
 

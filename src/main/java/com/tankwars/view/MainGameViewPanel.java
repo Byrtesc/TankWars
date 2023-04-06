@@ -4,6 +4,7 @@ import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;
 import com.tankwars.model.Boom;
 import com.tankwars.model.Bullet;
+import com.tankwars.model.Items;
 import com.tankwars.model.Tank;
 
 import javax.swing.*;
@@ -34,6 +35,10 @@ public class MainGameViewPanel extends JPanel {
         super.paintComponent(g);
 
         if (controller.isStart == true) {
+            for (Items item : controller.items) {
+                item.drawing(g);
+            }
+
             for (Tank playerTank : controller.playerTanks) {
                 playerTank.drawing(g);
             }
@@ -43,7 +48,6 @@ public class MainGameViewPanel extends JPanel {
             }
 
             controller.scence.drawMap(g);
-
 
             for (Bullet bullet : controller.bullets) {
                 bullet.drawing(g);

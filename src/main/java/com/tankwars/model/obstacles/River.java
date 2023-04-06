@@ -1,4 +1,4 @@
-package com.tankwars.model.obstacle;
+package com.tankwars.model.obstacles;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +21,7 @@ public class River extends BaseObstacle {
     Image img = new ImageIcon("images/river.png").getImage();
 
     public River(int x, int y) {
+        super(x,y);
         this.x = x;
         this.y = y;
     }

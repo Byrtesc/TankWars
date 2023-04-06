@@ -1,4 +1,4 @@
-package com.tankwars.model.obstacle;
+package com.tankwars.model.obstacles;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +21,7 @@ public class Wall extends BaseObstacle {
     Image img = new ImageIcon("images/wall.png").getImage();
 
     public Wall(int x, int y) {
+        super(x,y);
         this.x = x;
         this.y = y;
     }
@@ -31,5 +32,16 @@ public class Wall extends BaseObstacle {
 
     public Rectangle getRectangle() {
         return new Rectangle(x, y, width, height);
+    }
+
+    @Override
+    public String toString() {
+        return "Wall{" +
+                "width=" + width +
+                ", height=" + height +
+                ", x=" + x +
+                ", y=" + y +
+                ", img=" + img +
+                "} " + super.toString();
     }
 }

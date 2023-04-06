@@ -1,4 +1,4 @@
-package com.tankwars.model.obstacle;
+package com.tankwars.model.obstacles;
 
 import com.tankwars.model.Tank;
 
@@ -20,6 +20,7 @@ public class BirthPoint extends BaseObstacle {
     public int y;
 
     public BirthPoint(int x, int y) {
+        super(x,y);
         this.x = x;
         this.y = y;
     }

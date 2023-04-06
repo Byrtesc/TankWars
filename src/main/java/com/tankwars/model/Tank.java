@@ -1,7 +1,7 @@
 package com.tankwars.model;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.model.obstacle.BaseObstacle;
+import com.tankwars.model.obstacles.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,8 +23,8 @@ public class Tank {
     public final int height = 40;
     public final int width = 40;
     public int speed = 3;
-    public int hp;
-    public int blood;
+    public int hp;//生命值指重生次数
+    public int blood=3;//一条命得血量
     public int type;//1为玩家
     public int direction = 8;//8上 2下 4左 6右
 
@@ -41,6 +41,7 @@ public class Tank {
 
     public String color;
     Controller controller;
+    public int power=0;
 
     public Tank(int x, int y, int type, int hp, int speed, String color, Controller controller) {
         this.x = x;
@@ -92,20 +93,20 @@ public class Tank {
     }
 
     public void attack() {
-        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
+        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type,this.power, controller));
     }
 
     public void ranAttack() {
         switch (new Random().nextInt(4)) {
             case 0:
-                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction,  this.type,0,controller));
                 break;
             case 1:
                 break;
             case 2:
                 break;
             case 3:
-                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, controller, this.type));
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction,  this.type,0,controller));
                 break;
         }
     }
@@ -195,12 +196,11 @@ public class Tank {
         }
     }
 
-
     //检测与墙碰撞
     public boolean checkCollisionWall(List<BaseObstacle> walls) {
         for (BaseObstacle wall : walls) {
             if (wall.getRectangle().intersects(this.getRectangle())) {
-                if (!wall.getClass().getName().equals("com.tankwars.model.obstacle.Woods")) {
+                if (!wall.getClass().getName().equals("com.tankwars.model.obstacles.Woods")) {
                     if (type != 1) {//玩家坦克不触发随机方向
                         ranDirection();//调整方向
                     }
@@ -226,10 +226,6 @@ public class Tank {
         return false;
     }
 
-    public int getBlood() {
-        return this.blood;
-    }
-
     public void drawing(Graphics g) {
         g.drawImage(tankImg, this.x, this.y, this.width, this.height, null);
     }
@@ -243,7 +239,6 @@ public class Tank {
             return new Rectangle(this.x - this.speed, this.y, this.width, this.height);
         if (rightMove)
             return new Rectangle(this.x + this.speed, this.y, this.width, this.height);
-
         return new Rectangle(this.x, this.y, this.width, this.height);
     }
 

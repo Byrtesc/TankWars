@@ -1,26 +1,25 @@
-package com.tankwars.model.obstacle;
+package com.tankwars.model.obstacles;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * @Author yangmingquan
- * @Date 2023/3/27 10:44
+ * @Date 2023/3/27 10:43
  * @PackageName:com.tankwars.model
- * @ClassName: Woods
+ * @ClassName: IronWall
  * @Description: TODO
  * @Version 1.0
  */
-public class Woods extends BaseObstacle {
+public class IronWall extends BaseObstacle {
     public final int width = 25;
     public final int height = 25;
     public int x;
     public int y;
+    Image img = new ImageIcon("images/ironWall.png").getImage();
 
-
-    Image img = new ImageIcon("images/woods.png").getImage();
-
-    public Woods(int x, int y) {
+    public IronWall(int x, int y) {
+        super(x,y);
         this.x = x;
         this.y = y;
     }

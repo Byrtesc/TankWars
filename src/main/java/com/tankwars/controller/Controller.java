@@ -1,11 +1,8 @@
 package com.tankwars.controller;
 
-import com.tankwars.model.Boom;
-import com.tankwars.model.Bullet;
-import com.tankwars.model.Scence;
-import com.tankwars.model.obstacle.BirthPoint;
-import com.tankwars.model.Tank;
-import com.tankwars.model.obstacle.BaseObstacle;
+import com.tankwars.model.*;
+import com.tankwars.model.obstacles.BirthPoint;
+import com.tankwars.model.obstacles.BaseObstacle;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -30,6 +27,10 @@ public class Controller {
     public Scence scence;
     //障碍物
     public List<BaseObstacle> walls;
+    //路
+    public List<BaseObstacle> roads;
+    public List<BaseObstacle> homeWalls;
+    public List<Items> items;
     //出生点
     public List<BirthPoint> birthPoints;
     //敌方坦克组
@@ -40,14 +41,19 @@ public class Controller {
     public List<Bullet> bullets;
     //子弹壳组
     public List<Bullet> removeBullets;
+    public List<Items> removeItems;
     //爆炸效果
     public List<Boom> boomList;
 
     public int runTime = 6000;
-    //敌方坦克生成时间 180*30=5.4秒
-    public int generateTime = 180;
-    //敌方坦克攻击时间 50*30=1.5秒
-    public int attackTime = 50;
+
+    public int generateTime = 300;//敌方坦克生成时间 300*10=3000毫秒
+
+    public int attackTime = 80;//敌方坦克攻击时间 80*10=800毫秒
+    //随即道具时间
+    public int ranItemsTime=1000;
+    public int itemDisappearTime=500;
+
     public int selectedMap = 0;//地图下标
     public int playerNum = 1;//玩家数量
     public int needEnemyTankNum = 20;//每关敌方上限数量
@@ -72,7 +78,9 @@ public class Controller {
     public int nowRedTankNum = 0;//现在红色坦克数量
 
     public boolean isStart = false;
-    public boolean getTankDatas = false;
+    public boolean playerTankPowerBuff = false;
+    public int resetTankPowerBuffTime = 3000;
+
     public Tank playerTank1;
     public Tank playerTank2;
 
@@ -86,10 +94,15 @@ public class Controller {
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
         boomList = new ArrayList<>();
+        roads=new ArrayList<>();
+        homeWalls=new ArrayList<>();
+        items=new ArrayList<>();
+        removeItems=new ArrayList<>();
 
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
+
         updateGameNewData();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
