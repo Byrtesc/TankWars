@@ -130,6 +130,7 @@ public class RefreshTimer {
             }
 
             //倒计时消除buff
+            //穿甲弹
             if (controller.playerTankPowerBuff){
                 if (controller.resetTankPowerBuffTime==0){
                     for (Tank tank:controller.playerTanks) {
@@ -139,9 +140,21 @@ public class RefreshTimer {
                     controller.playerTankPowerBuff=false;
                 }else {
                     controller.resetTankPowerBuffTime--;
-                    System.out.println(controller.resetTankPowerBuffTime);
                 }
             }
+            //铁堡垒
+            if (controller.ironHomeWallBuff){
+                if (controller.resetironHomeWallTime==0){
+                    controller.walls.removeAll(controller.homeIronWalls);
+                    controller.walls.addAll(controller.homeNormalWalls);
+                    controller.resetironHomeWallTime=3000;
+                    controller.ironHomeWallBuff=false;
+                }else {
+                    controller.resetironHomeWallTime--;
+                    System.out.println(controller.resetironHomeWallTime);
+                }
+            }
+
             //随机生成道具
 
             if (controller.ranItemsTime==0){

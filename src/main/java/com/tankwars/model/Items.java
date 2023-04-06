@@ -56,6 +56,9 @@ public class Items {
                 System.out.println("与道具相撞:"+this.type);
                 switch (this.type){
                     case 0://铁堡垒效果
+                        controller.walls.removeAll(controller.homeNormalWalls);
+                        controller.walls.addAll(controller.homeIronWalls);
+                        controller.ironHomeWallBuff=true;
                         break;
                     case 1://血包
                         if (tank.hp<=3){

@@ -3,6 +3,8 @@ package com.tankwars.controller;
 import com.tankwars.model.*;
 import com.tankwars.model.obstacles.BirthPoint;
 import com.tankwars.model.obstacles.BaseObstacle;
+import com.tankwars.model.obstacles.IronWall;
+import com.tankwars.model.obstacles.Wall;
 import com.tankwars.utils.DBHelper;
 
 import javax.swing.*;
@@ -29,7 +31,8 @@ public class Controller {
     public List<BaseObstacle> walls;
     //路
     public List<BaseObstacle> roads;
-    public List<BaseObstacle> homeWalls;
+    public List<BaseObstacle> homeIronWalls;
+    public List<BaseObstacle> homeNormalWalls;
     public List<Items> items;
     //出生点
     public List<BirthPoint> birthPoints;
@@ -79,7 +82,9 @@ public class Controller {
 
     public boolean isStart = false;
     public boolean playerTankPowerBuff = false;
+    public boolean ironHomeWallBuff = false;
     public int resetTankPowerBuffTime = 3000;
+    public int resetironHomeWallTime = 3000;
 
     public Tank playerTank1;
     public Tank playerTank2;
@@ -87,6 +92,8 @@ public class Controller {
 
     public Controller() {
         dbHelper = new DBHelper();
+        homeIronWalls=new ArrayList<>();
+        homeNormalWalls=new ArrayList<>();
         scence = new Scence(this);
         enemyTanks = new ArrayList<>();
         playerTanks = new ArrayList<>();
@@ -95,7 +102,6 @@ public class Controller {
         removeBullets = new ArrayList<>();
         boomList = new ArrayList<>();
         roads=new ArrayList<>();
-        homeWalls=new ArrayList<>();
         items=new ArrayList<>();
         removeItems=new ArrayList<>();
 
@@ -134,6 +140,7 @@ public class Controller {
         scence.updateMapData();
         playerTanks.clear();
         walls = scence.obstacleList.get(selectedMap);
+        walls.addAll(homeNormalWalls);
         playerTank1 = new Tank(90, 475, 1, 3, 3, "", this);
         //我方坦克1
         playerTanks.add(playerTank1);
