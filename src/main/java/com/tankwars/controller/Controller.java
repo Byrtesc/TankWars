@@ -148,7 +148,7 @@ public class Controller {
             playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);
         }
-
+        items.clear();
         enemyTanks.clear();
         nowStageEnemyTankNum = 0;
     }

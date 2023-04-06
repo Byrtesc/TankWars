@@ -81,6 +81,7 @@ public class CustomSettingViewPanel extends JPanel {
         cancelButton = new JButton("取消");
         gridBagLayout.setConstraints(cancelButton, gbc);
 
+        CustomViewListener customViewListener = new CustomViewListener(controller);
         ButtonGroup playerGroupRadioButton = new ButtonGroup();
         playerGroupRadioButton.add(onePlayerRadioButton);
         playerGroupRadioButton.add(twoPlayerRadioButton);
@@ -89,12 +90,22 @@ public class CustomSettingViewPanel extends JPanel {
         gameModelGroupRadioButton.add(normalGameRadioButton);
         gameModelGroupRadioButton.add(customGameRadioButton);
 
-        CustomViewListener customViewListener = new CustomViewListener(controller);
+        normalGameRadioButton.addActionListener(customViewListener);
+        normalGameRadioButton.setActionCommand("normalGame");
+        customGameRadioButton.addActionListener(customViewListener);
+        customGameRadioButton.setActionCommand("customGame");
+
+
+
         identifyButton.addActionListener(customViewListener);
         identifyButton.setActionCommand("identify");
         cancelButton.addActionListener(customViewListener);
         cancelButton.setActionCommand("cancel");
 
+        stageNumCombox.setEnabled(false);
+        tankSpeedCombox.setEnabled(false);
+        onePlayerRadioButton.setSelected(true);
+        normalGameRadioButton.setSelected(true);
         setLayout(gridBagLayout);
         add(onePlayerRadioButton);
         add(twoPlayerRadioButton);

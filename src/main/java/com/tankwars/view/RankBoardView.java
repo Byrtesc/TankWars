@@ -21,7 +21,7 @@ public class RankBoardView extends JFrame {
          * 窗口要素
          */
         setTitle(UI.GAME_AUTHOR_NAME);
-        setSize(560, 560);
+        setSize(450, 700);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);

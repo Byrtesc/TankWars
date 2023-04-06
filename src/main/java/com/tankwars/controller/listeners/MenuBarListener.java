@@ -36,11 +36,15 @@ public class MenuBarListener implements ActionListener {
             case "restartGame":
                 controller.refreshTimer.timer.stop();
                 controller.isStart=true;
+                controller.updateGameNewData();
+                controller.refreshTimer.timer.start();
                 //重置数据
-
                 break;
             case "custom":
                 UI.customSettingView.setVisible(true);
+                break;
+            case "rankBoard":
+                UI.rankBoardView.setVisible(true);
                 break;
         }
     }

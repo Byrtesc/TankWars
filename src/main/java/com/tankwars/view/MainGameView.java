@@ -54,14 +54,20 @@ public class MainGameView extends JFrame {
         menuItemStartGame.setActionCommand("startGame");
 
         menuItemRestartGame = new JMenuItem("重新开始");
-        menuItemRank = new JMenuItem("排行榜");
-        menuItemCustom = new JMenuItem("自定义");
+        menuItemRestartGame.addActionListener(menuBarListener);
+        menuItemRestartGame.setActionCommand("restartGame");
+        menuItemRestartGame.setEnabled(false);
 
+        menuItemRank = new JMenuItem("排行榜");
+        menuItemRank.addActionListener(menuBarListener);
+        menuItemRank.setActionCommand("rankBoard");
+
+        menuItemCustom = new JMenuItem("自定义");
         menuItemCustom.addActionListener(menuBarListener);
         menuItemCustom.setActionCommand("custom");
 
         menuItemExit = new JMenuItem("退出");
-        menuItemRestartGame.setEnabled(false);
+
 
         menuGame.add(menuItemStartGame);
         menuGame.add(menuItemRestartGame);

@@ -97,7 +97,7 @@ public class TankControlKeyListener extends KeyAdapter {
     @Override
     public void keyReleased(KeyEvent e) {
         super.keyReleased(e);
-
+        updatePlayerTankControl();
         if (e.getKeyCode() == KeyEvent.VK_W) {
             playerTank1.upMove = false;
         }
