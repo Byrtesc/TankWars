@@ -28,6 +28,8 @@ public class MainGameViewInfoPanel extends JPanel {
     public JLabel labelThisLevelGetScoreValues;
     public JLabel labelAllDestroyTankValues;
     public JLabel labelAllGetScoreValues;
+    public JLabel LabelHpIcon;
+    public JLabel LabelHptext;
 
     public MainGameViewInfoPanel(Controller controller) {
         setPreferredSize(new Dimension(230, 600));
@@ -152,6 +154,18 @@ public class MainGameViewInfoPanel extends JPanel {
         gbc.gridwidth = 0;
         gridBagLayout.setConstraints(labelAllGetScoreValues, gbc);
 
+
+        LabelHpIcon=new JLabel("坦克生命值 ");
+        LabelHptext=new JLabel("0");
+        LabelHpIcon.setFont(new Font(Font.DIALOG, 1, 15));
+        LabelHptext.setFont(new Font(Font.DIALOG, 1, 15));
+        LabelHpIcon.setIcon(new ImageIcon("images/hp.png"));
+        gbc.gridwidth = 1;
+        gridBagLayout.setConstraints(LabelHpIcon, gbc);
+        gbc.gridwidth = 0;
+        gridBagLayout.setConstraints(LabelHptext, gbc);
+
+
         bottomPanel.add(labelPlayerName);
         bottomPanel.add(labelPlayerNameValues);
         bottomPanel.add(labelThisLevelDestroyTank);
@@ -162,6 +176,8 @@ public class MainGameViewInfoPanel extends JPanel {
         bottomPanel.add(labelAllDestroyTankValues);
         bottomPanel.add(labelAllGetScore);
         bottomPanel.add(labelAllGetScoreValues);
+        bottomPanel.add(LabelHpIcon);
+        bottomPanel.add(LabelHptext);
 
         //添加组件
         add(topPanel);

@@ -94,6 +94,7 @@ public class Tank {
 
     public void attack() {
         controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type,this.power, controller));
+        controller.musicUtil.fire();
     }
 
     public void ranAttack() {

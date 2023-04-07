@@ -38,6 +38,10 @@ public class MenuBarListener implements ActionListener {
                 controller.isStart=true;
                 controller.updateGameNewData();
                 controller.refreshTimer.timer.start();
+                controller.allScore=controller.allScore-controller.nowScore;
+                controller.allDesTankNum=controller.allDesTankNum-controller.nowDesTankNum;
+                controller.nowDesTankNum=0;
+                controller.nowScore=0;
                 //重置数据
                 break;
             case "custom":

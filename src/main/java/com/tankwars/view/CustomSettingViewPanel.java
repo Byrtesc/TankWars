@@ -101,11 +101,14 @@ public class CustomSettingViewPanel extends JPanel {
         identifyButton.setActionCommand("identify");
         cancelButton.addActionListener(customViewListener);
         cancelButton.setActionCommand("cancel");
-
         stageNumCombox.setEnabled(false);
         tankSpeedCombox.setEnabled(false);
-        onePlayerRadioButton.setSelected(true);
         normalGameRadioButton.setSelected(true);
+        if (controller.playerNum==1){
+            onePlayerRadioButton.setSelected(true);
+        }else if (controller.playerNum==2){
+            twoPlayerRadioButton.setSelected(true);
+        }
         setLayout(gridBagLayout);
         add(onePlayerRadioButton);
         add(twoPlayerRadioButton);

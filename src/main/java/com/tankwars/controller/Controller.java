@@ -3,9 +3,8 @@ package com.tankwars.controller;
 import com.tankwars.model.*;
 import com.tankwars.model.obstacles.BirthPoint;
 import com.tankwars.model.obstacles.BaseObstacle;
-import com.tankwars.model.obstacles.IronWall;
-import com.tankwars.model.obstacles.Wall;
-import com.tankwars.utils.DBHelper;
+import com.tankwars.utils.DbUtil;
+import com.tankwars.utils.MusicUtil;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -23,7 +22,8 @@ import java.util.Map;
  * @Version 1.0
  */
 public class Controller {
-    DBHelper dbHelper;
+    public MusicUtil musicUtil = new MusicUtil();
+    public DbUtil dbUtil;
     public RefreshTimer refreshTimer;
 
     public Scence scence;
@@ -54,8 +54,8 @@ public class Controller {
 
     public int attackTime = 80;//敌方坦克攻击时间 80*10=800毫秒
     //随即道具时间
-    public int ranItemsTime=1000;
-    public int itemDisappearTime=500;
+    public int ranItemsTime = 1000;
+    public int itemDisappearTime = 500;
 
     public int selectedMap = 0;//地图下标
     public int playerNum = 1;//玩家数量
@@ -91,9 +91,9 @@ public class Controller {
 
 
     public Controller() {
-        dbHelper = new DBHelper();
-        homeIronWalls=new ArrayList<>();
-        homeNormalWalls=new ArrayList<>();
+        dbUtil = new DbUtil();
+        homeIronWalls = new ArrayList<>();
+        homeNormalWalls = new ArrayList<>();
         scence = new Scence(this);
         enemyTanks = new ArrayList<>();
         playerTanks = new ArrayList<>();
@@ -101,9 +101,9 @@ public class Controller {
         bullets = new ArrayList<>();
         removeBullets = new ArrayList<>();
         boomList = new ArrayList<>();
-        roads=new ArrayList<>();
-        items=new ArrayList<>();
-        removeItems=new ArrayList<>();
+        roads = new ArrayList<>();
+        items = new ArrayList<>();
+        removeItems = new ArrayList<>();
 
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
@@ -116,7 +116,12 @@ public class Controller {
 
     //更新关卡后更新游戏数据
     public void updateGameNewData() {
-    //遍历
+        nowWhiteTankNum = 0;//现在白色坦克数量
+        nowYellowTankNum = 0;//现在黄色坦克数量
+        nowGreenTankNum = 0;//现在绿色坦克数量
+        nowBlueTankNum = 0;//现在蓝色坦克数量
+        nowRedTankNum = 0;//现在红色坦克数量
+        //遍历
         for (Integer i : scence.tankTypeList.get(selectedMap)) {
             System.out.println(i);
             switch (i.intValue()) {
@@ -154,9 +159,9 @@ public class Controller {
     }
 
     public List<Map> getRankInfo() {
-        dbHelper.initConnection();
+        dbUtil.initConnection();
         String sql = "select user.user_name,score,time from score inner join user on score.uid=user.id order by score desc limit 0,10";
-        ResultSet resultSet = dbHelper.execQuery(sql);
+        ResultSet resultSet = dbUtil.execQuery(sql);
         try {
             List<Map> scoreList = new ArrayList<>();
             while (resultSet.next()) {
@@ -171,21 +176,21 @@ public class Controller {
         } catch (Exception ex) {
 
         } finally {
-            dbHelper.closeAll();
+            dbUtil.closeAll();
         }
         return null;
     }
 
     public List<Map> login(String userName) {
-        dbHelper.initConnection();
+        dbUtil.initConnection();
         String sql = "select * from user where user_name='" + userName + "'";
-        ResultSet resultSet = dbHelper.execQuery(sql);
+        ResultSet resultSet = dbUtil.execQuery(sql);
         try {
             if (resultSet.next()) {
                 int uid = resultSet.getInt("id");
                 if (uid != 0) {
                     sql = "select score,time from score where uid='" + uid + "' order by score desc";
-                    ResultSet resultSetScore = dbHelper.execQuery(sql);
+                    ResultSet resultSetScore = dbUtil.execQuery(sql);
                     List<Map> list = new ArrayList<>();
                     while (resultSetScore.next()) {
                         Map map = new HashMap();
@@ -198,7 +203,7 @@ public class Controller {
             } else {
                 sql = "insert into user(user_name) values ('" + userName + "')";
                 System.out.println(sql);
-                int result = dbHelper.execUpdate(sql);
+                int result = dbUtil.execUpdate(sql);
                 if (result > 0) {
                     System.out.println("注册成功");
                     JOptionPane.showMessageDialog(null, "欢迎新玩家:" + userName + "首次进入本游戏", "注册成功", JOptionPane.INFORMATION_MESSAGE);
@@ -208,7 +213,7 @@ public class Controller {
         } catch (Exception ex) {
             System.out.println("数据库连接错误");
         } finally {
-            dbHelper.closeAll();
+            dbUtil.closeAll();
         }
         return null;
     }

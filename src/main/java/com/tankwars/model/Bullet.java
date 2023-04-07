@@ -82,12 +82,13 @@ public class Bullet {
                     }
                     controller.nowDesTankNum++;
                     controller.allDesTankNum++;
+                    controller.musicUtil.boomMusic();
                     controller.boomList.add(new Boom(tank.x,tank.y));
                     controller.removeBullets.add(this);
                     controller.enemyTanks.remove(tank);
                     //不可以在这里删除，打中添加到数组到外面删除
                     controller.playerTanks.remove(tank);
-                    System.out.println("删除");
+
                 }
                 break;
             }
@@ -112,9 +113,17 @@ public class Bullet {
         controller.walls.removeAll(baseObstacleTemp);
     }
 
-    public void hitPlayer(){
-
+    public void hitBullet(List<Bullet>  bullets){
+        for (Bullet bullet: bullets){
+            if (this!=bullet){
+                if (this.getRectangle().intersects(bullet.getRectangle())){
+                    controller.removeBullets.add(this);
+                    controller.removeBullets.add(bullet);
+                }
+            }
+        }
     }
+
     public void drawing(Graphics g) {
         g.drawImage(bullet, this.x, this.y, 10, 10, null);
     }

@@ -123,6 +123,7 @@ public class RefreshTimer {
                 bullet.hitTank(controller.enemyTanks);
                 bullet.hitTank(controller.playerTanks);
                 bullet.hitBuilding(controller.walls);
+                bullet.hitBullet(controller.bullets);
             }
             //子弹移动
             for (Bullet bullet : controller.bullets) {
@@ -208,6 +209,10 @@ public class RefreshTimer {
             UI.calculateScoreView.calculateScoreViewPanel.labelRedTankTotalValues.setText("X  500  =  " + (controller.redTankNum * 500));
             UI.calculateScoreView.calculateScoreViewPanel.labelTankTotalValues.setText("坦克总数:" + (controller.whiteTankNum + controller.yellowTankNum + controller.greenTankNum + controller.blueTankNum + controller.redTankNum));
             UI.calculateScoreView.calculateScoreViewPanel.labelScoreTotalValues.setText("    总计积分:" + (controller.whiteTankNum * 100 + controller.yellowTankNum * 200 + controller.greenTankNum * 200 + controller.blueTankNum * 300 + controller.redTankNum * 500));
+
+            if (controller.isStart){
+                UI.mainGameView.mainGameViewInfoPanel.LabelHptext.setText(""+controller.playerTank1.hp);
+            }
 
             //刷新界面
             UI.mainGameView.mainGameViewPanel.repaint();
