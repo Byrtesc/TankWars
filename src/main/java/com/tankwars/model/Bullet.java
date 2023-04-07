@@ -48,46 +48,59 @@ public class Bullet {
             if (this.getRectangle().intersects(tank.getNormalRectangle())){
                 if (this.tankType!=tank.type) {
                     System.out.println("子弹碰撞坦克");
-                    switch (tank.color){
-                        case "white":
-                            controller.nowWhiteTankNum--;
-                            controller.whiteTankNum++;
-                            controller.nowScore+=100;
-                            controller.allScore+=100;
-                            break;
-                        case "yellow":
-                            controller.nowYellowTankNum--;
-                            controller.yellowTankNum++;
-                            controller.nowScore+=200;
-                            controller.allScore+=200;
-                            break;
-                        case "green":
-                            controller.nowGreenTankNum--;
-                            controller.greenTankNum++;
-                            controller.nowScore+=200;
-                            controller.allScore+=200;
-                            break;
-                        case "blue":
-                            controller.nowBlueTankNum--;
-                            controller.blueTankNum++;
-                            controller.nowScore+=300;
-                            controller.allScore+=300;
-                            break;
-                        case "red":
-                            controller.nowRedTankNum--;
-                            controller.redTankNum++;
-                            controller.nowScore+=500;
-                            controller.allScore+=500;
-                            break;
-                    }
-                    controller.nowDesTankNum++;
-                    controller.allDesTankNum++;
+
+
                     controller.musicUtil.boomMusic();
                     controller.boomList.add(new Boom(tank.x,tank.y));
+
                     controller.removeBullets.add(this);
-                    controller.enemyTanks.remove(tank);
+
                     //不可以在这里删除，打中添加到数组到外面删除
-                    controller.playerTanks.remove(tank);
+                    if (--tank.blood==0&&tank.type==1){
+                        controller.playerTankHp--;
+                        tank.x=90;
+                        tank.y=475;
+                        tank.blood=3;
+                    }
+
+                    if (tank.blood<=0){
+                        switch (tank.color){
+                            case "white":
+                                controller.nowWhiteTankNum--;
+                                controller.whiteTankNum++;
+                                controller.nowScore+=100;
+                                controller.allScore+=100;
+                                break;
+                            case "yellow":
+                                controller.nowYellowTankNum--;
+                                controller.yellowTankNum++;
+                                controller.nowScore+=200;
+                                controller.allScore+=200;
+                                break;
+                            case "green":
+                                controller.nowGreenTankNum--;
+                                controller.greenTankNum++;
+                                controller.nowScore+=200;
+                                controller.allScore+=200;
+                                break;
+                            case "blue":
+                                controller.nowBlueTankNum--;
+                                controller.blueTankNum++;
+                                controller.nowScore+=300;
+                                controller.allScore+=300;
+                                break;
+                            case "red":
+                                controller.nowRedTankNum--;
+                                controller.redTankNum++;
+                                controller.nowScore+=500;
+                                controller.allScore+=500;
+                                break;
+                        }
+                        controller.nowDesTankNum++;
+                        controller.allDesTankNum++;
+                        controller.enemyTanks.remove(tank);
+                    }
+//                    controller.playerTanks.remove(tank);
 
                 }
                 break;

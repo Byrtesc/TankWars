@@ -24,7 +24,7 @@ public class Tank {
     public final int width = 40;
     public int speed = 3;
     public int hp;//生命值指重生次数
-    public int blood=3;//一条命得血量
+    public int blood = 3;//一条命得血量
     public int type;//1为玩家
     public int direction = 8;//8上 2下 4左 6右
 
@@ -33,15 +33,15 @@ public class Tank {
     public Boolean leftMove = false;
     public Boolean rightMove = false;
 
-    public String upImgUrl ;
-    public String downImgUrl ;
-    public String leftImgUrl ;
+    public String upImgUrl;
+    public String downImgUrl;
+    public String leftImgUrl;
     public String rightImgUrl;
     public Image tankImg;
 
     public String color;
     Controller controller;
-    public int power=0;
+    public int power = 0;
 
     public Tank(int x, int y, int type, int hp, int speed, String color, Controller controller) {
         this.x = x;
@@ -50,7 +50,7 @@ public class Tank {
         this.hp = hp;
         this.speed = speed;
         this.controller = controller;
-        this.color=color;
+        this.color = color;
         switch (color) {
             case "blue":
                 upImgUrl = "images/blue/bu.png";
@@ -59,9 +59,9 @@ public class Tank {
                 rightImgUrl = "images/blue/br.png";
                 break;
             case "white":
-                upImgUrl =    "images/gray/gu.png";
-                downImgUrl =  "images/gray/gd.png";
-                leftImgUrl =  "images/gray/gl.png";
+                upImgUrl = "images/gray/gu.png";
+                downImgUrl = "images/gray/gd.png";
+                leftImgUrl = "images/gray/gl.png";
                 rightImgUrl = "images/gray/gr.png";
                 break;
             case "green":
@@ -86,28 +86,28 @@ public class Tank {
                 upImgUrl = "images/tankUp.png";
                 downImgUrl = "images/tankDown.png";
                 leftImgUrl = "images/tankLeft.png";
-                rightImgUrl ="images/tankRight.png";
+                rightImgUrl = "images/tankRight.png";
                 break;
         }
         upDateDirectionState();
     }
 
     public void attack() {
-        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type,this.power, controller));
+        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, this.power, controller));
         controller.musicUtil.fire();
     }
 
     public void ranAttack() {
         switch (new Random().nextInt(4)) {
             case 0:
-                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction,  this.type,0,controller));
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, 0, controller));
                 break;
             case 1:
                 break;
             case 2:
                 break;
             case 3:
-                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction,  this.type,0,controller));
+                controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, 0, controller));
                 break;
         }
     }
@@ -228,6 +228,13 @@ public class Tank {
     }
 
     public void drawing(Graphics g) {
+        g.setColor(Color.RED);
+        if (this.y == 0) {
+            g.fillRect(this.x, this.y + 45, 13 * blood, 5);
+        } else {
+            g.fillRect(this.x, this.y - 10, 13 * blood, 5);
+        }
+
         g.drawImage(tankImg, this.x, this.y, this.width, this.height, null);
     }
 

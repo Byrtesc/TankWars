@@ -211,7 +211,7 @@ public class RefreshTimer {
             UI.calculateScoreView.calculateScoreViewPanel.labelScoreTotalValues.setText("    总计积分:" + (controller.whiteTankNum * 100 + controller.yellowTankNum * 200 + controller.greenTankNum * 200 + controller.blueTankNum * 300 + controller.redTankNum * 500));
 
             if (controller.isStart){
-                UI.mainGameView.mainGameViewInfoPanel.LabelHptext.setText(""+controller.playerTank1.hp);
+                UI.mainGameView.mainGameViewInfoPanel.LabelHptext.setText(""+controller.playerTankHp);
             }
 
             //刷新界面
