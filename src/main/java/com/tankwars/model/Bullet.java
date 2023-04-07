@@ -47,8 +47,6 @@ public class Bullet {
         for (Tank tank:tanks) {
             if (this.getRectangle().intersects(tank.getNormalRectangle())){
                 if (this.tankType!=tank.type) {
-                    System.out.println("子弹碰撞坦克");
-
 
                     controller.musicUtil.boomMusic();
                     controller.boomList.add(new Boom(tank.x,tank.y));
@@ -57,11 +55,15 @@ public class Bullet {
 
                     //不可以在这里删除，打中添加到数组到外面删除
                     if (--tank.blood==0&&tank.type==1){
-                        controller.playerTankHp--;
-                        tank.x=90;
-                        tank.y=475;
-                        tank.blood=3;
+                        if (--controller.playerTankHp==0){
+                            controller.playerTanks.remove(tank);
+                        }else {
+                            tank.x=90;
+                            tank.y=475;
+                            tank.blood=3;
+                        }
                     }
+
 
                     if (tank.blood<=0){
                         switch (tank.color){

@@ -37,6 +37,52 @@ public class TankControlKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
         updatePlayerTankControl();
+
+        if (controller.playerTanks.contains(controller.playerTank1)){
+            //玩家一
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                playerTank1.upDateDirectionState();
+                playerTank1.upMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                playerTank1.upDateDirectionState();
+                playerTank1.downMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                playerTank1.upDateDirectionState();
+                playerTank1.leftMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                playerTank1.upDateDirectionState();
+                playerTank1.rightMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                playerTank1.attack();
+            }
+        }
+
+        if (controller.playerTanks.contains(controller.playerTank2)){
+            //玩家二
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
+                playerTank2.upDateDirectionState();
+                playerTank2.upMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                playerTank2.upDateDirectionState();
+                playerTank2.downMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                playerTank2.upDateDirectionState();
+                playerTank2.leftMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                playerTank2.upDateDirectionState();
+                playerTank2.rightMove = true;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                playerTank2.attack();
+            }
+        }
         //开始和暂停
         if (e.getKeyCode() == KeyEvent.VK_P) {
             controller.isStart=false;
@@ -50,47 +96,9 @@ public class TankControlKeyListener extends KeyAdapter {
             System.out.println("游戏继续");
         }
 
-        //玩家一
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            playerTank1.upDateDirectionState();
-            playerTank1.upMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-            playerTank1.upDateDirectionState();
-            playerTank1.downMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            playerTank1.upDateDirectionState();
-            playerTank1.leftMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            playerTank1.upDateDirectionState();
-            playerTank1.rightMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            playerTank1.attack();
-        }
 
-        //玩家而
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            playerTank2.upDateDirectionState();
-            playerTank2.upMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            playerTank2.upDateDirectionState();
-            playerTank2.downMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            playerTank2.upDateDirectionState();
-            playerTank2.leftMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            playerTank2.upDateDirectionState();
-            playerTank2.rightMove = true;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            playerTank2.attack();
-        }
+
+
     }
 
 
