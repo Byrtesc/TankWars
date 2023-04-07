@@ -51,7 +51,6 @@ public class MainGameViewInfoPanel extends JPanel {
         labelRedTank = new JLabel("x 0");
 
 
-
         //label设置图片
         labelWhiteTank.setIcon(new ImageIcon("images/whiteTank.png"));
         labelYellowTank.setIcon(new ImageIcon("images/yellowTank.png"));
@@ -84,16 +83,22 @@ public class MainGameViewInfoPanel extends JPanel {
         middlePanel.setBackground(new Color(232, 139, 139));
         middlePanel.setSize(200, 200);
         middlePanel.setLayout(null);
-        JLabel labelOperationHelp = new JLabel("<html>\n" +
-                "  <h3>游戏玩法:<br></h1>\n" +
-                "  <div style=\"font-size:10px;\">\n" +
-                "    &emsp&emsp向上：W&emsp;&emsp;向下：S<br>\n" +
-                "    <br>\n" +
+        JLabel labelOperationHelp = new JLabel("<html>" +
+                "  &emsp&emsp;游戏操作:<br>" +
+                "  &emsp&emsp;玩家一:<br>" +
+                "  <div style=\"font-size:10px;\">" +
+                "    &emsp&emsp向上：W&emsp;&emsp;向下：S<br>" +
+                "    &emsp&emsp向左：A&emsp;&emsp;向右：D<br>" +
                 "    &emsp&emsp射击：J<br>\n" +
-                "    <br>\n" +
-                "    &emsp&emsp暂停：P&emsp;&emsp;继续：C\n" +
-                "  </div>\n" +
-                "</html>\n");
+                "    &emsp&emsp暂停：P&emsp;&emsp;继续：C" +
+                "  </div>" +
+                "  &emsp&emsp;玩家二:<br>" +
+                "  <div style=\"font-size:10px;\">" +
+                "    &emsp&emsp向上：↑&emsp;&emsp;向下：↓<br>" +
+                "    &emsp&emsp向左：←&emsp;&emsp;向右：→<br>" +
+                "    &emsp&emsp射击：Enter<br>\n" +
+                "  </div>" +
+                "</html>");
         labelOperationHelp.setHorizontalTextPosition(JLabel.CENTER);
         labelOperationHelp.setVerticalAlignment(JLabel.TOP);
         labelOperationHelp.setBounds(0, 0, 200, 200);
@@ -155,8 +160,8 @@ public class MainGameViewInfoPanel extends JPanel {
         gridBagLayout.setConstraints(labelAllGetScoreValues, gbc);
 
 
-        LabelHpIcon=new JLabel("坦克生命值 ");
-        LabelHptext=new JLabel("0");
+        LabelHpIcon = new JLabel("坦克生命值 ");
+        LabelHptext = new JLabel("0");
         LabelHpIcon.setFont(new Font(Font.DIALOG, 1, 15));
         LabelHptext.setFont(new Font(Font.DIALOG, 1, 15));
         LabelHpIcon.setIcon(new ImageIcon("images/hp.png"));

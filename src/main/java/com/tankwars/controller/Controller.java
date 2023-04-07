@@ -88,6 +88,7 @@ public class Controller {
 
     public Tank playerTank1;
     public Tank playerTank2;
+    public int playerTankHp;
 
 
     public Controller() {
@@ -148,6 +149,7 @@ public class Controller {
         walls.addAll(homeNormalWalls);
         playerTank1 = new Tank(90, 475, 1, 3, 3, "", this);
         //我方坦克1
+        this.playerTankHp=playerTank1.hp;
         playerTanks.add(playerTank1);
         if (playerNum == 2) {
             playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
