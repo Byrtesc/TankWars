@@ -25,10 +25,12 @@ public class Boom {
         this.y = y;
     }
 
-    public void drawImages(Graphics g){
-        for (int i=0;i<image.length;i++){
-            g.drawImage(image[i],x,y,40,40,null);
-        }
+    public void drawImages(Graphics g) {
+//        for (int i=0;i<image.length;i++){
+//            g.drawImage(new ImageIcon("images/tankboom/tankboom"+i+".png").getImage(),x,y,60,60,null);
+//        }
+        g.drawImage(new ImageIcon("images/boom.gif").getImage(), x, y, 60, 60, null);
+
     }
 
 }

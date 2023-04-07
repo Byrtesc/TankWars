@@ -106,32 +106,39 @@ public class TankControlKeyListener extends KeyAdapter {
     public void keyReleased(KeyEvent e) {
         super.keyReleased(e);
         updatePlayerTankControl();
-        if (e.getKeyCode() == KeyEvent.VK_W) {
-            playerTank1.upMove = false;
+        if (controller.playerTanks.contains(controller.playerTank1)){
+            if (e.getKeyCode() == KeyEvent.VK_W) {
+                playerTank1.upMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                playerTank1.downMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_A) {
+                playerTank1.leftMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                playerTank1.rightMove = false;
+            }
         }
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-            playerTank1.downMove = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_A) {
-            playerTank1.leftMove = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D) {
-            playerTank1.rightMove = false;
+        if (controller.playerTanks.contains(controller.playerTank2)){
+            if (e.getKeyCode() == KeyEvent.VK_UP) {
+                playerTank2.upMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                playerTank2.downMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                playerTank2.leftMove = false;
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                playerTank2.rightMove = false;
+            }
         }
 
 
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            playerTank2.upMove = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            playerTank2.downMove = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            playerTank2.leftMove = false;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            playerTank2.rightMove = false;
-        }
+
+
+
 
     }
 }

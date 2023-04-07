@@ -22,7 +22,7 @@ import java.util.Random;
 public class RefreshTimer {
     public Timer timer;
     Controller controller;
-    int boomFreshTime = 10;
+    int boomFreshTime = 90;
 
     public RefreshTimer(Controller controller) {
         this.controller = controller;
@@ -103,7 +103,7 @@ public class RefreshTimer {
             if (boomFreshTime == 0) {
                 //清空爆炸效果
                 controller.boomList.clear();
-                boomFreshTime = 20;
+                boomFreshTime = 90;
             } else {
                 boomFreshTime--;
             }
