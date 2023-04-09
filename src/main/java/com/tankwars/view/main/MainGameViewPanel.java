@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.main;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.TankControlKeyListener;

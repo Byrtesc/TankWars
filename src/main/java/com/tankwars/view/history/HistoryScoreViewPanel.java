@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.history;
 
 import javax.swing.*;
 import java.awt.*;

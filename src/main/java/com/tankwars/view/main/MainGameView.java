@@ -1,13 +1,12 @@
-package com.tankwars.view;
+package com.tankwars.view.main;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.MenuBarListener;
 import com.tankwars.controller.listeners.WindowsListener;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 /**
  * @Author yangmingquan
@@ -90,6 +89,6 @@ public class MainGameView extends JFrame {
         //添加按键监听器开始或暂停
         add(mainGameViewPanel, BorderLayout.CENTER);
         add(mainGameViewInfoPanel, BorderLayout.EAST);
-        setVisible(true);
+        setVisible(false);
     }
 }

@@ -1,9 +1,9 @@
-package com.tankwars.view;
+package com.tankwars.view.rank;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
-import java.util.List;
 
 /**
  * @Author yangmingquan

@@ -32,7 +32,10 @@ public class RefreshTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            if (controller.playerHomeHp==0){
+                JOptionPane.showMessageDialog(null,"游戏结束，你输了","游戏结束",JOptionPane.WARNING_MESSAGE);
+                timer.stop();
+            }
             //检查出生点是否为空，出生坦克
             if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
                 if (controller.generateTime != 0) {
@@ -124,11 +127,14 @@ public class RefreshTimer {
                 bullet.hitTank(controller.playerTanks);
                 bullet.hitBuilding(controller.walls);
                 bullet.hitBullet(controller.bullets);
+                bullet.hitHome();
             }
             //子弹移动
             for (Bullet bullet : controller.bullets) {
                 bullet.move();
             }
+
+
 
             //倒计时消除buff
             //穿甲弹

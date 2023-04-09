@@ -40,10 +40,12 @@ public class CustomViewListener implements ActionListener {
             case "normalGame":
                 UI.customSettingView.customSettingViewPanel.stageNumCombox.setEnabled(false);
                 UI.customSettingView.customSettingViewPanel.tankSpeedCombox.setEnabled(false);
+                controller.customModel=false;
                 break;
             case "customGame":
                 UI.customSettingView.customSettingViewPanel.stageNumCombox.setEnabled(true);
                 UI.customSettingView.customSettingViewPanel.tankSpeedCombox.setEnabled(true);
+                controller.customModel=true;
                 break;
         }
     }

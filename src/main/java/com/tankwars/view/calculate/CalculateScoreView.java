@@ -1,11 +1,10 @@
-package com.tankwars.view;
+package com.tankwars.view.calculate;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.CalculateScoreWindowListener;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  * @Author yangmingquan

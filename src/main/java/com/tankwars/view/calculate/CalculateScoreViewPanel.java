@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.calculate;
 
 import javax.swing.*;
 import java.awt.*;

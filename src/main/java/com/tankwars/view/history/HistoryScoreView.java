@@ -1,6 +1,6 @@
-package com.tankwars.view;
+package com.tankwars.view.history;
 
-import com.tankwars.controller.listeners.WindowsListener;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
 import java.util.List;

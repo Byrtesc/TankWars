@@ -300,8 +300,10 @@ public class Scence {
     }
 
     public void drawMap(Graphics g) {
-        Image homeImg = new ImageIcon("images/home.png").getImage();
-        g.drawImage(homeImg, 250, 475, 50, 50, null);
+        if (controller.playerHomeHp>=1){
+            Image homeImg = new ImageIcon("images/home.png").getImage();
+            g.drawImage(homeImg, 250, 475, 50, 50, null);
+        }
 
         for (BaseObstacle wall : this.obstacleList.get(controller.selectedMap)) {
             wall.drawing(g);

@@ -46,8 +46,9 @@ public class WelcomeViewListener implements ActionListener {
                 }
                 UI.mainGameView.mainGameViewInfoPanel.labelPlayerNameValues.setText(userName);
                 UI.welcomeView.setVisible(false);
-                UI.mainGameView.setVisible(true);
-                UI.historyScoreView.setVisible(true);
+                UI.selectModelView.setVisible(true);
+//                UI.mainGameView.setVisible(true);
+//                UI.historyScoreView.setVisible(true);
                 break;
             case "exit":
                 int result = JOptionPane.showConfirmDialog(null, "请问是否要退出游戏", null, JOptionPane.YES_NO_OPTION);

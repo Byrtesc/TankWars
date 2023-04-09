@@ -26,6 +26,7 @@ public class MenuBarListener implements ActionListener {
         switch (e.getActionCommand()) {
             case "startGame":
                 controller.isStart=true;
+                controller.updateGameNewData();
                 controller.refreshTimer.timer.start();
                 UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 break;
@@ -35,6 +36,7 @@ public class MenuBarListener implements ActionListener {
                 break;
             case "restartGame":
                 controller.refreshTimer.timer.stop();
+                controller.playerHomeHp=1;
                 controller.isStart=true;
                 controller.updateGameNewData();
                 controller.refreshTimer.timer.start();

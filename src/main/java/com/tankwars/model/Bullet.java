@@ -139,6 +139,13 @@ public class Bullet {
         }
     }
 
+    public void hitHome(){
+        Rectangle home = new Rectangle(250, 475, 50, 50);
+        if (this.getRectangle().intersects(home)){
+            controller.playerHomeHp=0;
+        }
+    }
+
     public void drawing(Graphics g) {
         g.drawImage(bullet, this.x, this.y, 10, 10, null);
     }

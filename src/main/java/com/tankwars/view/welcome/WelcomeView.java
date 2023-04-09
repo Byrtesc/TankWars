@@ -1,11 +1,10 @@
-package com.tankwars.view;
+package com.tankwars.view.welcome;
 
 import com.tankwars.controller.Controller;
-import com.tankwars.controller.listeners.WelcomeViewListener;
 import com.tankwars.controller.listeners.WindowsListener;
+import com.tankwars.view.UI;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * @Author yangmingquan

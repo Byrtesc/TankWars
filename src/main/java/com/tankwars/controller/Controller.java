@@ -89,6 +89,8 @@ public class Controller {
     public Tank playerTank1;
     public Tank playerTank2;
     public int playerTankHp;
+    public int playerHomeHp;
+    public boolean customModel=false;
 
 
     public Controller() {
@@ -122,9 +124,9 @@ public class Controller {
         nowGreenTankNum = 0;//现在绿色坦克数量
         nowBlueTankNum = 0;//现在蓝色坦克数量
         nowRedTankNum = 0;//现在红色坦克数量
+        playerHomeHp = 1;//家的生命
         //遍历
         for (Integer i : scence.tankTypeList.get(selectedMap)) {
-            System.out.println(i);
             switch (i.intValue()) {
                 case 1:
                     nowWhiteTankNum++;
@@ -145,12 +147,15 @@ public class Controller {
         }
         scence.updateMapData();
         playerTanks.clear();
+        bullets.clear();
+        boomList.clear();
         walls = scence.obstacleList.get(selectedMap);
         walls.addAll(homeNormalWalls);
         playerTank1 = new Tank(90, 475, 1, 3, 3, "", this);
         //我方坦克1
         this.playerTankHp=playerTank1.hp;
         playerTanks.add(playerTank1);
+        System.out.println(playerNum);
         if (playerNum == 2) {
             playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);

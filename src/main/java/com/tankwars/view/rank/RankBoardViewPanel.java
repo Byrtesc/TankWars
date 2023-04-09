@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.rank;
 
 import com.tankwars.controller.Controller;
 

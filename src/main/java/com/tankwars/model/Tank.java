@@ -216,7 +216,7 @@ public class Tank {
     public boolean checkCollisionTank(List<Tank> tanks) {
         for (Tank tank : tanks) {
             if (this != tank) {
-                if (tank.getRectangle().intersects(this.getRectangle())) {
+                if (tank.getNormalRectangle().intersects(this.getRectangle())) {
                     if (type != 1) {//玩家坦克不触发随机方向
                         ranDirection();
                     }

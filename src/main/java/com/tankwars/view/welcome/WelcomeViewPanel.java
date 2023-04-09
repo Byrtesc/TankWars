@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.welcome;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.controller.listeners.WelcomeViewListener;
@@ -46,7 +46,10 @@ public class WelcomeViewPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Image bgimg = new ImageIcon("images/background.png").getImage();
+        Image bgimg = new ImageIcon("images/bg/bg.png").getImage();
         g.drawImage(bgimg, 0, 0, 800, 600, null);
+
+        Image bgimg1 = new ImageIcon("images/bg/bg2.png").getImage();
+        g.drawImage(bgimg1, 98, 130, 600, 300, null);
     }
 }

@@ -1,4 +1,4 @@
-package com.tankwars.view;
+package com.tankwars.view.main;
 
 import com.tankwars.controller.Controller;
 
@@ -103,7 +103,6 @@ public class MainGameViewInfoPanel extends JPanel {
         labelOperationHelp.setVerticalAlignment(JLabel.TOP);
         labelOperationHelp.setBounds(0, 0, 200, 200);
         middlePanel.add(labelOperationHelp);
-
 
         //下容器
         bottomPanel.setBackground(new Color(24, 210, 12, 255));

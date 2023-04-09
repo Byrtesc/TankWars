@@ -1,6 +1,14 @@
 package com.tankwars.view;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.view.calculate.CalculateScoreView;
+import com.tankwars.view.custom.CustomSettingView;
+import com.tankwars.view.help.HelpTipsView;
+import com.tankwars.view.history.HistoryScoreView;
+import com.tankwars.view.main.MainGameView;
+import com.tankwars.view.rank.RankBoardView;
+import com.tankwars.view.select.SelectModelView;
+import com.tankwars.view.welcome.WelcomeView;
 
 /**
  * @Author yangmingquan
@@ -18,10 +26,12 @@ public class UI {
     public static RankBoardView rankBoardView;
     public static HelpTipsView helpTipsView;
     public static CustomSettingView customSettingView;
+    public static SelectModelView selectModelView;
     public static final String GAME_AUTHOR_NAME = "坦克大战       姓名:杨铭泉       班级:JX2302       学号:JX230219";
     public UI(Controller controller) {
-//        welcomeView =new WelcomeView(controller);
+        welcomeView =new WelcomeView(controller);
         mainGameView = new MainGameView(controller);
+        selectModelView = new SelectModelView(controller);
         historyScoreView=new HistoryScoreView();
         calculateScoreView=new CalculateScoreView(controller);
         rankBoardView=new RankBoardView(controller);
