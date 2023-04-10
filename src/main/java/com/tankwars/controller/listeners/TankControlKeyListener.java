@@ -96,7 +96,7 @@ public class TankControlKeyListener extends KeyAdapter {
             System.out.println("游戏继续");
         }
 
-        if (controller.diyModel) {//diy地图模式
+        if (controller.diyModel&&controller.diyGameIsStart==false) {//diy地图模式
             System.out.println(e.getKeyCode());
             switch (e.getKeyCode()) {
                 case KeyEvent.VK_UP:
@@ -127,17 +127,13 @@ public class TankControlKeyListener extends KeyAdapter {
                     controller.diyBlock.updateBlock(0);
                     break;
                 case KeyEvent.VK_SPACE:
-                    System.out.println(controller.diyMapObstacleList);
                     controller.diyBlock.putBlock();
-                    System.out.println(controller.diyMapObstacleList);
                     break;
                 case KeyEvent.VK_ENTER:
                     break;
             }
             UI.mainGameView.mainGameViewPanel.repaint();
         }
-
-
     }
 
 

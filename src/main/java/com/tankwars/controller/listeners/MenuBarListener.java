@@ -1,6 +1,7 @@
 package com.tankwars.controller.listeners;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.model.Tank;
 import com.tankwars.view.UI;
 
 import java.awt.event.ActionEvent;
@@ -25,8 +26,16 @@ public class MenuBarListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "startGame":
-                controller.isStart=true;
-                controller.updateGameNewData();
+                if (!controller.diyModel){
+                    controller.isStart=true;
+                    controller.updateGameNewData();
+                }else {
+                    controller.diyGameIsStart=true;
+                    controller.playerHomeHp=1;
+                    controller.walls.addAll(controller.diyMapObstacleList);
+                    controller.playerTank1 = new Tank(90, 475, 1, 3, 3, "", controller);
+                    controller.playerTanks.add(controller.playerTank1);
+                }
                 controller.refreshTimer.timer.start();
                 UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 break;

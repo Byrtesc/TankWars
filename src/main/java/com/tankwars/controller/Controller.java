@@ -94,6 +94,7 @@ public class Controller {
     public int playerHomeHp;
     public boolean customModel=false;
     public boolean diyModel=false;
+    public boolean diyGameIsStart=false;
     public DiyBlock diyBlock;
     public Rectangle homeRectangle = new Rectangle(250, 475, 50, 50);
 
@@ -114,12 +115,12 @@ public class Controller {
         items = new ArrayList<>();
         removeItems = new ArrayList<>();
         diyMapObstacleList=new ArrayList<>();
-
+        walls=new ArrayList<>();
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
 
-        updateGameNewData();
+//        updateGameNewData();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
     }

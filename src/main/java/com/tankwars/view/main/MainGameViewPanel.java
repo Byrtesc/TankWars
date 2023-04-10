@@ -58,7 +58,7 @@ public class MainGameViewPanel extends JPanel {
                 boom.drawImages(g);
             }
         }
-        if (controller.diyModel) {
+        if (controller.diyModel==true&&controller.diyGameIsStart==false) {
             Image homeImg = new ImageIcon("images/home.png").getImage();
             g.drawImage(homeImg, 250, 475, 50, 50, null);
 
@@ -67,5 +67,36 @@ public class MainGameViewPanel extends JPanel {
             }
             controller.diyBlock.drawing(g);
         }
+        if (controller.diyGameIsStart){
+            if (controller.playerHomeHp>0){
+                Image homeImg = new ImageIcon("images/home.png").getImage();
+                g.drawImage(homeImg, 250, 475, 50, 50, null);
+            }
+            for (Items item : controller.items) {
+                item.drawing(g);
+            }
+
+            for (Tank playerTank : controller.playerTanks) {
+                playerTank.drawing(g);
+            }
+
+            for (Tank enemyTank : controller.enemyTanks) {
+                enemyTank.drawing(g);
+            }
+
+            for (BaseObstacle obstacle:controller.walls){
+                obstacle.drawing(g);
+            }
+
+            for (Bullet bullet : controller.bullets) {
+                bullet.drawing(g);
+            }
+
+            for (Boom boom : controller.boomList) {
+                boom.drawImages(g);
+            }
+
+        }
+
     }
 }
