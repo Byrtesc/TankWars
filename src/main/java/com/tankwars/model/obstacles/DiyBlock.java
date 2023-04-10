@@ -75,8 +75,8 @@ public class DiyBlock extends BaseObstacle {
                 if (result == JOptionPane.NO_OPTION||result == JOptionPane.CLOSED_OPTION) {
                     return;
                 }else {
-                    controller.diyMapObstacleList.remove(obstacle);
                     putBlocks();
+                    controller.diyMapObstacleList.remove(obstacle);
                 }
             }
         }
