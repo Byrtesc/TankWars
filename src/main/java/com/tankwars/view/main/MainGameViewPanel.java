@@ -53,6 +53,10 @@ public class MainGameViewPanel extends JPanel {
                 bullet.drawing(g);
             }
 
+            if (controller.diyModel){
+
+            }
+
             for (Boom boom : controller.boomList) {
                 boom.drawImages(g);
             }

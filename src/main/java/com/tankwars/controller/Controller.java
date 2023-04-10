@@ -93,6 +93,7 @@ public class Controller {
     public boolean customModel=false;
     public boolean diyModel=false;
 
+    public List<BaseObstacle> diyMapObstacleList;
 
     public Controller() {
         dbUtil = new DbUtil();
@@ -108,6 +109,7 @@ public class Controller {
         roads = new ArrayList<>();
         items = new ArrayList<>();
         removeItems = new ArrayList<>();
+        diyMapObstacleList=new ArrayList<>();
 
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
