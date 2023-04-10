@@ -37,7 +37,7 @@ public class SelectModelViewPanel extends JPanel {
         twoPlayerButton.addActionListener(selectModelListener);
         twoPlayerButton.setActionCommand("twoPlayer");
         customButton.addActionListener(selectModelListener);
-        customButton.setActionCommand("custom");
+        customButton.setActionCommand("customModel");
 
         gridBagLayout.setConstraints(onePlayerButton,gbc);
         gridBagLayout.setConstraints(twoPlayerButton,gbc);

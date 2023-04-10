@@ -1,6 +1,7 @@
 package com.tankwars.controller.listeners;
 
 import com.tankwars.controller.Controller;
+import com.tankwars.model.obstacles.DiyBlock;
 import com.tankwars.view.UI;
 
 import java.awt.event.ActionEvent;
@@ -33,7 +34,11 @@ public class SelectModelListener implements ActionListener {
                 UI.mainGameView.setVisible(true);
                 UI.selectModelView.setVisible(false);
                 break;
-            case "customMap":
+            case "customModel":
+                controller.diyModel=true;
+                controller.diyBlock=new DiyBlock(0,0,controller);
+                UI.mainGameView.setVisible(true);
+                UI.selectModelView.setVisible(false);
                 break;
         }
     }

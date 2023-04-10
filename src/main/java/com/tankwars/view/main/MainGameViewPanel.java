@@ -6,6 +6,7 @@ import com.tankwars.model.Boom;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Items;
 import com.tankwars.model.Tank;
+import com.tankwars.model.obstacles.BaseObstacle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,13 +54,15 @@ public class MainGameViewPanel extends JPanel {
                 bullet.drawing(g);
             }
 
-            if (controller.diyModel){
-
-            }
-
             for (Boom boom : controller.boomList) {
                 boom.drawImages(g);
             }
+        }
+        if (controller.diyModel) {
+            for (BaseObstacle obstacle:controller.diyMapObstacleList){
+                obstacle.drawing(g);
+            }
+            controller.diyBlock.drawing(g);
         }
     }
 }

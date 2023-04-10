@@ -3,6 +3,7 @@ package com.tankwars.controller;
 import com.tankwars.model.*;
 import com.tankwars.model.obstacles.BirthPoint;
 import com.tankwars.model.obstacles.BaseObstacle;
+import com.tankwars.model.obstacles.DiyBlock;
 import com.tankwars.utils.DbUtil;
 import com.tankwars.utils.MusicUtil;
 
@@ -92,6 +93,7 @@ public class Controller {
     public int playerHomeHp;
     public boolean customModel=false;
     public boolean diyModel=false;
+    public DiyBlock diyBlock;
 
     public List<BaseObstacle> diyMapObstacleList;
 
