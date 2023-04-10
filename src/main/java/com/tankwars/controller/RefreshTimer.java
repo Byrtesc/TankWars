@@ -78,7 +78,6 @@ public class RefreshTimer {
                     if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks) && controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
                         controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1, 1, "white", controller));
                     }
-                    System.out.println(controller.enemyTanks);
                 }
             }
 
