@@ -91,6 +91,7 @@ public class Controller {
     public int playerTankHp;
     public int playerHomeHp;
     public boolean customModel=false;
+    public boolean diyModel=false;
 
 
     public Controller() {
@@ -165,6 +166,25 @@ public class Controller {
         nowStageEnemyTankNum = 0;
     }
 
+    public int saveRankScore(String userName ,int score){
+        dbUtil.initConnection();
+        String sql = "select * from user where user_name='" + userName + "'";
+        ResultSet resultSet = dbUtil.execQuery(sql);
+        int uid=0;
+        try{
+            if (resultSet.next()){
+                uid=resultSet.getInt("id");
+            }else {
+                return 0;
+            }
+            System.out.println("存入用户"+userName+" id:"+uid);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        sql="insert into score (score,uid) values ("+score+","+uid+")";
+        int result=dbUtil.execUpdate(sql);
+        return result;
+    }
     public List<Map> getRankInfo() {
         dbUtil.initConnection();
         String sql = "select user.user_name,score,time from score inner join user on score.uid=user.id order by score desc limit 0,10";

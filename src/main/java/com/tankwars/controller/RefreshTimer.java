@@ -129,12 +129,11 @@ public class RefreshTimer {
                 bullet.hitBullet(controller.bullets);
                 bullet.hitHome();
             }
+
             //子弹移动
             for (Bullet bullet : controller.bullets) {
                 bullet.move();
             }
-
-
 
             //倒计时消除buff
             //穿甲弹

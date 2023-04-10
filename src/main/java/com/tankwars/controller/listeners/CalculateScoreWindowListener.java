@@ -35,11 +35,16 @@ public class CalculateScoreWindowListener extends WindowAdapter {
                 controller.redTankNum=0;
                 controller.nowScore=0;
                 controller.nowDesTankNum=0;
-            } else if (controller.selectedMap==8) {
+            } else {
+                UI.calculateScoreView.setVisible(false);
+                controller.refreshTimer.timer.stop();
                 JOptionPane.showMessageDialog(null,"恭喜通关，您的最终得分是:"+controller.allScore,"恭喜通关",JOptionPane.INFORMATION_MESSAGE);
                 System.out.println(controller.selectedMap);
                 //存入积分
-                UI.calculateScoreView.setVisible(false);
+                int saveResult=controller.saveRankScore(UI.mainGameView.mainGameViewInfoPanel.labelPlayerNameValues.getText(), controller.allScore);
+                if (saveResult>0){
+                    JOptionPane.showMessageDialog(null,"您的积分保存成功","恭喜通关",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         }else {
             UI.calculateScoreView.setVisible(false);
