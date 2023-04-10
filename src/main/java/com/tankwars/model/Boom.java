@@ -29,7 +29,7 @@ public class Boom {
 //        for (int i=0;i<image.length;i++){
 //            g.drawImage(new ImageIcon("images/tankboom/tankboom"+i+".png").getImage(),x,y,60,60,null);
 //        }
-        g.drawImage(new ImageIcon("images/boom.gif").getImage(), x, y, 60, 60, null);
+        g.drawImage(new ImageIcon("images/boom.gif").getImage(), x, y, 50, 50, null);
 
     }
 

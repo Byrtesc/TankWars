@@ -20,8 +20,8 @@ public class Tank {
     public int x;
     public int y;
     public int oldX, oldY;
-    public final int height = 40;
-    public final int width = 40;
+    public final int height = 25;
+    public final int width = 25;
     public int speed = 3;
     public int hp;//生命值指重生次数
     public int blood = 3;//一条命得血量
@@ -230,9 +230,9 @@ public class Tank {
     public void drawing(Graphics g) {
         g.setColor(Color.RED);
         if (this.y == 0) {
-            g.fillRect(this.x, this.y + 45, 13 * blood, 5);
+            g.fillRect(this.x, this.y + 45, width / 3 * blood, 5);
         } else {
-            g.fillRect(this.x, this.y - 10, 13 * blood, 5);
+            g.fillRect(this.x, this.y - 10, width / 3 * blood, 5);
         }
 
         g.drawImage(tankImg, this.x, this.y, this.width, this.height, null);
