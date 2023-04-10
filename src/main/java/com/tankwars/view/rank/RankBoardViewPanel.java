@@ -55,13 +55,14 @@ public class RankBoardViewPanel extends JPanel {
         gbc.gridwidth=1;
         gridBagLayout.setConstraints(labelTmp1,gbc);
         gridBagLayout.setConstraints(labelTmp2,gbc);
-        gridBagLayout.setConstraints(labelTmp3,gbc);
         gbc.gridwidth=0;
-        gridBagLayout.setConstraints(labelTmp4,gbc);
+        gridBagLayout.setConstraints(labelTmp3,gbc);
+
+//        gridBagLayout.setConstraints(labelTmp4,gbc);
         this.add(labelTmp1);
         this.add(labelTmp2);
         this.add(labelTmp3);
-        this.add(labelTmp4);
+//        this.add(labelTmp4);
 
 
         if (scoreList != null) {
@@ -91,13 +92,14 @@ public class RankBoardViewPanel extends JPanel {
                 labelTmpDatetime.setText(map.get("time").toString());
                 gridBagLayout.setConstraints(labelTmpRankding,gbc);
                 gridBagLayout.setConstraints(labelTmpName,gbc);
-                gridBagLayout.setConstraints(labelTmpScore,gbc);
                 gbc.gridwidth=0;
-                gridBagLayout.setConstraints(labelTmpDatetime,gbc);
+                gridBagLayout.setConstraints(labelTmpScore,gbc);
+
+//                gridBagLayout.setConstraints(labelTmpDatetime,gbc);
                 this.add(labelTmpRankding);
                 this.add(labelTmpName);
                 this.add(labelTmpScore);
-                this.add(labelTmpDatetime);
+//                this.add(labelTmpDatetime);
                 i++;
             }
         }

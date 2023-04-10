@@ -72,7 +72,13 @@ public class DiyBlock extends BaseObstacle {
         List<BaseObstacle> removeList=new ArrayList<>();
         for (BaseObstacle obstacle : controller.diyMapObstacleList) {
             Rectangle tmpRect = new Rectangle(this.x, this.y, width, height);
-            if (controller.homeNormalWalls.contains(obstacle)||controller.homeNormalWalls.contains(controller.homeRectangle)){
+            for (BaseObstacle homeWall: controller.homeNormalWalls){
+                if (tmpRect.intersects(homeWall.getRectangle())) {
+                    JOptionPane.showMessageDialog(null, "堡垒位置禁止放置!", "禁止放置", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+            if (tmpRect.intersects(controller.homeRectangle)){
                 JOptionPane.showMessageDialog(null, "堡垒位置禁止放置!", "禁止放置", JOptionPane.ERROR_MESSAGE);
                 return;
             }
