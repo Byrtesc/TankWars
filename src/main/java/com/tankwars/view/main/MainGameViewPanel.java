@@ -59,6 +59,9 @@ public class MainGameViewPanel extends JPanel {
             }
         }
         if (controller.diyModel) {
+            Image homeImg = new ImageIcon("images/home.png").getImage();
+            g.drawImage(homeImg, 250, 475, 50, 50, null);
+
             for (BaseObstacle obstacle:controller.diyMapObstacleList){
                 obstacle.drawing(g);
             }

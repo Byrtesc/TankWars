@@ -8,6 +8,7 @@ import com.tankwars.utils.DbUtil;
 import com.tankwars.utils.MusicUtil;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,6 +95,7 @@ public class Controller {
     public boolean customModel=false;
     public boolean diyModel=false;
     public DiyBlock diyBlock;
+    public Rectangle homeRectangle = new Rectangle(250, 475, 50, 50);
 
     public List<BaseObstacle> diyMapObstacleList;
 

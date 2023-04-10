@@ -4,6 +4,8 @@ import com.tankwars.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Author yangmingquan
@@ -64,22 +66,26 @@ public class DiyBlock extends BaseObstacle {
 
     /**
      * 1 砖墙 2铁墙 3河流 4草丛
-     *
      * @param
      */
     public void putBlock() {
+        List<BaseObstacle> removeList=new ArrayList<>();
         for (BaseObstacle obstacle : controller.diyMapObstacleList) {
             Rectangle tmpRect = new Rectangle(this.x, this.y, width, height);
+            if (controller.homeNormalWalls.contains(obstacle)||controller.homeNormalWalls.contains(controller.homeRectangle)){
+                JOptionPane.showMessageDialog(null, "堡垒位置禁止放置!", "禁止放置", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             if (obstacle.getRectangle().intersects(tmpRect)) {
                 int result = JOptionPane.showConfirmDialog(null, "当前位置已有障碍物，是否覆盖?", "障碍物冲突!", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.NO_OPTION||result == JOptionPane.CLOSED_OPTION) {
                     return;
                 }else {
-                    putBlocks();
-                    controller.diyMapObstacleList.remove(obstacle);
+                    removeList.add(obstacle);
                 }
             }
         }
+        controller.diyMapObstacleList.removeAll(removeList);
         putBlocks();
     }
 

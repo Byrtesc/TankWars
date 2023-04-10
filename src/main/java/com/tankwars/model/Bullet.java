@@ -140,8 +140,7 @@ public class Bullet {
     }
 
     public void hitHome(){
-        Rectangle home = new Rectangle(250, 475, 50, 50);
-        if (this.getRectangle().intersects(home)){
+        if (this.getRectangle().intersects(controller.homeRectangle)){
             controller.playerHomeHp=0;
         }
     }

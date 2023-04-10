@@ -32,7 +32,7 @@ public class Scence {
     public Scence(Controller controller) {
         this.controller = controller;
 
-        //设置堡垒的铁墙
+        //设置堡垒的墙
         controller.homeNormalWalls.add(new Wall(9*25,18*25));
         controller.homeNormalWalls.add(new Wall(9*25,19*25));
         controller.homeNormalWalls.add(new Wall(9*25,20*25));

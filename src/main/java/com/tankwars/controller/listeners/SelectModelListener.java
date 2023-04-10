@@ -37,6 +37,7 @@ public class SelectModelListener implements ActionListener {
             case "customModel":
                 controller.diyModel=true;
                 controller.diyBlock=new DiyBlock(0,0,controller);
+                controller.diyMapObstacleList.addAll(controller.homeNormalWalls);
                 UI.mainGameView.setVisible(true);
                 UI.selectModelView.setVisible(false);
                 break;
