@@ -123,6 +123,9 @@ public class TankControlKeyListener extends KeyAdapter {
                 case KeyEvent.VK_4:
                     controller.diyBlock.updateBlock(4);
                     break;
+                case KeyEvent.VK_0:
+                    controller.diyBlock.updateBlock(0);
+                    break;
                 case KeyEvent.VK_SPACE:
                     System.out.println(controller.diyMapObstacleList);
                     controller.diyBlock.putBlock();

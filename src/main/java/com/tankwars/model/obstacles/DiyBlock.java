@@ -66,28 +66,34 @@ public class DiyBlock extends BaseObstacle {
 
     /**
      * 1 砖墙 2铁墙 3河流 4草丛
+     *
      * @param
      */
     public void putBlock() {
-        List<BaseObstacle> removeList=new ArrayList<>();
+        List<BaseObstacle> removeList = new ArrayList<>();
         for (BaseObstacle obstacle : controller.diyMapObstacleList) {
             Rectangle tmpRect = new Rectangle(this.x, this.y, width, height);
-            for (BaseObstacle homeWall: controller.homeNormalWalls){
+
+            for (BaseObstacle homeWall : controller.homeNormalWalls) {
                 if (tmpRect.intersects(homeWall.getRectangle())) {
                     JOptionPane.showMessageDialog(null, "堡垒位置禁止放置!", "禁止放置", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
-            if (tmpRect.intersects(controller.homeRectangle)){
+            if (tmpRect.intersects(controller.homeRectangle)) {
                 JOptionPane.showMessageDialog(null, "堡垒位置禁止放置!", "禁止放置", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             if (obstacle.getRectangle().intersects(tmpRect)) {
-                int result = JOptionPane.showConfirmDialog(null, "当前位置已有障碍物，是否覆盖?", "障碍物冲突!", JOptionPane.YES_NO_OPTION);
-                if (result == JOptionPane.NO_OPTION||result == JOptionPane.CLOSED_OPTION) {
-                    return;
-                }else {
+                if (block == 0) {
                     removeList.add(obstacle);
+                } else {
+                    int result = JOptionPane.showConfirmDialog(null, "当前位置已有障碍物，是否覆盖?", "障碍物冲突!", JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.NO_OPTION || result == JOptionPane.CLOSED_OPTION) {
+                        return;
+                    } else {
+                        removeList.add(obstacle);
+                    }
                 }
             }
         }
@@ -95,7 +101,7 @@ public class DiyBlock extends BaseObstacle {
         putBlocks();
     }
 
-    public void putBlocks(){
+    public void putBlocks() {
         switch (this.block) {
             case 1:
                 controller.diyMapObstacleList.add(new Wall(this.x, this.y));
@@ -111,6 +117,7 @@ public class DiyBlock extends BaseObstacle {
                 break;
         }
     }
+
     public void updateBlock(int block) {
         this.block = block;
         switch (block) {
@@ -125,6 +132,9 @@ public class DiyBlock extends BaseObstacle {
                 break;
             case 4:
                 this.image = new ImageIcon("images/woods.png").getImage();
+                break;
+            case 0:
+                this.image = new ImageIcon("images/diy/block.png").getImage();
                 break;
         }
     }
