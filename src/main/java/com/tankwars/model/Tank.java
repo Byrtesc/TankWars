@@ -164,6 +164,20 @@ public class Tank {
         if (this.x > 510) this.x = 510;
     }
 
+    public void moveToNodeList() {
+        controller.awf.updateObstacles(controller.walls);
+        for (Node node : controller.awf.getWayLine(controller.playerTank1, this)) {
+            if (this.x == node.x && this.y == node.y) {
+                continue;
+            } else {
+                //上
+                if (this.y > node.y * 25) {
+                    this.y = this.y - this.speed;
+                }
+            }
+        }
+    }
+
     public void ranDirection() {//随机方向
         Random random = new Random();
         int i = random.nextInt(4);
