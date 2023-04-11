@@ -1,6 +1,7 @@
 package com.tankwars.ai;
 
 import com.tankwars.model.Tank;
+import com.tankwars.model.obstacles.BaseObstacle;
 
 /**
  * @Author yangmingquan
@@ -34,5 +35,19 @@ public class Node {
     public Node(Tank tank){
         this.x=tank.x/25;
         this.y=tank.y/25;
+    }
+
+    public Node(BaseObstacle obstacle){
+        this.x=obstacle.x/25;
+        this.y=obstacle.y/25;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (((Node)obj).x==this.x&&((Node)obj).y==this.y){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
