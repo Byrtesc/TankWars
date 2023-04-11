@@ -1,6 +1,7 @@
 package com.tankwars.ai;
 
 import com.tankwars.model.Tank;
+import com.tankwars.model.obstacles.BaseObstacle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +118,7 @@ public class AutomaticWayFinding {//550*525
 
     public List<Node> aroundNode(Node node) {
         if (node.x == 22 && node.y == 21) {
-            System.out.println("越界");
+            System.out.println("防越界");
         }
         List<Node> list = new ArrayList<>();
         //上方节点
@@ -173,5 +174,13 @@ public class AutomaticWayFinding {//550*525
         h += Math.abs(currentNode.x - targetNode.x);
         h += Math.abs(currentNode.y - targetNode.y);
         return h;
+    }
+
+    public void updateObstacles(List<BaseObstacle> walls){
+        for (BaseObstacle baseObstacle:walls) {
+            if (!baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.Woods")){
+                this.obstaclesList.add(new Node(baseObstacle));
+            }
+        }
     }
 }

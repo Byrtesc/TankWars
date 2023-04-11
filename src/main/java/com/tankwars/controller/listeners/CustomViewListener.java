@@ -1,6 +1,8 @@
 package com.tankwars.controller.listeners;
 
+import com.tankwars.ai.Node;
 import com.tankwars.controller.Controller;
+import com.tankwars.model.obstacles.BaseObstacle;
 import com.tankwars.view.UI;
 
 import java.awt.event.ActionEvent;
@@ -32,10 +34,20 @@ public class CustomViewListener implements ActionListener {
                     controller.selectedMap= (int) UI.customSettingView.customSettingViewPanel.stageNumCombox.getSelectedItem()-1;
                 }
                 //System.out.println(UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem());
-                controller.updateGameNewData();
+                if (controller.selectedMap!=9){
+                    controller.updateGameNewData();
+                }else {
+                    //更新地图数据
+                    controller.scence.updateMapData();
+                    //获取地图障碍物
+                    controller.walls=controller.scence.obstacleList.get(controller.selectedMap);
+                    //把家放进去
+                    controller.walls.addAll(controller.homeNormalWalls);
+                }
                 UI.customSettingView.setVisible(false);
                 break;
             case "cancel":
+                UI.customSettingView.setVisible(false);
                 break;
             case "normalGame":
                 UI.customSettingView.customSettingViewPanel.stageNumCombox.setEnabled(false);

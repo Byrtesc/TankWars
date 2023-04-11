@@ -1,5 +1,6 @@
 package com.tankwars.controller;
 
+import com.tankwars.ai.AutomaticWayFinding;
 import com.tankwars.model.*;
 import com.tankwars.model.obstacles.BirthPoint;
 import com.tankwars.model.obstacles.BaseObstacle;
@@ -100,6 +101,9 @@ public class Controller {
 
     public List<BaseObstacle> diyMapObstacleList;
 
+    public AutomaticWayFinding awf;
+    public boolean aiMode=false;
+
     public Controller() {
         dbUtil = new DbUtil();
         homeIronWalls = new ArrayList<>();
@@ -120,7 +124,7 @@ public class Controller {
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
 
-//        updateGameNewData();
+        awf=new AutomaticWayFinding();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
     }

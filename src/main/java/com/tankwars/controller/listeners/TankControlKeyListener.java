@@ -44,17 +44,29 @@ public class TankControlKeyListener extends KeyAdapter {
             if (e.getKeyCode() == KeyEvent.VK_W) {
                 playerTank1.upDateDirectionState();
                 playerTank1.upMove = true;
+                playerTank1.downMove = false;
+                playerTank1.leftMove = false;
+                playerTank1.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_S) {
                 playerTank1.upDateDirectionState();
+                playerTank1.upMove = false;
                 playerTank1.downMove = true;
+                playerTank1.leftMove = false;
+                playerTank1.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_A) {
                 playerTank1.upDateDirectionState();
+                playerTank1.upMove = false;
+                playerTank1.downMove = false;
                 playerTank1.leftMove = true;
+                playerTank1.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_D) {
                 playerTank1.upDateDirectionState();
+                playerTank1.upMove = false;
+                playerTank1.downMove = false;
+                playerTank1.leftMove = false;
                 playerTank1.rightMove = true;
             }
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -67,17 +79,29 @@ public class TankControlKeyListener extends KeyAdapter {
             if (e.getKeyCode() == KeyEvent.VK_UP) {
                 playerTank2.upDateDirectionState();
                 playerTank2.upMove = true;
+                playerTank2.downMove = false;
+                playerTank2.leftMove = false;
+                playerTank2.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 playerTank2.upDateDirectionState();
+                playerTank2.upMove = false;
                 playerTank2.downMove = true;
+                playerTank2.leftMove = false;
+                playerTank2.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 playerTank2.upDateDirectionState();
+                playerTank2.upMove = false;
+                playerTank2.downMove = false;
                 playerTank2.leftMove = true;
+                playerTank2.rightMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                 playerTank2.upDateDirectionState();
+                playerTank2.upMove = false;
+                playerTank2.downMove = false;
+                playerTank2.leftMove = false;
                 playerTank2.rightMove = true;
             }
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {

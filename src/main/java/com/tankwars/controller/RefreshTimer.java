@@ -1,5 +1,6 @@
 package com.tankwars.controller;
 
+import com.tankwars.ai.Node;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Items;
 import com.tankwars.model.Tank;
@@ -8,6 +9,7 @@ import com.tankwars.view.UI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Random;
 
 
@@ -80,7 +82,6 @@ public class RefreshTimer {
                     }
                 }
             }
-
 
             //检测玩家碰撞，无碰撞就移动
             for (Tank playerTank : controller.playerTanks) {
@@ -236,5 +237,6 @@ public class RefreshTimer {
             UI.mainGameView.mainGameViewInfoPanel.repaint();
             UI.calculateScoreView.calculateScoreViewPanel.repaint();
         }
+
     };
 }

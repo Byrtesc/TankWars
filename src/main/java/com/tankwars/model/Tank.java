@@ -1,5 +1,6 @@
 package com.tankwars.model;
 
+import com.tankwars.ai.Node;
 import com.tankwars.controller.Controller;
 import com.tankwars.model.obstacles.BaseObstacle;
 
@@ -19,7 +20,6 @@ import java.util.Random;
 public class Tank {
     public int x;
     public int y;
-    public int oldX, oldY;
     public final int height = 25;
     public final int width = 25;
     public int speed = 3;
@@ -154,8 +154,6 @@ public class Tank {
 
     public void move() {//移动
         upDateDirectionState();
-        this.oldX = this.x;
-        this.oldY = this.y;
         if (upMove) this.y = this.y - this.speed;
         if (downMove) this.y = this.y + this.speed;
         if (leftMove) this.x = this.x - this.speed;
@@ -164,6 +162,18 @@ public class Tank {
         if (this.y > 490) this.y = 490;
         if (this.x < 0) this.x = 0;
         if (this.x > 510) this.x = 510;
+    }
+
+    public void moveToNode(List<Node> wayLine) {//移动
+        for (Node node:wayLine){
+
+        }
+        upDateDirectionState();
+        if (upMove) this.y = this.y - this.speed;
+        if (downMove) this.y = this.y + this.speed;
+        if (leftMove) this.x = this.x - this.speed;
+        if (rightMove) this.x = this.x + this.speed;
+
     }
 
     public void ranDirection() {//随机方向
@@ -230,7 +240,7 @@ public class Tank {
     public void drawing(Graphics g) {
         g.setColor(Color.RED);
         if (this.y == 0) {
-            g.fillRect(this.x, this.y + 45, width / 3 * blood, 5);
+            g.fillRect(this.x, this.y + 30, width / 3 * blood, 5);
         } else {
             g.fillRect(this.x, this.y - 10, width / 3 * blood, 5);
         }

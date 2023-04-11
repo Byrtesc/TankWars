@@ -33,8 +33,8 @@ public class TestMain {
         }
         AutomaticWayFinding automaticWayFinding =new AutomaticWayFinding();
         automaticWayFinding.obstaclesList=obstaclesList;
-        Tank tank = new Tank(500,500,3,1,1,"tank",controller);
-        Tank enemyTank = new Tank(0,0,3,1,1,"tank",controller);
+        Tank tank = new Tank(475,475,3,1,1,"tank",controller);
+        Tank enemyTank = new Tank(25,25,1,1,1,"tank",controller);
         List<Node> wayLine= automaticWayFinding.getWayLine(tank,enemyTank);
         for (Node node:wayLine){
             System.out.println(node.x+" "+node.y);
