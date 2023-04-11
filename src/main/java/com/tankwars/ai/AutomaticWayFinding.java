@@ -30,6 +30,9 @@ public class AutomaticWayFinding {//550*525
     }
 
     public List<Node> getWayLine(Tank tank, Tank enemyTank) {
+        obstaclesList.clear();
+        openList.clear();
+        closedList.clear();
         List<Node> wayList = new ArrayList<>();
         List<Node> tmpList = null;
 

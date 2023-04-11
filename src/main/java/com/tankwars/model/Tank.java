@@ -164,18 +164,6 @@ public class Tank {
         if (this.x > 510) this.x = 510;
     }
 
-    public void moveToNode(List<Node> wayLine) {//移动
-        for (Node node:wayLine){
-
-        }
-        upDateDirectionState();
-        if (upMove) this.y = this.y - this.speed;
-        if (downMove) this.y = this.y + this.speed;
-        if (leftMove) this.x = this.x - this.speed;
-        if (rightMove) this.x = this.x + this.speed;
-
-    }
-
     public void ranDirection() {//随机方向
         Random random = new Random();
         int i = random.nextInt(4);

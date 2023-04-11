@@ -99,13 +99,17 @@ public class RefreshTimer {
                 }
                 controller.runTime = 3000;
             }
-
             //检测敌方坦克碰撞，无碰撞就移动
             for (Tank enemyTank : controller.enemyTanks) {
                 if (!enemyTank.checkCollisionWall(controller.walls) && !enemyTank.checkCollisionTank(controller.playerTanks) && !enemyTank.checkCollisionTank(controller.enemyTanks)) {
                     enemyTank.move();
                 }
             }
+
+//            controller.awf.updateObstacles(controller.walls);
+//            for (Node node:controller.awf.getWayLine(controller.playerTank1,controller.enemyAiTank)) {
+//                System.out.println(node.x+"  "+node.y);
+//            }
 
             //清空打出了的、有了结果的子弹，也就是清空子弹壳
             controller.bullets.removeAll(controller.removeBullets);

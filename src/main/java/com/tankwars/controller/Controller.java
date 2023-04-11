@@ -102,6 +102,7 @@ public class Controller {
     public List<BaseObstacle> diyMapObstacleList;
 
     public AutomaticWayFinding awf;
+    public Tank enemyAiTank;
     public boolean aiMode=false;
 
     public Controller() {
@@ -123,7 +124,7 @@ public class Controller {
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
-
+        enemyAiTank=new Tank(0,0,2,3,1,"red",this);
         awf=new AutomaticWayFinding();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
@@ -172,6 +173,7 @@ public class Controller {
             playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);
         }
+
         items.clear();
         enemyTanks.clear();
         nowStageEnemyTankNum = 0;
