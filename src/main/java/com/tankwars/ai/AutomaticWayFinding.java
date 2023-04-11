@@ -1,7 +1,6 @@
 package com.tankwars.ai;
 
 import com.tankwars.model.Tank;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.internal.OPCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +9,11 @@ import java.util.List;
  * @Author yangmingquan
  * @Date 2023/4/10 16:53
  * @PackageName:com.tankwars.ai
- * @ClassName: FindWay
+ * @ClassName: AutomaticWayFinding
  * @Description: TODO
  * @Version 1.0
  */
-public class FindWay {//550*525
+public class AutomaticWayFinding {//550*525
 
     public List<Node> obstaclesList ;
     public List<Node> closedList ;
@@ -23,7 +22,7 @@ public class FindWay {//550*525
     public Node beginNode = null;
     public Node endNode = null;
 
-    public FindWay(){
+    public AutomaticWayFinding(){
         obstaclesList = new ArrayList<>();
         closedList = new ArrayList<>();
         openList = new ArrayList<>();

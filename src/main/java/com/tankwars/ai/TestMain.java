@@ -22,18 +22,17 @@ public class TestMain {
         Controller controller = new Controller();
         Scence scence = new Scence(controller);
         scence.updateMapData();
-        for (BaseObstacle baseObstacle:scence.obstacleList.get(1)) {
+        for (BaseObstacle baseObstacle:scence.obstacleList.get(0)) {
             obstaclesList.add(new Node(baseObstacle));
         }
         for (BaseObstacle obstacle:controller.homeNormalWalls) {
             obstaclesList.add(new Node(obstacle));
         }
-        FindWay findWay=new FindWay();
-        findWay.obstaclesList=obstaclesList;
+        AutomaticWayFinding automaticWayFinding =new AutomaticWayFinding();
+        automaticWayFinding.obstaclesList=obstaclesList;
         Tank tank = new Tank(500,500,3,1,1,"tank",controller);
         Tank enemyTank = new Tank(0,0,3,1,1,"tank",controller);
-        List<Node> wayLine=findWay.getWayLine(tank,enemyTank);
-
+        List<Node> wayLine= automaticWayFinding.getWayLine(tank,enemyTank);
         for (Node node:wayLine){
             System.out.println(node.x+" "+node.y);
         }
