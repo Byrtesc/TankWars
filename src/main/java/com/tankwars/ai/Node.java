@@ -33,13 +33,13 @@ public class Node {
     }
 
     public Node(Tank tank){
-        this.x=tank.x/25;
-        this.y=tank.y/25;
+        this.x=tank.x/piexlSize;
+        this.y=tank.y/piexlSize;
     }
 
     public Node(BaseObstacle obstacle){
-        this.x=obstacle.x/25;
-        this.y=obstacle.y/25;
+        this.x=obstacle.x/piexlSize;
+        this.y=obstacle.y/piexlSize;
     }
 
     @Override
