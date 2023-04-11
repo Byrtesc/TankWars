@@ -22,8 +22,11 @@ public class TestMain {
         Controller controller = new Controller();
         Scence scence = new Scence(controller);
         scence.updateMapData();
-        for (BaseObstacle baseObstacle:scence.obstacleList.get(0)) {
-            obstaclesList.add(new Node(baseObstacle));
+        for (BaseObstacle baseObstacle:scence.obstacleList.get(7)) {
+            System.out.println(baseObstacle.getClass().getName());
+            if (!baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.Woods")){
+                obstaclesList.add(new Node(baseObstacle));
+            }
         }
         for (BaseObstacle obstacle:controller.homeNormalWalls) {
             obstaclesList.add(new Node(obstacle));
