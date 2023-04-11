@@ -37,11 +37,14 @@ public class MenuBarListener implements ActionListener {
                     controller.playerTanks.add(controller.playerTank1);
                 }
                 controller.refreshTimer.timer.start();
+
+                controller.aiTimer.timer.start();
                 UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 break;
             case "stopGame":
                 controller.isStart=false;
                 controller.refreshTimer.timer.stop();
+                controller.aiTimer.timer.stop();
                 break;
             case "restartGame":
                 controller.refreshTimer.timer.stop();

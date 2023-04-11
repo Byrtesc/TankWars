@@ -165,18 +165,15 @@ public class Tank {
     }
 
     public void moveToNodeList() {
+        controller.movePath.clear();
         controller.awf.updateObstacles(controller.walls);
-        for (Node node : controller.awf.getWayLine(controller.playerTank1, this)) {
-            if (this.x == node.x && this.y == node.y) {
-                continue;
-            } else {
-                //上
-                if (this.y > node.y * 25) {
-                    this.y = this.y - this.speed;
-                }
-            }
+        for (int i=controller.awf.getWayLine(controller.playerTank1, this).size() - 4; i > 0; i--){
+            Node tmpNode=controller.awf.getWayLine(controller.playerTank1, this).get(i);
+            System.out.println("节点目标"+tmpNode.x + " " + tmpNode.y);
+            controller.movePath.add(new Point(tmpNode.x*25,tmpNode.y*25));
         }
     }
+
 
     public void ranDirection() {//随机方向
         Random random = new Random();

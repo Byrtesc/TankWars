@@ -1,6 +1,7 @@
-package com.tankwars.controller;
+package com.tankwars.controller.timer;
 
 import com.tankwars.ai.Node;
+import com.tankwars.controller.Controller;
 import com.tankwars.model.Bullet;
 import com.tankwars.model.Items;
 import com.tankwars.model.Tank;
@@ -41,6 +42,10 @@ public class RefreshTimer {
             if (!controller.diyModel) {
                 //检查出生点是否为空，出生坦克
                 if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
+                    if (!controller.enemyTanks.contains(controller.enemyAiTank)){
+                        controller.enemyAiTank=new Tank(0,0,2,3,1,"red",controller);
+                        controller.enemyTanks.add(controller.enemyAiTank);
+                    }
                     if (controller.generateTime != 0) {
                         int i = new Random().nextInt(2);
                         if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks) && controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
@@ -69,6 +74,7 @@ public class RefreshTimer {
                     } else {
                         controller.generateTime = 180;
                     }
+
                 }
                 //如果坦克都为空那就下一关
                 if (controller.nowBlueTankNum == 0 && controller.nowYellowTankNum == 0 && controller.nowGreenTankNum == 0 && controller.nowWhiteTankNum == 0 && controller.nowRedTankNum == 0) {
@@ -95,7 +101,9 @@ public class RefreshTimer {
                 controller.runTime = controller.runTime - 50;
             } else {
                 for (Tank enemyTank : controller.enemyTanks) {
-                    enemyTank.ranDirection();
+                    if (!enemyTank.equals(controller.enemyAiTank)){
+                        enemyTank.ranDirection();
+                    }
                 }
                 controller.runTime = 3000;
             }
@@ -103,6 +111,7 @@ public class RefreshTimer {
             for (Tank enemyTank : controller.enemyTanks) {
                 if (!enemyTank.checkCollisionWall(controller.walls) && !enemyTank.checkCollisionTank(controller.playerTanks) && !enemyTank.checkCollisionTank(controller.enemyTanks)) {
                     enemyTank.move();
+
                 }
             }
 
@@ -110,6 +119,8 @@ public class RefreshTimer {
 //            for (Node node:controller.awf.getWayLine(controller.playerTank1,controller.enemyAiTank)) {
 //                System.out.println(node.x+"  "+node.y);
 //            }
+
+
 
             //清空打出了的、有了结果的子弹，也就是清空子弹壳
             controller.bullets.removeAll(controller.removeBullets);

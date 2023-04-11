@@ -1,6 +1,8 @@
 package com.tankwars.controller;
 
 import com.tankwars.ai.AutomaticWayFinding;
+import com.tankwars.controller.timer.AiTimer;
+import com.tankwars.controller.timer.RefreshTimer;
 import com.tankwars.model.*;
 import com.tankwars.model.obstacles.BirthPoint;
 import com.tankwars.model.obstacles.BaseObstacle;
@@ -104,9 +106,12 @@ public class Controller {
     public AutomaticWayFinding awf;
     public Tank enemyAiTank;
     public boolean aiMode=false;
+    public AiTimer aiTimer;
+    public List<Point> movePath;
 
     public Controller() {
         dbUtil = new DbUtil();
+        movePath=new ArrayList<>();
         homeIronWalls = new ArrayList<>();
         homeNormalWalls = new ArrayList<>();
         scence = new Scence(this);
@@ -124,10 +129,11 @@ public class Controller {
         //设置出生点
         birthPoints.add(new BirthPoint(90, 10));
         birthPoints.add(new BirthPoint(450, 10));
-        enemyAiTank=new Tank(0,0,2,3,1,"red",this);
+
         awf=new AutomaticWayFinding();
         //初始化定时器
         refreshTimer = new RefreshTimer(this);
+        aiTimer = new AiTimer(this);
     }
 
     //更新关卡后更新游戏数据
