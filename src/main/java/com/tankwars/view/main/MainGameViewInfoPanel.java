@@ -16,7 +16,7 @@ import java.awt.*;
 public class MainGameViewInfoPanel extends JPanel {
     public JPanel topPanel;
     public JPanel middlePanel;
-    public JPanel bottomPanel;
+    public BottomPanel bottomPanel;
 
     public JLabel labelWhiteTank;
     public JLabel labelYellowTank;
@@ -32,17 +32,19 @@ public class MainGameViewInfoPanel extends JPanel {
     public JLabel LabelHptext;
 
     public MainGameViewInfoPanel(Controller controller) {
+
         setPreferredSize(new Dimension(230, 600));
         topPanel = new JPanel();
         middlePanel = new JPanel();
-        bottomPanel = new JPanel();
+        bottomPanel = new BottomPanel();
         setLayout(new GridLayout(3, 1));
 
         //上容器
-        topPanel.setBackground(new Color(255, 255, 0));
+        topPanel.setBackground(Color.black);
         topPanel.setSize(200, 200);
         topPanel.setLayout(null);
         //label设置文字
+
         JLabel labelTips = new JLabel("敌方坦克还有:");
         labelWhiteTank = new JLabel("x 0");
         labelYellowTank = new JLabel("x 0");
@@ -64,14 +66,23 @@ public class MainGameViewInfoPanel extends JPanel {
         labelGreenTank.setFont(new Font(Font.DIALOG, 1, 20));
         labelBlueTank.setFont(new Font(Font.DIALOG, 1, 20));
         labelRedTank.setFont(new Font(Font.DIALOG, 1, 20));
+
+        labelTips.setForeground(Color.WHITE);
+        labelWhiteTank.setForeground(Color.WHITE);
+        labelYellowTank.setForeground(Color.WHITE);
+        labelGreenTank.setForeground(Color.WHITE);
+        labelBlueTank.setForeground(Color.WHITE);
+        labelRedTank.setForeground(Color.WHITE);
         //label设置坐标
         labelTips.setBounds(10, 10, 100, 15);
-        labelWhiteTank.setBounds(64, 20, 100, 35);
-        labelYellowTank.setBounds(65, 50, 100, 35);
-        labelGreenTank.setBounds(65, 80, 100, 35);
-        labelBlueTank.setBounds(65, 110, 90, 35);
-        labelRedTank.setBounds(65, 140, 100, 35);
+        labelWhiteTank.setBounds(38, 38, 100, 35);
+        labelYellowTank.setBounds(131, 38, 100, 35);
+        labelGreenTank.setBounds(38, 80, 100, 35);
+        labelBlueTank.setBounds(131, 80, 90, 35);
+        labelRedTank.setBounds(90, 115, 100, 35);
         //上容器添加组件
+
+
         topPanel.add(labelTips);
         topPanel.add(labelWhiteTank);
         topPanel.add(labelYellowTank);
@@ -79,13 +90,13 @@ public class MainGameViewInfoPanel extends JPanel {
         topPanel.add(labelBlueTank);
         topPanel.add(labelRedTank);
 
+
         //中容器
-        middlePanel.setBackground(new Color(232, 139, 139));
+        middlePanel.setBackground(Color.black);
         middlePanel.setSize(200, 200);
         middlePanel.setLayout(null);
         JLabel labelOperationHelp = new JLabel("<html>" +
-                "  &emsp&emsp;游戏操作:<br>" +
-                "  &emsp&emsp;玩家一:<br>" +
+                "  &emsp&emsp;玩家一:&emsp&emsp&emsp;游戏操作<br>" +
                 "  <div style=\"font-size:10px;\">" +
                 "    &emsp&emsp向上：W&emsp;&emsp;向下：S<br>" +
                 "    &emsp&emsp向左：A&emsp;&emsp;向右：D<br>" +
@@ -101,11 +112,12 @@ public class MainGameViewInfoPanel extends JPanel {
                 "</html>");
         labelOperationHelp.setHorizontalTextPosition(JLabel.CENTER);
         labelOperationHelp.setVerticalAlignment(JLabel.TOP);
-        labelOperationHelp.setBounds(0, 0, 200, 200);
+        labelOperationHelp.setBounds(0, 8, 200, 200);
+        labelOperationHelp.setForeground(Color.WHITE);
         middlePanel.add(labelOperationHelp);
 
         //下容器
-        bottomPanel.setBackground(new Color(24, 210, 12, 255));
+        bottomPanel.setBackground(Color.green);
         GridBagLayout gridBagLayout = new GridBagLayout();
         bottomPanel.setLayout(gridBagLayout);
 
@@ -182,10 +194,37 @@ public class MainGameViewInfoPanel extends JPanel {
         bottomPanel.add(labelAllGetScoreValues);
         bottomPanel.add(LabelHpIcon);
         bottomPanel.add(LabelHptext);
+        labelPlayerName.setForeground(Color.WHITE);
+        labelPlayerNameValues.setForeground(Color.WHITE);
+        labelThisLevelDestroyTank.setForeground(Color.WHITE);
+        labelThisLevelDestroyTankValues.setForeground(Color.WHITE);
+        labelThisLevelGetScore.setForeground(Color.WHITE);
+        labelThisLevelGetScoreValues.setForeground(Color.WHITE);
+        labelAllDestroyTank.setForeground(Color.WHITE);
+        labelAllDestroyTankValues.setForeground(Color.WHITE);
+        labelAllGetScore.setForeground(Color.WHITE);
+        labelAllGetScoreValues.setForeground(Color.WHITE);
+        LabelHpIcon.setForeground(Color.WHITE);
+        LabelHptext.setForeground(Color.WHITE);
+
+        JLabel background1=new JLabel(new ImageIcon("images/infobg.png"));
+        background1.setBounds(0,0,230,176);
+        JLabel background2=new JLabel(new ImageIcon("images/infobg.png"));
+        background2.setBounds(0,0,230,176);
+
+        topPanel.add(background1);
+        middlePanel.add(background2);
 
         //添加组件
         add(topPanel);
         add(middlePanel);
         add(bottomPanel);
+    }
+    public class BottomPanel extends JPanel{
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            g.drawImage(new ImageIcon("images/infobg.png").getImage(),0,0,230,176,null);
+        }
     }
 }

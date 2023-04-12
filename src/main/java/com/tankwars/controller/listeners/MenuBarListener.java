@@ -2,6 +2,7 @@ package com.tankwars.controller.listeners;
 
 import com.tankwars.controller.Controller;
 import com.tankwars.model.Tank;
+import com.tankwars.utils.MusicUtil;
 import com.tankwars.view.UI;
 
 import javax.swing.*;
@@ -40,6 +41,7 @@ public class MenuBarListener implements ActionListener {
                 }
                 UI.mainGameView.menuItemStartGame.setEnabled(false);
                 UI.mainGameView.menuItemRestartGame.setEnabled(true);
+                controller.musicUtil.startMusic();
                 controller.refreshTimer.timer.start();
 
                 controller.aiTimer.timer.start();

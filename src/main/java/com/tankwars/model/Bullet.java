@@ -150,6 +150,8 @@ public class Bullet {
 
     public void hitHome(){
         if (this.getRectangle().intersects(controller.homeRectangle)){
+            controller.musicUtil.boomMusic();
+            controller.boomList.add(new Boom(250,475));
             controller.playerHomeHp=0;
         }
     }
