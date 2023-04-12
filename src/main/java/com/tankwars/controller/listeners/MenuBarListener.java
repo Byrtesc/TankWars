@@ -29,6 +29,7 @@ public class MenuBarListener implements ActionListener {
             case "startGame":
                 if (!controller.diyModel) {
                     controller.isStart = true;
+                    controller.selectedMap=0;
                     controller.updateGameNewData();
                 } else {
                     controller.diyGameIsStart = true;

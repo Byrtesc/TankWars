@@ -35,12 +35,7 @@ public class RefreshTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (controller.playerHomeHp == 0|| controller.playerTankHp==0) {
-                JOptionPane.showMessageDialog(null, "游戏结束，你输了", "游戏结束", JOptionPane.WARNING_MESSAGE);
-                UI.mainGameView.menuItemStartGame.setEnabled(false);
-                UI.mainGameView.menuItemRestartGame.setEnabled(true);
-                timer.stop();
-            }
+
             if (!controller.diyModel) {
                 //检查出生点是否为空，出生坦克
                 if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
@@ -232,6 +227,17 @@ public class RefreshTimer {
                 item.getBuff(controller.playerTanks);
             }
 
+            if (controller.playerHomeHp == 0|| controller.playerTankHp==0) {
+                JOptionPane.showMessageDialog(null, "游戏结束，你输了\n"+"选择开始游戏从第一关开始\n"+"选择重新游戏从本关开始\n", "游戏结束", JOptionPane.WARNING_MESSAGE);
+                UI.mainGameView.menuItemStartGame.setEnabled(true);
+                UI.mainGameView.menuItemRestartGame.setEnabled(true);
+                controller.enemyTanks.clear();
+                controller.playerTanks.clear();
+                controller.walls.clear();
+                controller.bullets.clear();
+                controller.boomList.clear();
+                timer.stop();
+            }
             //更新页面数据信息
 
             if (!controller.diyModel){
