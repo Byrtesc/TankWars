@@ -245,6 +245,16 @@ public class RefreshTimer {
                 controller.bullets.clear();
                 controller.boomList.clear();
                 controller.items.clear();
+                controller.allScore = controller.allScore - controller.nowScore;
+                controller.allDesTankNum = controller.allDesTankNum - controller.nowDesTankNum;
+                controller.nowDesTankNum = 0;
+                controller.nowScore = 0;
+                controller.nowWhiteTankNum = 0;//现在白色坦克数量
+                controller.nowYellowTankNum = 0;//现在黄色坦克数量
+                controller.nowGreenTankNum = 0;//现在绿色坦克数量
+                controller.nowBlueTankNum = 0;//现在蓝色坦克数量
+                controller.nowRedTankNum = 0;//现在红色坦克数量
+                controller.playerTankHp=0;
                 timer.stop();
             }
             //更新页面数据信息

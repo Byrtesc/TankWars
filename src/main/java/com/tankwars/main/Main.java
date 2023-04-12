@@ -21,12 +21,12 @@ import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
         System.out.println("这是入口函数");
-//        //美化包
-//        try {
-//            UIManager.setLookAndFeel( new FlatIntelliJLaf());
-//        } catch( Exception ex ) {
-//            System.err.println( "Failed to initialize LaF" );
-//        }
+        //美化包
+        try {
+            UIManager.setLookAndFeel( new FlatIntelliJLaf());
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
         Controller controller = new Controller();
         UI ui = new UI(controller);
 //        new RefreshPanelTimer().timer.start();

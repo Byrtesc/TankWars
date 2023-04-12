@@ -37,7 +37,7 @@ public class MainGameView extends JFrame {
          * 窗口要素
          */
         setTitle(UI.GAME_AUTHOR_NAME);
-        setSize(800, 600);
+        setSize(800, 562);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
