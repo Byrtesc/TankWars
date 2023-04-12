@@ -32,6 +32,7 @@ public class CustomViewListener implements ActionListener {
                 System.out.println(controller.playerNum);
                 if (UI.customSettingView.customSettingViewPanel.customGameRadioButton.isSelected()){
                     controller.selectedMap= (int) UI.customSettingView.customSettingViewPanel.stageNumCombox.getSelectedItem()-1;
+                    controller.nowEnemyspeed= (int) UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem()-1;
                 }
                 //System.out.println(UI.customSettingView.customSettingViewPanel.tankSpeedCombox.getSelectedItem());
                 if (controller.selectedMap!=9){

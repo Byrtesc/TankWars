@@ -64,6 +64,9 @@ public class MenuBarListener implements ActionListener {
             case "rankBoard":
                 UI.rankBoardView.setVisible(true);
                 break;
+            case "history":
+                UI.historyScoreView.setVisible(true);
+                break;
         }
     }
 }

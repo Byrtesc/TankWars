@@ -33,11 +33,12 @@ public class WelcomeViewListener implements ActionListener {
         switch (e.getActionCommand()) {
             case "enterGame":
                 userName = JOptionPane.showInputDialog(null, "请输入玩家名:", "坦克大战欢迎您，祝您游戏愉快！", JOptionPane.INFORMATION_MESSAGE);
-                if (!userName.equals(null)) {
-                    if (userName.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "玩家名不能为空！", "请输入玩家名！", JOptionPane.WARNING_MESSAGE);
-                        break;
-                    }
+                if (userName==null) {
+                    break;
+                }
+                if (userName.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "玩家名不能为空！", "请输入玩家名！", JOptionPane.WARNING_MESSAGE);
+                    break;
                 }
                 List list = controller.login(userName);
                 if (list != null) {

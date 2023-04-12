@@ -69,7 +69,7 @@ public class CustomSettingViewPanel extends JPanel {
         gridBagLayout.setConstraints(tankSpeedLabel, gbc);
 
         gbc.gridwidth = 0;
-        tankSpeedCombox = new JComboBox<>(new Integer[]{0, 1, 2, 3});
+        tankSpeedCombox = new JComboBox<>(new Integer[]{ 1, 2, 3});
         gridBagLayout.setConstraints(tankSpeedCombox, gbc);
 
         gbc.insets = new Insets(60, 10, 0, 10);

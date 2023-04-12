@@ -28,6 +28,7 @@ public class MainGameView extends JFrame {
     public JMenuItem menuItemExit;
     public JMenuItem menuItemAbout;
     public JMenuItem menuItemDescription;
+    public JMenuItem menuItemHistory;
 
     public MainGameView(Controller controller) {
         mainGameViewPanel = new MainGameViewPanel(controller);
@@ -61,6 +62,10 @@ public class MainGameView extends JFrame {
         menuItemRank.addActionListener(menuBarListener);
         menuItemRank.setActionCommand("rankBoard");
 
+        menuItemHistory = new JMenuItem("历史游玩记录");
+        menuItemHistory.addActionListener(menuBarListener);
+        menuItemHistory.setActionCommand("history");
+
         menuItemCustom = new JMenuItem("自定义");
         menuItemCustom.addActionListener(menuBarListener);
         menuItemCustom.setActionCommand("custom");
@@ -71,8 +76,11 @@ public class MainGameView extends JFrame {
         menuGame.add(menuItemStartGame);
         menuGame.add(menuItemRestartGame);
         menuGame.add(menuItemRank);
+        menuGame.add(menuItemHistory);
+        menuGame.add(menuItemExit);
         menuGame.add(menuItemCustom);
         menuGame.add(menuItemExit);
+
 
         //添加帮助菜单及子项
         JMenu menuHelp = new JMenu("帮助");

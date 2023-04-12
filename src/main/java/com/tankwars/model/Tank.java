@@ -25,6 +25,7 @@ public class Tank {
     public int speed = 3;
     public int hp;//生命值指重生次数
     public int blood = 3;//一条命得血量
+    public int bloodLimit=3;//一条命得血量上线
     public int type;//1为玩家
     public int direction = 8;//8上 2下 4左 6右
 
@@ -48,6 +49,57 @@ public class Tank {
         this.y = y;
         this.type = type;
         this.hp = hp;
+        this.speed = speed;
+        this.controller = controller;
+        this.color = color;
+        switch (color) {
+            case "blue":
+                upImgUrl = "images/blue/bu.png";
+                downImgUrl = "images/blue/bd.png";
+                leftImgUrl = "images/blue/bl.png";
+                rightImgUrl = "images/blue/br.png";
+                break;
+            case "white":
+                upImgUrl = "images/gray/gu.png";
+                downImgUrl = "images/gray/gd.png";
+                leftImgUrl = "images/gray/gl.png";
+                rightImgUrl = "images/gray/gr.png";
+                break;
+            case "green":
+                upImgUrl = "images/green/gu.png";
+                downImgUrl = "images/green/gd.png";
+                leftImgUrl = "images/green/gl.png";
+                rightImgUrl = "images/green/gr.png";
+                break;
+            case "red":
+                upImgUrl = "images/red/ru.png";
+                downImgUrl = "images/red/rd.png";
+                leftImgUrl = "images/red/rl.png";
+                rightImgUrl = "images/red/rr.png";
+                break;
+            case "yellow":
+                upImgUrl = "images/yellow/yu.png";
+                downImgUrl = "images/yellow/yd.png";
+                leftImgUrl = "images/yellow/yl.png";
+                rightImgUrl = "images/yellow/yr.png";
+                break;
+            default:
+                upImgUrl = "images/tankUp.png";
+                downImgUrl = "images/tankDown.png";
+                leftImgUrl = "images/tankLeft.png";
+                rightImgUrl = "images/tankRight.png";
+                break;
+        }
+        upDateDirectionState();
+    }
+
+    public Tank(int x, int y, int type, int speed, String color, int blood,Controller controller) {
+        this.blood=blood;
+        this.x = x;
+        this.y = y;
+        this.type = type;
+        this.hp = hp;
+        this.bloodLimit=blood;
         this.speed = speed;
         this.controller = controller;
         this.color = color;
@@ -239,9 +291,9 @@ public class Tank {
     public void drawing(Graphics g) {
         g.setColor(Color.RED);
         if (this.y == 0) {
-            g.fillRect(this.x, this.y + 30, width / 3 * blood, 5);
+            g.fillRect(this.x, this.y + 30, width / bloodLimit * blood, 5);
         } else {
-            g.fillRect(this.x, this.y - 10, width / 3 * blood, 5);
+            g.fillRect(this.x, this.y - 10, width / bloodLimit * blood, 5);
         }
 
         g.drawImage(tankImg, this.x, this.y, this.width, this.height, null);

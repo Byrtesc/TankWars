@@ -52,24 +52,40 @@ public class RefreshTimer {
                         int i = new Random().nextInt(2);
                         if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks) && controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
                             String color = "";
+                            int speed=1;
+                            int blood=3;
                             switch (controller.scence.tankTypeList.get(controller.selectedMap).get(controller.nowStageEnemyTankNum)) {
                                 case 1:
                                     color = "white";
+                                    speed=1;
+                                    blood=1;
                                     break;
                                 case 2:
                                     color = "yellow";
+                                    speed=2;
+                                    blood=1;
                                     break;
                                 case 3:
                                     color = "green";
+                                    speed=1;
+                                    blood=2;
                                     break;
                                 case 4:
                                     color = "blue";
+                                    speed=2;
+                                    blood=2;
                                     break;
                                 case 5:
                                     color = "red";
+                                    speed=2;
+                                    blood=3;
                                     break;
                             }
-                            controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, 1, 1, color, controller));
+                            if (controller.nowEnemyspeed==0){
+                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, speed, color,blood, controller));
+                            }else {
+                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, controller.nowEnemyspeed, color,blood, controller));
+                            }
                             controller.nowStageEnemyTankNum++;
                         }
                         controller.generateTime = controller.generateTime - 1;
