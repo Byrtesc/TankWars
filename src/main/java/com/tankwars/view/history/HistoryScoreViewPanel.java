@@ -45,6 +45,11 @@ public class HistoryScoreViewPanel extends JPanel {
         scoreHistoryLabel0.setFont(new Font(Font.DIALOG, 1, 50));
         scoreHistoryLabel.setFont(new Font(Font.DIALOG, 1, 20));
         scoreHistoryLabel1.setFont(new Font(Font.DIALOG, 1, 20));
+
+        scoreHistoryLabel0.setForeground(Color.WHITE);
+        scoreHistoryLabel.setForeground(Color.WHITE);
+        scoreHistoryLabel1.setForeground(Color.WHITE);
+
         gbc.gridwidth=0;
         gridBagLayout.setConstraints(scoreHistoryLabel0,gbc);
         gbc.gridwidth=1;
@@ -75,6 +80,8 @@ public class HistoryScoreViewPanel extends JPanel {
                 labelTmpDatetime.setHorizontalAlignment(JLabel.CENTER);
                 labelTmpScore.setText(key.get("score")+"");
                 labelTmpDatetime.setText(key.get("time")+"");
+                labelTmpScore.setForeground(Color.WHITE);
+                labelTmpDatetime.setForeground(Color.WHITE);
 
                 gridBagLayout.setConstraints(labelTmpScore,gbc);
                 gbc.gridwidth=0;
@@ -85,20 +92,11 @@ public class HistoryScoreViewPanel extends JPanel {
             }
         }
 
-//        String uiHtml = "<html>\n" +
-//                "<h1>历史记录:<br></h1>\n" +
-//                "<div style=\"font-size:20px;\">\n" +
-//                "<ul>\n";
-//        if (scoreList != null) {
-//            ListIterator<Map> listIterator = scoreList.listIterator();
-//            while (listIterator.hasNext()) {
-//                Map key = listIterator.next();
-//                uiHtml = uiHtml + "<li>成绩:" + key.get("score") + "&emsp;&emsp;&emsp;&emsp;时间:" + key.get("time") + "</li>\n";
-//            }
-//        }
-//        uiHtml = uiHtml + "</ul>\n" +
-//                "  </div>\n" +
-//                "</html>";
-//        scoreHistoryList.setText(uiHtml);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("images/historyandrank.png").getImage(),0,0,500,700,null);
     }
 }

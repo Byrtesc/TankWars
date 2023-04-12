@@ -55,6 +55,12 @@ public class RankBoardViewPanel extends JPanel {
         labelTmp2.setText("姓名");
         labelTmp3.setText("成绩");
         labelTmp4.setText("时间");
+
+        labelTmp.setForeground(Color.white);
+        labelTmp1.setForeground(Color.white);
+        labelTmp2.setForeground(Color.white);
+        labelTmp3.setForeground(Color.white);
+        labelTmp4.setForeground(Color.white);
         gbc.gridwidth=0;
         gridBagLayout.setConstraints(labelTmp,gbc);
         gbc.gridwidth=1;
@@ -92,6 +98,11 @@ public class RankBoardViewPanel extends JPanel {
                 labelTmpScore.setHorizontalAlignment(JLabel.CENTER);
                 labelTmpDatetime.setHorizontalAlignment(JLabel.CENTER);
 
+                labelTmpRankding.setForeground(Color.WHITE);
+                labelTmpName.setForeground(Color.WHITE);
+                labelTmpScore.setForeground(Color.WHITE);
+                labelTmpDatetime.setForeground(Color.WHITE);
+
                 labelTmpRankding.setText(i+"");
                 labelTmpName.setText(map.get("userName").toString());
                 labelTmpScore.setText(map.get("score").toString());
@@ -113,5 +124,10 @@ public class RankBoardViewPanel extends JPanel {
 
 
 
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("images/historyandrank.png").getImage(),0,0,500,700,null);
     }
 }
