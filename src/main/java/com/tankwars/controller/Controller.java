@@ -108,6 +108,8 @@ public class Controller {
     public AiTimer aiTimer;
     public List<Point> movePath;
 
+
+
     public Controller() {
         dbUtil = new DbUtil();
         movePath=new ArrayList<>();

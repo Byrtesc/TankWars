@@ -78,6 +78,12 @@ public class MenuBarListener implements ActionListener {
             case "about":
                 JOptionPane.showMessageDialog(null, "游戏名: 坦克大战\n" + "版本号: 1.0\n" + "作者: 杨铭泉", "关于本游戏", JOptionPane.INFORMATION_MESSAGE);
                 break;
+            case "exit":
+                int res = JOptionPane.showConfirmDialog(null, "是否退出游戏？", null, JOptionPane.YES_NO_OPTION);
+                if (res == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+                break;
             case "description":
                 break;
         }

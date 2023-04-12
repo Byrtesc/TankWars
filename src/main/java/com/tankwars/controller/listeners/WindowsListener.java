@@ -16,7 +16,6 @@ public class WindowsListener extends WindowAdapter {
     @Override
     public void windowClosing(WindowEvent e) {
         super.windowClosing(e);
-        System.out.println(e.getWindow().getClass().getName());
         int res = JOptionPane.showConfirmDialog(null, "是否退出游戏？", null, JOptionPane.YES_NO_OPTION);
         if (res == JOptionPane.YES_OPTION) {
             System.out.println("确认退出");

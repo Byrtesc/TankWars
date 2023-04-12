@@ -71,6 +71,8 @@ public class MainGameView extends JFrame {
         menuItemCustom.setActionCommand("custom");
 
         menuItemExit = new JMenuItem("退出");
+        menuItemExit.addActionListener(menuBarListener);
+        menuItemExit.setActionCommand("exit");
 
 
         menuGame.add(menuItemStartGame);
