@@ -32,7 +32,7 @@ public class UI {
         welcomeView =new WelcomeView(controller);
         mainGameView = new MainGameView(controller);
         selectModelView = new SelectModelView(controller);
-        historyScoreView=new HistoryScoreView();
+        historyScoreView=new HistoryScoreView(controller);
         calculateScoreView=new CalculateScoreView(controller);
         rankBoardView=new RankBoardView(controller);
         helpTipsView=new HelpTipsView();

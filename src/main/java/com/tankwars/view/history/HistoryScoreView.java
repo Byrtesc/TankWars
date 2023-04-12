@@ -1,5 +1,6 @@
 package com.tankwars.view.history;
 
+import com.tankwars.controller.Controller;
 import com.tankwars.view.UI;
 
 import javax.swing.*;
@@ -16,16 +17,16 @@ import java.util.List;
 public class HistoryScoreView extends JFrame {
     public HistoryScoreViewPanel historyScoreViewPanel;
     public List scoreList=null;
-    public HistoryScoreView(){
+    public HistoryScoreView(Controller controller){
         /*
          * 窗口要素
          */
         setTitle(UI.GAME_AUTHOR_NAME);
-        setSize(560, 560);
+        setSize(300, 560);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
-        historyScoreViewPanel = new HistoryScoreViewPanel();
+        historyScoreViewPanel = new HistoryScoreViewPanel(scoreList,controller);
 
 
         add(historyScoreViewPanel);

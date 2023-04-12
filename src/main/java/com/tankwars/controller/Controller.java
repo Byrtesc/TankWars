@@ -235,13 +235,13 @@ public class Controller {
             if (resultSet.next()) {
                 int uid = resultSet.getInt("id");
                 if (uid != 0) {
-                    sql = "select score,time from score where uid='" + uid + "' order by score desc";
+                    sql = "select score,time from score where uid='" + uid + "' order by time desc limit 0,10";
                     ResultSet resultSetScore = dbUtil.execQuery(sql);
                     List<Map> list = new ArrayList<>();
                     while (resultSetScore.next()) {
                         Map map = new HashMap();
                         map.put("score", resultSetScore.getInt("score"));
-                        map.put("time", String.valueOf(resultSetScore.getDate("time")));
+                        map.put("time", String.valueOf(resultSetScore.getTimestamp("time")).substring(0,16));
                         list.add(map);
                     }
                     return list;

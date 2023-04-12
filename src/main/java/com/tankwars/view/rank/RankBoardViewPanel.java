@@ -35,23 +35,28 @@ public class RankBoardViewPanel extends JPanel {
         gbc.weightx=0;
         gbc.weighty=0;
         gbc.insets=new Insets(10,10,10,10);
-
+        JLabel labelTmp=new JLabel();
         JLabel labelTmp1=new JLabel();
         JLabel labelTmp2=new JLabel();
         JLabel labelTmp3=new JLabel();
         JLabel labelTmp4=new JLabel();
+        labelTmp.setHorizontalAlignment(JLabel.CENTER);
         labelTmp1.setHorizontalAlignment(JLabel.CENTER);
         labelTmp2.setHorizontalAlignment(JLabel.CENTER);
         labelTmp3.setHorizontalAlignment(JLabel.CENTER);
         labelTmp4.setHorizontalAlignment(JLabel.CENTER);
+        labelTmp.setFont(new Font(Font.DIALOG, 1, 56));
         labelTmp1.setFont(new Font(Font.DIALOG, 1, 20));
         labelTmp2.setFont(new Font(Font.DIALOG, 1, 20));
         labelTmp3.setFont(new Font(Font.DIALOG, 1, 20));
         labelTmp4.setFont(new Font(Font.DIALOG, 1, 20));
+        labelTmp.setText("排行榜");
         labelTmp1.setText("排名");
         labelTmp2.setText("姓名");
         labelTmp3.setText("成绩");
         labelTmp4.setText("时间");
+        gbc.gridwidth=0;
+        gridBagLayout.setConstraints(labelTmp,gbc);
         gbc.gridwidth=1;
         gridBagLayout.setConstraints(labelTmp1,gbc);
         gridBagLayout.setConstraints(labelTmp2,gbc);
@@ -59,6 +64,7 @@ public class RankBoardViewPanel extends JPanel {
         gridBagLayout.setConstraints(labelTmp3,gbc);
 
 //        gridBagLayout.setConstraints(labelTmp4,gbc);
+        this.add(labelTmp);
         this.add(labelTmp1);
         this.add(labelTmp2);
         this.add(labelTmp3);
