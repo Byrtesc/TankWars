@@ -170,13 +170,13 @@ public class Controller {
         boomList.clear();
         walls = scence.obstacleList.get(selectedMap);
         walls.addAll(homeNormalWalls);
-        playerTank1 = new Tank(90, 475, 1, 3, 3, "", this);
+        playerTank1 = new Tank(175, 475, 1, 3, 3, "", this);
         //我方坦克1
         this.playerTankHp=playerTank1.hp;
         playerTanks.add(playerTank1);
         System.out.println(playerNum);
         if (playerNum == 2) {
-            playerTank2 = new Tank(450, 475, 1, 3, 3, "", this);
+            playerTank2 = new Tank(350, 475, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);
         }
 

@@ -85,9 +85,14 @@ public class MainGameView extends JFrame {
         //添加帮助菜单及子项
         JMenu menuHelp = new JMenu("帮助");
         menuItemAbout = new JMenuItem("关于");
+        menuItemAbout.addActionListener(menuBarListener);
+        menuItemAbout.setActionCommand("about");
         menuItemDescription = new JMenuItem("游戏说明");
-        menuHelp.add(menuItemAbout);
+        menuItemDescription.addActionListener(menuBarListener);
+        menuItemDescription.setActionCommand("description");
+
         menuHelp.add(menuItemDescription);
+        menuHelp.add(menuItemAbout);
 
         //菜单栏添加菜单项
         menuBar.add(menuGame);

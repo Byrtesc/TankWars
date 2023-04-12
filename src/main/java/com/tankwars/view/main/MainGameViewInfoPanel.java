@@ -89,7 +89,7 @@ public class MainGameViewInfoPanel extends JPanel {
                 "  <div style=\"font-size:10px;\">" +
                 "    &emsp&emsp向上：W&emsp;&emsp;向下：S<br>" +
                 "    &emsp&emsp向左：A&emsp;&emsp;向右：D<br>" +
-                "    &emsp&emsp射击：J<br>\n" +
+                "    &emsp&emsp射击：空格<br>\n" +
                 "    &emsp&emsp暂停：P&emsp;&emsp;继续：C" +
                 "  </div>" +
                 "  &emsp&emsp;玩家二:<br>" +

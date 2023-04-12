@@ -210,10 +210,10 @@ public class Tank {
         if (downMove) this.y = this.y + this.speed;
         if (leftMove) this.x = this.x - this.speed;
         if (rightMove) this.x = this.x + this.speed;
-        if (this.y < 0) this.y = 0;
-        if (this.y > 490) this.y = 490;
-        if (this.x < 0) this.x = 0;
-        if (this.x > 510) this.x = 510;
+        if (this.x - this.speed < 0) this.x = 0;
+        if (this.y - this.speed < 0) this.y = 0;
+        if (this.x + this.speed > 525) this.x = 525;
+        if (this.y + this.speed > 500) this.y = 500;
     }
 
     public void moveToNodeList() {

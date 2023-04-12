@@ -115,14 +115,18 @@ public class Bullet {
         for (BaseObstacle baseObstacle : baseObstacles) {
             if (this.getRectangle().intersects(baseObstacle.getRectangle())){
                 if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.IronWall")&&this.power==1){
+                    controller.musicUtil.boomMusic();
                     controller.boomList.add(new Boom(baseObstacle.x-10,baseObstacle.y-8));
                     controller.roads.add(new Road(baseObstacle.x,baseObstacle.y));
                     controller.removeBullets.add(this);
                     baseObstacleTemp.add(baseObstacle);
                 } else if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.IronWall")) {
+                    controller.musicUtil.boomMusic();
+                    controller.boomList.add(new Boom(baseObstacle.x-10,baseObstacle.y-8));
                     controller.removeBullets.add(this);
                 }
                 if (baseObstacle.getClass().getName().equals("com.tankwars.model.obstacles.Wall")){
+                    controller.musicUtil.boomMusic();
                     controller.boomList.add(new Boom(baseObstacle.x-10,baseObstacle.y-8));
                     controller.roads.add(new Road(baseObstacle.x,baseObstacle.y));
                     controller.removeBullets.add(this);

@@ -37,6 +37,8 @@ public class RefreshTimer {
         public void actionPerformed(ActionEvent e) {
             if (controller.playerHomeHp == 0|| controller.playerTankHp==0) {
                 JOptionPane.showMessageDialog(null, "游戏结束，你输了", "游戏结束", JOptionPane.WARNING_MESSAGE);
+                UI.mainGameView.menuItemStartGame.setEnabled(false);
+                UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 timer.stop();
             }
             if (!controller.diyModel) {
