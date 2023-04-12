@@ -145,8 +145,27 @@ public class Tank {
     }
 
     public void attack() {
-        controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, this.power, controller));
-        controller.musicUtil.fire();
+        if (controller.playerTank1!=null){
+            if (controller.playerTank1.equals(this)){
+                if (controller.player1AttackTime==0){
+                    controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, this.power, controller));
+                    controller.musicUtil.fire();
+                    controller.player1AttackTime=15;
+                }
+            }
+        }
+
+        if (controller.playerTank2!=null){
+            if (controller.playerTank2.equals(this)){
+                if (controller.player2AttackTime==0){
+                    controller.bullets.add(new Bullet(getTankHead().x, getTankHead().y, this.direction, this.type, this.power, controller));
+                    controller.musicUtil.fire();
+                    controller.player2AttackTime=15;
+                }
+            }
+        }
+
+
     }
 
     public void ranAttack() {

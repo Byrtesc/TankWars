@@ -108,7 +108,8 @@ public class Controller {
     public AiTimer aiTimer;
     public List<Point> movePath;
 
-
+    public int player1AttackTime=15;
+    public int player2AttackTime=15;
 
     public Controller() {
         dbUtil = new DbUtil();

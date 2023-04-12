@@ -151,6 +151,14 @@ public class RefreshTimer {
                 boomFreshTime--;
             }
 
+            if (controller.player1AttackTime>0){
+                controller.player1AttackTime--;
+            }
+
+            if (controller.player2AttackTime>0){
+                controller.player2AttackTime--;
+            }
+
             //随机时间攻击
             if (controller.attackTime != 0) {
                 controller.attackTime--;
@@ -236,6 +244,7 @@ public class RefreshTimer {
                 controller.walls.clear();
                 controller.bullets.clear();
                 controller.boomList.clear();
+                controller.items.clear();
                 timer.stop();
             }
             //更新页面数据信息
