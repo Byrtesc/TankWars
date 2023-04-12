@@ -37,6 +37,7 @@ public class MenuBarListener implements ActionListener {
                     controller.playerHomeHp = 1;
                     controller.walls.addAll(controller.diyMapObstacleList);
                     controller.playerTank1 = new Tank(90, 475, 1, 3, 3, "", controller);
+                    controller.playerTankHp=controller.playerTank1.hp;
                     controller.playerTanks.add(controller.playerTank1);
                 }
                 UI.mainGameView.menuItemStartGame.setEnabled(false);

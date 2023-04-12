@@ -39,9 +39,9 @@ public class RefreshTimer {
             if (!controller.diyModel) {
                 //检查出生点是否为空，出生坦克
                 if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
-                    if (controller.aiMode){
-                        if (!controller.enemyTanks.contains(controller.enemyAiTank)){
-                            controller.enemyAiTank=new Tank(0,0,2,3,1,"red",controller);
+                    if (controller.aiMode) {
+                        if (!controller.enemyTanks.contains(controller.enemyAiTank)) {
+                            controller.enemyAiTank = new Tank(0, 0, 2, 3, 1, "red", controller);
                             controller.enemyTanks.add(controller.enemyAiTank);
                         }
                     }
@@ -49,39 +49,39 @@ public class RefreshTimer {
                         int i = new Random().nextInt(2);
                         if (controller.birthPoints.get(i).checkEmpty(controller.enemyTanks) && controller.birthPoints.get(i).checkEmpty(controller.playerTanks)) {
                             String color = "";
-                            int speed=1;
-                            int blood=3;
+                            int speed = 1;
+                            int blood = 3;
                             switch (controller.scence.tankTypeList.get(controller.selectedMap).get(controller.nowStageEnemyTankNum)) {
                                 case 1:
                                     color = "white";
-                                    speed=1;
-                                    blood=1;
+                                    speed = 1;
+                                    blood = 1;
                                     break;
                                 case 2:
                                     color = "yellow";
-                                    speed=2;
-                                    blood=1;
+                                    speed = 2;
+                                    blood = 1;
                                     break;
                                 case 3:
                                     color = "green";
-                                    speed=1;
-                                    blood=2;
+                                    speed = 1;
+                                    blood = 2;
                                     break;
                                 case 4:
                                     color = "blue";
-                                    speed=2;
-                                    blood=2;
+                                    speed = 2;
+                                    blood = 2;
                                     break;
                                 case 5:
                                     color = "red";
-                                    speed=2;
-                                    blood=3;
+                                    speed = 2;
+                                    blood = 3;
                                     break;
                             }
-                            if (controller.nowEnemyspeed==0){
-                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, speed, color,blood, controller));
-                            }else {
-                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, controller.nowEnemyspeed, color,blood, controller));
+                            if (controller.nowEnemyspeed == 0) {
+                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, speed, color, blood, controller));
+                            } else {
+                                controller.enemyTanks.add(new Tank(controller.birthPoints.get(i).x, controller.birthPoints.get(i).y, 2, controller.nowEnemyspeed, color, blood, controller));
                             }
                             controller.nowStageEnemyTankNum++;
                         }
@@ -116,7 +116,7 @@ public class RefreshTimer {
                 controller.runTime = controller.runTime - 50;
             } else {
                 for (Tank enemyTank : controller.enemyTanks) {
-                    if (!enemyTank.equals(controller.enemyAiTank)){
+                    if (!enemyTank.equals(controller.enemyAiTank)) {
                         enemyTank.ranDirection();
                     }
                 }
@@ -136,7 +136,6 @@ public class RefreshTimer {
 //            }
 
 
-
             //清空打出了的、有了结果的子弹，也就是清空子弹壳
             controller.bullets.removeAll(controller.removeBullets);
             //清空子弹壳
@@ -151,11 +150,11 @@ public class RefreshTimer {
                 boomFreshTime--;
             }
 
-            if (controller.player1AttackTime>0){
+            if (controller.player1AttackTime > 0) {
                 controller.player1AttackTime--;
             }
 
-            if (controller.player2AttackTime>0){
+            if (controller.player2AttackTime > 0) {
                 controller.player2AttackTime--;
             }
 
@@ -235,8 +234,11 @@ public class RefreshTimer {
                 item.getBuff(controller.playerTanks);
             }
 
-            if (controller.playerHomeHp == 0|| controller.playerTankHp==0) {
-                JOptionPane.showMessageDialog(null, "游戏结束，你输了\n"+"选择开始游戏从第一关开始\n"+"选择重新游戏从本关开始\n", "游戏结束", JOptionPane.WARNING_MESSAGE);
+
+            if (controller.playerHomeHp == 0 || controller.playerTankHp == 0) {
+                System.out.println(controller.playerHomeHp);
+                System.out.println(controller.playerTankHp);
+                JOptionPane.showMessageDialog(null, "游戏结束，你输了\n" + "选择开始游戏从第一关开始\n" + "选择重新游戏从本关开始\n", "游戏结束", JOptionPane.WARNING_MESSAGE);
                 UI.mainGameView.menuItemStartGame.setEnabled(true);
                 UI.mainGameView.menuItemRestartGame.setEnabled(true);
                 controller.enemyTanks.clear();
@@ -254,12 +256,14 @@ public class RefreshTimer {
                 controller.nowGreenTankNum = 0;//现在绿色坦克数量
                 controller.nowBlueTankNum = 0;//现在蓝色坦克数量
                 controller.nowRedTankNum = 0;//现在红色坦克数量
-                controller.playerTankHp=0;
+                controller.playerTankHp = 0;
                 timer.stop();
             }
+
+
             //更新页面数据信息
 
-            if (!controller.diyModel){
+            if (!controller.diyModel) {
 
                 UI.mainGameView.mainGameViewInfoPanel.labelWhiteTank.setText("x " + controller.nowWhiteTankNum);
                 UI.mainGameView.mainGameViewInfoPanel.labelYellowTank.setText("x " + controller.nowYellowTankNum);
