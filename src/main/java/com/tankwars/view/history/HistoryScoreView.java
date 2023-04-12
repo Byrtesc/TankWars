@@ -22,7 +22,7 @@ public class HistoryScoreView extends JFrame {
          * 窗口要素
          */
         setTitle(UI.GAME_AUTHOR_NAME);
-        setSize(300, 560);
+        setSize(366, 660);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);

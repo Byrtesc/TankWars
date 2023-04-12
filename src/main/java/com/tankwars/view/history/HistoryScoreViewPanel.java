@@ -42,7 +42,7 @@ public class HistoryScoreViewPanel extends JPanel {
 
         scoreHistoryLabel1 = new JLabel("时间");
         scoreHistoryLabel1.setHorizontalAlignment(JLabel.CENTER);
-        scoreHistoryLabel0.setFont(new Font(Font.DIALOG, 1, 56));
+        scoreHistoryLabel0.setFont(new Font(Font.DIALOG, 1, 50));
         scoreHistoryLabel.setFont(new Font(Font.DIALOG, 1, 20));
         scoreHistoryLabel1.setFont(new Font(Font.DIALOG, 1, 20));
         gbc.gridwidth=0;
