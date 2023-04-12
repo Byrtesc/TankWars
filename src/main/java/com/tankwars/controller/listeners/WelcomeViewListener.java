@@ -41,6 +41,8 @@ public class WelcomeViewListener implements ActionListener {
                     break;
                 }
                 List list = controller.login(userName);
+
+                
                 if (list != null) {
                     UI.historyScoreView.scoreList = list;
                     UI.historyScoreView.historyScoreViewPanel.setScoreList(list);

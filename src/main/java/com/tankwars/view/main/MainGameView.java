@@ -94,6 +94,8 @@ public class MainGameView extends JFrame {
         menuHelp.add(menuItemDescription);
         menuHelp.add(menuItemAbout);
 
+
+
         //菜单栏添加菜单项
         menuBar.add(menuGame);
         menuBar.add(menuHelp);

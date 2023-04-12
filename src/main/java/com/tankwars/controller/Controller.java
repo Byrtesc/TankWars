@@ -13,10 +13,9 @@ import com.tankwars.utils.MusicUtil;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author yangmingquan
@@ -170,13 +169,13 @@ public class Controller {
         boomList.clear();
         walls = scence.obstacleList.get(selectedMap);
         walls.addAll(homeNormalWalls);
-        playerTank1 = new Tank(175, 475, 1, 3, 3, "", this);
+        playerTank1 = new Tank(200, 500, 1, 3, 3, "", this);
         //我方坦克1
         this.playerTankHp=playerTank1.hp;
         playerTanks.add(playerTank1);
         System.out.println(playerNum);
         if (playerNum == 2) {
-            playerTank2 = new Tank(350, 475, 1, 3, 3, "", this);
+            playerTank2 = new Tank(325, 500, 1, 3, 3, "", this);
             playerTanks.add(playerTank2);
         }
 
@@ -235,6 +234,8 @@ public class Controller {
             if (resultSet.next()) {
                 int uid = resultSet.getInt("id");
                 if (uid != 0) {
+                    sql="insert into score (uid,time) values ('"+uid+"','"+ LocalDateTime.now() +"')";
+                    int i=dbUtil.execUpdate(sql);
                     sql = "select score,time from score where uid='" + uid + "' order by time desc limit 0,10";
                     ResultSet resultSetScore = dbUtil.execQuery(sql);
                     List<Map> list = new ArrayList<>();
