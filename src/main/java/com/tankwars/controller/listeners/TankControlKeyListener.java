@@ -168,19 +168,27 @@ public class TankControlKeyListener extends KeyAdapter {
         updatePlayerTankControl();
         if (controller.playerTanks.contains(controller.playerTank1)) {
             if (e.getKeyCode() == KeyEvent.VK_W) {
-                controller.enemyAiTank.moveToNodeList();
+                if (controller.enemyAiTank!=null){
+                    controller.enemyAiTank.moveToNodeList();
+                }
                 playerTank1.upMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_S) {
-                controller.enemyAiTank.moveToNodeList();
+                if (controller.enemyAiTank!=null){
+                    controller.enemyAiTank.moveToNodeList();
+                }
                 playerTank1.downMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_A) {
-                controller.enemyAiTank.moveToNodeList();
+                if (controller.enemyAiTank!=null){
+                    controller.enemyAiTank.moveToNodeList();
+                }
                 playerTank1.leftMove = false;
             }
             if (e.getKeyCode() == KeyEvent.VK_D) {
-                controller.enemyAiTank.moveToNodeList();
+                if (controller.enemyAiTank!=null){
+                    controller.enemyAiTank.moveToNodeList();
+                }
                 playerTank1.rightMove = false;
             }
         }

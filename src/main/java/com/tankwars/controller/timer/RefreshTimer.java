@@ -35,16 +35,18 @@ public class RefreshTimer {
     public ActionListener actionListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (controller.playerHomeHp == 0) {
+            if (controller.playerHomeHp == 0|| controller.playerTankHp==0) {
                 JOptionPane.showMessageDialog(null, "游戏结束，你输了", "游戏结束", JOptionPane.WARNING_MESSAGE);
                 timer.stop();
             }
             if (!controller.diyModel) {
                 //检查出生点是否为空，出生坦克
                 if (controller.enemyTanks.size() < 10 && controller.nowStageEnemyTankNum < controller.needEnemyTankNum) {
-                    if (!controller.enemyTanks.contains(controller.enemyAiTank)){
-                        controller.enemyAiTank=new Tank(0,0,2,3,1,"red",controller);
-                        controller.enemyTanks.add(controller.enemyAiTank);
+                    if (controller.aiMode){
+                        if (!controller.enemyTanks.contains(controller.enemyAiTank)){
+                            controller.enemyAiTank=new Tank(0,0,2,3,1,"red",controller);
+                            controller.enemyTanks.add(controller.enemyAiTank);
+                        }
                     }
                     if (controller.generateTime != 0) {
                         int i = new Random().nextInt(2);

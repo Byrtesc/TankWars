@@ -41,6 +41,11 @@ public class SelectModelListener implements ActionListener {
                 UI.mainGameView.setVisible(true);
                 UI.selectModelView.setVisible(false);
                 break;
+            case "aiMode":
+                controller.aiMode=true;
+                UI.mainGameView.setVisible(true);
+                UI.selectModelView.setVisible(false);
+                break;
         }
     }
 }

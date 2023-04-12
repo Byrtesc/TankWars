@@ -20,17 +20,19 @@ public class SelectModelViewPanel extends JPanel {
         GridBagConstraints gbc=new GridBagConstraints();
         SelectModelListener selectModelListener = new SelectModelListener(controller);
         gbc.fill=GridBagConstraints.BOTH;
-        gbc.gridwidth=0;
+
         gbc.weightx=0;
         gbc.weighty=0;
-        gbc.insets=new Insets(30,0,30,0);
+        gbc.insets=new Insets(30,20,30,20);
         JButton onePlayerButton=new JButton("单人模式");
         JButton twoPlayerButton=new JButton("双人模式");
+        JButton aiModeButton=new JButton("Ai模式");
         JButton customButton=new JButton("自定义地图模式");
 
         onePlayerButton.setFont(new Font(Font.DIALOG,1,30));
         twoPlayerButton.setFont(new Font(Font.DIALOG,1,30));
         customButton.setFont(new Font(Font.DIALOG,1,30));
+        aiModeButton.setFont(new Font(Font.DIALOG,1,30));
 
         onePlayerButton.addActionListener(selectModelListener);
         onePlayerButton.setActionCommand("onePlayer");
@@ -38,14 +40,19 @@ public class SelectModelViewPanel extends JPanel {
         twoPlayerButton.setActionCommand("twoPlayer");
         customButton.addActionListener(selectModelListener);
         customButton.setActionCommand("customModel");
-
+        aiModeButton.addActionListener(selectModelListener);
+        aiModeButton.setActionCommand("aiMode");
+        gbc.gridwidth=1;
         gridBagLayout.setConstraints(onePlayerButton,gbc);
+        gbc.gridwidth=0;
         gridBagLayout.setConstraints(twoPlayerButton,gbc);
         gridBagLayout.setConstraints(customButton,gbc);
+        gridBagLayout.setConstraints(aiModeButton,gbc);
         setLayout(gridBagLayout);
         add(onePlayerButton);
         add(twoPlayerButton);
         add(customButton);
+        add(aiModeButton);
     }
 
     @Override
