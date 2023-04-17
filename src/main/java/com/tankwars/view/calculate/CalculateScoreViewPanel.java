@@ -66,6 +66,19 @@ public class CalculateScoreViewPanel extends JPanel {
         labelTankTotalValues.setFont(new Font(Font.DIALOG, 1, 30));
         labelScoreTotalValues.setFont(new Font(Font.DIALOG, 1, 30));
 
+        labelStage.setForeground(Color.WHITE);
+        labelWhiteTank.setForeground(Color.WHITE);
+        labelYellowTank.setForeground(Color.WHITE);
+        labelGreenTank.setForeground(Color.WHITE);
+        labelBlueTank.setForeground(Color.WHITE);
+        labelRedTank.setForeground(Color.WHITE);
+        labelWhiteTankTotalValues.setForeground(Color.WHITE);
+        labelYellowTankTotalValues.setForeground(Color.WHITE);
+        labelGreenTankTotalValues.setForeground(Color.WHITE);
+        labelBlueTankTotalValues.setForeground(Color.WHITE);
+        labelRedTankTotalValues.setForeground(Color.WHITE);
+        labelTankTotalValues.setForeground(Color.WHITE);
+        labelScoreTotalValues.setForeground(Color.WHITE);
 
         gbc.fill = GridBagConstraints.NONE;
         gbc.gridwidth = 0;
@@ -125,5 +138,10 @@ public class CalculateScoreViewPanel extends JPanel {
 
         add(labelTankTotalValues);
         add(labelScoreTotalValues);
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon("images/historyandrank.png").getImage(),0,0,500,700,null);
     }
 }

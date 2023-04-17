@@ -37,7 +37,12 @@ public class MainGameView extends JFrame {
          * 窗口要素
          */
         setTitle(UI.GAME_AUTHOR_NAME);
-        setSize(800, 562);
+        System.out.println(System.getProperty("os.name"));
+        if (System.getProperty("os.name").equals("Windows 10")||System.getProperty("os.name").equals("Windows 11")){
+            setSize(800, 570);
+        }else {
+            setSize(800, 590);
+        }
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

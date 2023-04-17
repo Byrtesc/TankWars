@@ -86,6 +86,7 @@ public class MenuBarListener implements ActionListener {
                 }
                 break;
             case "description":
+                UI.helpTipsView.setVisible(true);
                 break;
         }
     }

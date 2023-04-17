@@ -14,7 +14,7 @@ public class DbUtil {
     Connection connection;
     Statement statement;
     ResultSet resultSet;
-    private String connectionUrl = "jdbc:mysql://localhost:3306/tankwars?useSSL=false";
+    private String connectionUrl = "jdbc:mysql://localhost:3306/jx230219?useSSL=false";
     private String connectionUser = "root";
     private String connectionPassword = "123456";
 

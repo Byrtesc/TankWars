@@ -18,7 +18,7 @@ public class HelpTipsView extends JFrame {
          * 窗口要素
          */
         setTitle("游戏帮助");
-        setSize(350, 600);
+        setSize(350, 336);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(HIDE_ON_CLOSE);

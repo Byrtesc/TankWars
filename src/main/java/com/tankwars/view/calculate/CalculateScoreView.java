@@ -18,7 +18,7 @@ public class CalculateScoreView extends JFrame {
     public CalculateScoreViewPanel calculateScoreViewPanel;
     public CalculateScoreView(Controller controller){
         calculateScoreViewPanel=new CalculateScoreViewPanel();
-        setTitle(UI.GAME_AUTHOR_NAME);
+        setTitle("游戏结算,关闭窗口继续游戏");
         setSize(430,430);
         setResizable(false);
         setLocationRelativeTo(null);
